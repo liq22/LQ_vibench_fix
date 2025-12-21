@@ -1,0 +1,35 @@
+src/readme.md:57:  - `python -m src.Pipeline_01_default --config_path configs/demo/Single_DG/CWRU.yaml`
+src/configs/plan/optimization_plan_20250829.md:839:    'quickstart': 'configs/demo/Single_DG/CWRU.yaml',
+src/configs/plan/optimization_plan_20250829.md:840:    'basic': 'configs/demo/Single_DG/THU.yaml', 
+src/configs/plan/optimization_plan_20250829.md:841:    'isfm': 'configs/demo/Multiple_DG/CWRU_THU_using_ISFM.yaml',
+src/configs/plan/optimization_plan_20250829.md:842:    'gfs': 'configs/demo/GFS/GFS_demo.yaml',
+src/configs/plan/optimization_plan_20250829.md:843:    'pretrain': 'configs/demo/Pretraining/Pretraining_demo.yaml',
+src/configs/plan/test_results_and_fix_plan_20250829.md:597:基于 `configs/demo/Single_DG/CWRU.yaml` 进行的全面测试：
+src/configs/README_ContrastiveLearning.md:27:base_config = load_config('configs/demo/Single_DG/CWRU.yaml')
+src/configs/CLAUDE.md:55:    'quickstart': 'configs/demo/Single_DG/CWRU.yaml',
+src/configs/CLAUDE.md:56:    'basic': 'configs/demo/Single_DG/THU.yaml',
+src/configs/CLAUDE.md:57:    'isfm': 'configs/demo/Multiple_DG/CWRU_THU_using_ISFM.yaml',
+src/configs/CLAUDE.md:58:    'gfs': 'configs/demo/GFS/GFS_demo.yaml',
+src/configs/CLAUDE.md:59:    'pretrain': 'configs/demo/Pretraining/Pretraining_demo.yaml',
+src/configs/CLAUDE.md:116:config = load_config('configs/demo/Single_DG/CWRU.yaml')
+src/configs/CLAUDE.md:581:        ('file', lambda: load_config('configs/demo/Single_DG/CWRU.yaml')),
+docs/hse-implementation/README.md:14:> - v0.1.0 下用于 sanity 验证的 demo 配置（见 `configs/demo/*`；`configs/reference/*` 计划删除/迁移）。  
+src/utils/CLAUDE.md:60:config = load_config("configs/demo/Single_DG/CWRU.yaml")
+docs/custom_dataset.md:13:- Validate with a small config under `configs/demo/` (start from `configs/demo/Single_DG/CWRU.yaml` or the
+docs/past/MIGRATION_GUIDE.md:69:config = manager.load("configs/demo/Multiple_DG/CWRU_THU_using_ISFM.yaml")
+src/configs/ablation_helper.py:244:    config_path = "configs/demo/Single_DG/CWRU.yaml"
+src/configs/config_utils.py:703:        基于configs/demo/Single_DG/CWRU.yaml进行测试
+src/configs/config_utils.py:710:        print("基础文件: configs/demo/Single_DG/CWRU.yaml\n")
+src/configs/config_utils.py:715:            '2.文件': 'configs/demo/Single_DG/CWRU.yaml',  # 直接文件路径
+src/configs/config_utils.py:738:            'B.文件覆盖': 'configs/demo/Single_DG/THU.yaml',  # 用文件覆盖
+src/configs/config_utils.py:862:            combined = load_config('configs/demo/Single_DG/CWRU.yaml', 
+src/configs/config_utils.py:863:                                'configs/demo/Single_DG/THU.yaml')
+src/Pipeline_01_default.py:159:                        default='/home/user/LQ/B_Signal/Signal_foundation_model/Vbench/configs/demo/Single_DG/CWRU.yaml',
+docs/v0.1.0/done/model_factory_plan.md:117:  - 单数据 DG 分类：`model.type = ISFM`，`embedding = E_01_HSE`，`backbone = B_04_Dlinear`，`task_head = H_01_Linear_cla`，示例配置见 `configs/demo/Single_DG/CWRU.yaml`。
+docs/v0.1.0/done/model_factory_plan.md:122:- 确保官方 demo 配置（例如 `configs/demo/Single_DG/CWRU.yaml`）：
+docs/v0.1.0/done/task_factory_task_mapping_plan.md:95:- 选 2–3 个重要配置文件（例如：`configs/demo/Single_DG/CWRU.yaml` 等）
+docs/v0.1.0/done/config_registry_plan.md:73:> 注意：**不在 CSV 中记录 `configs/reference/experiment_*.yaml`**（reference 后续计划迁移到 paper submodule 并删除），以便你清理时不会引入额外维护负担。
+docs/v0.1.0/done/fewshot_gfs_fix_plan.md:48:  - `configs/reference/experiment_1_gfs_hse.yaml` 曾用于给出 GFS 标准字段（后续计划迁移到 paper submodule 并删除 `configs/reference/`）；
+docs/v0.1.0/done/fewshot_gfs_fix_plan.md:170:- YAML 字段完全参考历史 schema（原 `configs/reference/experiment_1_gfs_hse.yaml`；后续迁移到 paper submodule），不新造 key。
+src/data_factory/CLAUDE.md:245:# In configs/demo/Single_DG/NewDataset.yaml
+src/model_factory/ISFM/M_03_ISFM.py:116:    # config_path = os.path.join(project_root, 'configs/demo/Multiple_DG/CWRU_THU_using_ISFM.yaml')

@@ -1,0 +1,136 @@
+src/Pipeline_03_multitask_pretrain_finetune.py:1:""" ## TODO
+src/task_factory/readme.md:134:## TODO 
+src/task_factory/task/FS/README.md:17:### ❌ TODO: 待实现 (Not Yet Implemented)
+src/task_factory/task/FS/README.md:285:### 1. TODO: Multi-Scale Episodes - NOT IMPLEMENTED
+src/task_factory/task/FS/README.md:288:# TODO: multi_scale_episodes: true - NOT IMPLEMENTED
+src/task_factory/task/FS/README.md:293:### 2. TODO: Cross-Domain Episodes - NOT IMPLEMENTED
+src/task_factory/task/FS/README.md:296:# TODO: cross_domain_episodes: true - NOT IMPLEMENTED
+src/task_factory/task/FS/README.md:301:### 3. TODO: Hierarchical Few-Shot - NOT IMPLEMENTED
+src/task_factory/task/FS/README.md:304:# TODO: hierarchical_episodes: true - NOT IMPLEMENTED
+src/trainer_factory/Default_trainer.py:62:    # 如果不存在log_every_n_steps，使用默认值50 # TODO @liq22
+src/trainer_factory/Default_trainer.py:151:        monitor=args.monitor, # TODO @liq22
+src/data_factory/samplers/FS_sampler.py:264:    pass # TODO normal few-shot sampler for N-way K-shot tasks, not hierarchical
+dev/refactored_configs/comprehensive_refactoring_summary.md:48:  batch_size: 64 # TODO: 和task.batch_size 保持一致
+src/utils/validation/OneEpochValidator.py:274:                    # TODO: Implement actual data loading using PHM-Vibench
+src/data_factory/samplers/del/ID_selector.py:1:# TODO using IDselector to extend other ID selector
+src/task_factory/task/GFS/README.md:14:### ❌ TODO: 待实现 (Not Yet Implemented)
+src/task_factory/task/GFS/README.md:84:### Advanced GFS with Knowledge Distillation ❌ TODO: NOT IMPLEMENTED
+src/task_factory/task/GFS/README.md:96:  # TODO: Knowledge transfer - NOT IMPLEMENTED
+src/task_factory/task/GFS/README.md:101:  # TODO: Feature alignment - NOT IMPLEMENTED
+src/task_factory/task/GFS/README.md:105:  # TODO: Dynamic weighting - NOT IMPLEMENTED
+src/task_factory/task/GFS/README.md:126:  # TODO: Matching configuration - PARTIALLY IMPLEMENTED
+src/task_factory/task/GFS/README.md:130:  # TODO: Base class memory - NOT IMPLEMENTED
+src/task_factory/task/GFS/README.md:134:  # TODO: Matching strategies - BASIC IMPLEMENTATION
+src/task_factory/task/GFS/README.md:268:### 1. TODO: Adaptive Class Balancing - NOT IMPLEMENTED
+src/task_factory/task/GFS/README.md:271:# TODO: adaptive_sampling: true - NOT IMPLEMENTED
+src/task_factory/task/GFS/README.md:276:### 2. TODO: Continual Learning - NOT IMPLEMENTED
+src/task_factory/task/GFS/README.md:279:# TODO: continual_learning: true - NOT IMPLEMENTED
+src/task_factory/task/GFS/README.md:285:### 3. TODO: Multi-Task GFS - NOT IMPLEMENTED
+src/task_factory/task/GFS/README.md:288:# TODO: multi_task_gfs: true - NOT IMPLEMENTED
+src/task_factory/task/GFS/matching.py:48:            file_id = batch['file_id'][0].item()  # 确保 id 是字符串 TODO @liq22 sample 1 id rather than tensor
+docs/v0.1.0/v0.1.0_update.md:298:  - 将 TODO 列表更新为 checklist，记录已完成的配置/验证工作；
+src/task_factory/Components/contrastive_strategies.py:1149:            # TODO: Implement adaptive strategy
+src/task_factory/task/CDDG/README.md:16:### ❌ TODO: 待实现 (Not Yet Implemented)
+src/task_factory/task/CDDG/README.md:67:  # TODO: domain_adaptation_loss: "MMD"  # Domain adaptation - NOT IMPLEMENTED
+src/task_factory/task/CDDG/README.md:68:  # TODO: domain_weight: 0.1             # Weight for domain loss - NOT IMPLEMENTED
+src/task_factory/task/CDDG/README.md:97:- `domain_adaptation_loss`: ❌ TODO: Type of domain adaptation loss ("MMD", "CORAL", "DANN") - NOT IMPLEMENTED
+src/task_factory/task/CDDG/README.md:98:- `domain_weight`: ❌ TODO: Weight for domain adaptation loss - NOT IMPLEMENTED
+src/task_factory/task/CDDG/README.md:104:- `num_negatives`: ❌ TODO: Number of negative samples per positive - NOT NEEDED (auto-handled)
+src/task_factory/task/CDDG/README.md:105:- `contrast_loss`: ❌ TODO: Other loss types ("SimCLR", "SwAV", "MoCo", "VICReg", "BarlowTwins", "BYOL") - NOT IMPLEMENTED
+src/task_factory/task/CDDG/README.md:110:- `prompt_dim`: ❌ TODO: Dimension of prompt embeddings - AUTO-CONFIGURED
+src/task_factory/task/CDDG/README.md:111:- `freeze_prompts`: ❌ TODO: Whether to freeze prompt parameters - CONTROLLED BY STAGE
+src/task_factory/task/CDDG/README.md:151:### System-Aware Sampling (HSE) ❌ TODO: NOT IMPLEMENTED
+src/task_factory/Components/loss.py:30:        "SIGNAL_MASK_LOSS": Signal_mask_Loss,  # TODO Time Series Prediction
+docs/v0.1.0/configupdate.md:609:- [ ] 为 `configs/demo/` 中的 demo 补充完整的中文/英文 README 说明（命令示例 + 预期输出），并与 `configs/reference/experiment_*.yaml` 做一一对应说明（TODO）。
+docs/v0.1.0/done/demo_validation_report.md:225:在 v0.1.0 的范围内，可以将前两类 demo 视为“官方 sanity 通过”的代表性配置；few-shot 与预训练相关 demo 建议保留为配置设计草稿 + TODO，待你后续在 task_factory 与 data_factory 侧进一步统一语义后，再补齐 Task 实现与 YAML 映射，并将它们的 `status` 从 `/` 更新为 `sanity_ok`。***
+configs/v0.0.9/demo/GFS/GFS_demo.yaml:124:  early_stopping: True # TODO bug? 
+src/model_factory/ISFM/embedding/E_02_HSE_rec.py:1:## TODO for reconstruction and prediction task
+src/model_factory/ISFM/embedding/E_02_HSE_rec.py:133:        self.use_cond =  None # TODO for conditional generalization args.num_classes is not
+src/model_factory/ISFM/embedding/E_02_HSE_rec.py:145:        # S3 TODO ROPE
+src/model_factory/ISFM/embedding/E_02_HSE_rec.py:148:        if self.use_interpolation: # TODO
+src/model_factory/ISFM/embedding/E_02_HSE_rec.py:150:        if self.use_cond: # TODO y_embedder should be a module dict
+docs/v0.1.0/done/fewshot_gfs_fix_plan.md:131:   - 设计上的目标（记录为 TODO，不在本轮强行实现）：
+docs/v0.1.0/done/fewshot_gfs_fix_plan.md:336:     - 在 `docs/v0.1.0/cc/pipeline_fix_and_validation_plan.md` 中把 demo3/4 状态从 TODO 改为已完成（带上命令记录）。
+docs/v0.1.0/release_v0.1.0_planning.md:25:## TODO / 状态记录（v0.1.0）
+src/task_factory/task/pretrain/README.md:44:### ❌ TODO: 待实现 / 后续扩展 (Not Yet Implemented)
+src/task_factory/task/pretrain/README.md:228:### 2. TODO: Block Masking - NOT IMPLEMENTED
+src/task_factory/task/pretrain/README.md:231:# TODO: mask_strategy: "block" - NOT IMPLEMENTED
+src/task_factory/task/pretrain/README.md:236:### 3. TODO: Temporal Masking - NOT IMPLEMENTED
+src/task_factory/task/pretrain/README.md:239:# TODO: mask_strategy: "temporal" - NOT IMPLEMENTED
+src/task_factory/task/pretrain/README.md:244:### 4. TODO: Frequency Masking - NOT IMPLEMENTED
+src/task_factory/task/pretrain/README.md:247:# TODO: mask_strategy: "frequency" - NOT IMPLEMENTED
+src/task_factory/task/pretrain/README.md:292:### 1. TODO: Contrastive Learning Integration - NOT IMPLEMENTED
+src/task_factory/task/pretrain/README.md:295:# TODO: enable_contrastive: true - NOT IMPLEMENTED
+src/task_factory/task/pretrain/README.md:300:### 2. TODO: Multi-Scale Pretraining - NOT IMPLEMENTED
+src/task_factory/task/pretrain/README.md:303:# TODO: multi_scale_training: true - NOT IMPLEMENTED
+src/task_factory/task/pretrain/README.md:308:### 3. TODO: Domain-Adaptive Pretraining - NOT IMPLEMENTED
+src/task_factory/task/pretrain/README.md:311:# TODO: domain_adaptive: true - NOT IMPLEMENTED
+src/task_factory/task/pretrain/README.md:316:### 4. TODO: Progressive Training - NOT IMPLEMENTED
+src/task_factory/task/pretrain/README.md:319:# TODO: progressive_training: true - NOT IMPLEMENTED
+src/data_factory/dataset_task/ID_dataset.py:167:# TODO: Implement balanced ID sampling functionality
+configs/v0.0.9/demo/X_Single_DG/MWA_CNN/HUST.yaml:23:  batch_size: 64 # TODO: 和task.batch_size 保持一致
+configs/v0.0.9/demo/X_Single_DG/MWA_CNN/HUST.yaml:37:  device: cuda # TODO: 和trainer.device 保持一致
+src/task_factory/task/pretrain/prediction.py:46:            file_id = batch['file_id'][0].item()  # 确保 id 是字符串 TODO @liq22 sample 1 id rather than tensor
+src/data_factory/data_factory.py:12:from .dataset_task.Dataset_cluster import IdIncludedDataset # ,Balanced_DataLoader_Dict_Iterator # TODO del balanced_data_loader
+src/data_factory/data_factory.py:274:        # TODO
+src/data_factory/data_factory.py:387:    TODO : 处理子集的情况
+src/model_factory/ISFM/task_head/H_03_Linear_pred.py:6:class H_03_Linear_pred(nn.Module):  # TODO
+configs/v0.0.9/demo/X_Single_DG/TSPN/HUST.yaml:22:  batch_size: 64 # TODO: 和task.batch_size 保持一致
+configs/v0.0.9/demo/X_Single_DG/TSPN/HUST.yaml:37:  device: cuda # TODO: 和trainer.device 保持一致
+src/task_factory/task/DG/README.md:9:### ❌ TODO: 待实现 (Not Yet Implemented)
+src/task_factory/task/DG/README.md:48:  # TODO: regularization: ["domain_penalty"]  # Domain regularization techniques - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:49:  # TODO: domain_weight: 0.1             # Weight for domain regularization - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:51:  # TODO: Domain configuration (optional) - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:63:  # TODO: Multiple regularization techniques - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:69:  # TODO: Regularization weights - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:99:### 1. TODO: Domain Penalty - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:102:# TODO: regularization: ["domain_penalty"] - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:106:### 2. TODO: Adversarial Training - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:109:# TODO: regularization: ["adversarial"] - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:114:### 3. TODO: CORAL (Correlation Alignment) - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:117:# TODO: regularization: ["coral"] - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:121:### 4. TODO: MMD (Maximum Mean Discrepancy) - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:124:# TODO: regularization: ["mmd"] - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:155:### 1. TODO: Condition-Based - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:158:# TODO: domain_split_method: "condition" - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:163:### 2. TODO: Load-Based - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:166:# TODO: domain_split_method: "load" - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:171:### 3. TODO: Speed-Based - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:174:# TODO: domain_split_method: "speed" - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:179:### 4. TODO: Custom Domain Definition - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:182:# TODO: domain_split_method: "custom" - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:209:### 1. TODO: Gradient Reversal Layer - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:212:# TODO: Automatically included when using adversarial regularization - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:217:### 2. TODO: Domain-Adaptive Batch Normalization - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:220:# TODO: use_domain_bn: true - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:224:### 3. TODO: Progressive Domain Adaptation - NOT IMPLEMENTED
+src/task_factory/task/DG/README.md:227:# TODO: progressive_adaptation: true - NOT IMPLEMENTED
+src/task_factory/task/pretrain/classification_prediction.py:46:            file_id = batch['file_id'][0].item()  # 确保 id 是字符串 TODO @liq22 sample 1 id rather than tensor
+docs/LQ_fix_12_14/bug_record_template.py:172:    elif "TODO" in scan_result_line or "FIXME" in scan_result_line:
+docs/LQ_fix_12_14/bug_record_template.py:175:        title = f"待实现的TODO/FIXME"
+docs/LQ_fix_12_14/quick_triage.py:73:        elif category in ['todo', 'FIXME']:
+docs/LQ_fix_12_14/quick_triage.py:74:            if 'FIXME' in item:
+docs/LQ_fix_12_14/quick_triage.py:76:            elif 'TODO' in item and ('implement' in content.lower() or 'fix' in content.lower()):
+src/model_factory/ISFM/M_03_ISFM.py:47:        # self.num_classes = self.get_num_classes()  # TODO prediction 任务不需要label？ @liq22
+src/model_factory/ISFM/M_03_ISFM.py:74:        elif task_id in ['prediction']: # TODO individual prediction head
+docs/LQ_fix_12_14/EXECUTION_PLAN.md:157:# 1. TODO/FIXME/HACK
+docs/LQ_fix_12_14/EXECUTION_PLAN.md:158:rg -n "\b(TODO|FIXME|HACK)\b" src/ configs/ dev/ docs/ test/ \
+docs/LQ_fix_12_14/EXECUTION_PLAN.md:197:    # 分析TODO/FIXME
+docs/LQ_fix_12_14/EXECUTION_PLAN.md:201:                if "TODO" in line or "FIXME" in line:
+src/model_factory/ISFM/M_02_ISFM.py:61:        self.num_classes = self.get_num_classes()  # TODO prediction 任务不需要label？ @liq22
+src/model_factory/ISFM/M_01_ISFM.py:63:        self.num_classes = self.get_num_classes()  # TODO prediction 任务不需要label？ @liq22
+dev/preexp/three_module.ipynb:72:    "    def timestep_embedding(t, dim, max_period=10000):  # TODO ROPE\n",
+src/data_factory/reader/RM_025_KAIST.py:1: # TODO
+dev/del/three_module.ipynb:72:    "    def timestep_embedding(t, dim, max_period=10000):  # TODO ROPE\n",
+src/data_factory/reader/RM_026_HUST23.py:1:# TODO
+src/model_factory/ISFM/backbone/B_02_basic_other.py:1:# TODO replace all the embedding
+src/model_factory/X_model/TSPN.py:9:#TODO: 2D signal processing, Logic_inference
+src/model_factory/X_model/TSPN.py:72:        # TODO logic
+src/model_factory/X_model/TSPN.py:120:        # TODO: data_id,task_id
+src/model_factory/X_model/TSPN.py:148:    # TODO op first then weight connection -> attention
+src/model_factory/X_model/TSPN.py:204:        # TODO # self.weight_connection.weight.data = F.softmax((1.0 / self.temperature) *
+src/model_factory/X_model/TSPN.py:220:    def __init__(self, in_channels, num_classes): # TODO logic
+src/model_factory/X_model/Signal_processing.py:14:# from utils import convlutional_operator, signal_filter_, FRE # TODO
+src/model_factory/X_model/Signal_processing.py:94:# TODO
+src/model_factory/X_model/Signal_processing.py:158:    # TODO add other filter
+src/model_factory/X_model/Signal_processing.py:415:        self.fre = FRE # TODO learbable

@@ -1,0 +1,24 @@
+src/Pipeline_02_pretrain_fewshot.py:157:      - 推荐入口：只提供 `--config_path experiment_X_unified.yaml`；
+src/Pipeline_02_pretrain_fewshot.py:217:    parser.add_argument('--config_path', type=str, required=True, help='unified or pretrain config path')
+src/Pipeline_02_pretrain_fewshot.py:218:    parser.add_argument('--fs_config_path', type=str, default=None, help='[legacy] few-shot config path (dual YAML)')
+src/readme.md:57:  - `python -m src.Pipeline_01_default --config_path configs/demo/Single_DG/CWRU.yaml`
+src/readme.md:66:  - `python -m src.Pipeline_02_pretrain_fewshot --config_path <pretrain.yaml> --fs_config_path <fewshot.yaml> [--local_config configs/local/local.yaml]`
+src/readme.md:74:  - `python -m src.Pipeline_03_multitask_pretrain_finetune --config_path configs/multitask_pretrain_finetune_config.yaml --stage complete [--local_config configs/local/local.yaml]`
+src/readme.md:82:  - `python main.py --pipeline Pipeline_04_unified_metric --config script/unified_metric/configs/unified_experiments_1epoch.yaml [--local_config configs/local/local.yaml]`
+src/readme.md:91:  - `python -m src.Pipeline_ID --config_path <your_config.yaml> [--local_config configs/local/local.yaml]`
+docs/multitask_pretrain_finetune_guide.md:148:    --config_path configs/multitask_pretrain_finetune_config.yaml \
+docs/multitask_pretrain_finetune_guide.md:157:    --config_path configs/multitask_pretrain_finetune_config.yaml \
+docs/multitask_pretrain_finetune_guide.md:162:    --config_path configs/multitask_pretrain_finetune_config.yaml \
+src/configs/deprecated/config_manager_old.py:374:#   python main.py --config_path {output_path.name}
+src/Pipeline_03_multitask_pretrain_finetune.py:517:        '--config_path',
+src/Pipeline_01_default.py:157:    parser.add_argument('--config_path', 
+src/configs/deprecated/config_validator.py:578:#   2. 运行: python main.py --config_path this_file.yaml
+src/configs/deprecated/config_validator.py:603:    parser.add_argument('--pipeline', type=str, default='default', 
+src/Pipeline_04_unified_metric.py:226:    Normally this pipeline is called via main.py --pipeline Pipeline_04_unified_metric
+src/Pipeline_04_unified_metric.py:231:    parser.add_argument('--config_path', type=str, required=True,
+docs/v0.1.0/v0.1.0_update.md:165:  - 兼容旧的 `--config_path`，但内部统一写回 `args.config_path`；
+docs/v0.1.0/configupdate.md:385:   * `--config_path` 仅作为兼容参数保留（未提供 `--config` 时才生效），未来可在 v0.2.0 后逐步废弃。
+docs/v0.1.0/done/pipeline_fix_and_validation_plan.md:23:  - 解析 CLI：推荐入口为 `--config <yaml 或预设名>`，兼容旧参数 `--config_path`；
+docs/past/QUICKSTART.md:130:python main.py --config_path configs/my_experiment.yaml
+docs/past/QUICKSTART.md:145:python main.py --config_path your_config.yaml
+docs/past/QUICKSTART.md:298:    python main.py --config_path "$config"

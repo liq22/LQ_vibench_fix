@@ -1,0 +1,38 @@
+src/model_factory/X_model/TSPN.py:9:#TODO: 2D signal processing, Logic_inference
+src/model_factory/X_model/TSPN.py:72:        # TODO logic
+src/model_factory/X_model/TSPN.py:120:        # TODO: data_id,task_id
+src/model_factory/X_model/TSPN.py:148:    # TODO op first then weight connection -> attention
+src/model_factory/X_model/TSPN.py:204:        # TODO # self.weight_connection.weight.data = F.softmax((1.0 / self.temperature) *
+src/model_factory/X_model/TSPN.py:220:    def __init__(self, in_channels, num_classes): # TODO logic
+src/trainer_factory/Default_trainer.py:62:    # 如果不存在log_every_n_steps，使用默认值50 # TODO @liq22
+src/trainer_factory/Default_trainer.py:151:        monitor=args.monitor, # TODO @liq22
+src/model_factory/X_model/Signal_processing.py:14:# from utils import convlutional_operator, signal_filter_, FRE # TODO
+src/model_factory/X_model/Signal_processing.py:94:# TODO
+src/model_factory/X_model/Signal_processing.py:158:    # TODO add other filter
+src/model_factory/X_model/Signal_processing.py:415:        self.fre = FRE # TODO learbable
+src/utils/validation/OneEpochValidator.py:274:                    # TODO: Implement actual data loading using PHM-Vibench
+src/model_factory/ISFM/task_head/H_03_Linear_pred.py:6:class H_03_Linear_pred(nn.Module):  # TODO
+src/model_factory/ISFM/M_03_ISFM.py:47:        # self.num_classes = self.get_num_classes()  # TODO prediction 任务不需要label？ @liq22
+src/model_factory/ISFM/M_03_ISFM.py:74:        elif task_id in ['prediction']: # TODO individual prediction head
+src/model_factory/ISFM/M_02_ISFM.py:61:        self.num_classes = self.get_num_classes()  # TODO prediction 任务不需要label？ @liq22
+src/model_factory/ISFM/M_01_ISFM.py:63:        self.num_classes = self.get_num_classes()  # TODO prediction 任务不需要label？ @liq22
+src/Pipeline_03_multitask_pretrain_finetune.py:1:""" ## TODO
+src/model_factory/ISFM/backbone/B_02_basic_other.py:1:# TODO replace all the embedding
+src/model_factory/ISFM/embedding/E_02_HSE_rec.py:1:## TODO for reconstruction and prediction task
+src/model_factory/ISFM/embedding/E_02_HSE_rec.py:133:        self.use_cond =  None # TODO for conditional generalization args.num_classes is not
+src/model_factory/ISFM/embedding/E_02_HSE_rec.py:145:        # S3 TODO ROPE
+src/model_factory/ISFM/embedding/E_02_HSE_rec.py:148:        if self.use_interpolation: # TODO
+src/model_factory/ISFM/embedding/E_02_HSE_rec.py:150:        if self.use_cond: # TODO y_embedder should be a module dict
+src/task_factory/Components/contrastive_strategies.py:1149:            # TODO: Implement adaptive strategy
+src/task_factory/Components/loss.py:30:        "SIGNAL_MASK_LOSS": Signal_mask_Loss,  # TODO Time Series Prediction
+src/task_factory/task/pretrain/prediction.py:46:            file_id = batch['file_id'][0].item()  # 确保 id 是字符串 TODO @liq22 sample 1 id rather than tensor
+src/task_factory/task/pretrain/classification_prediction.py:46:            file_id = batch['file_id'][0].item()  # 确保 id 是字符串 TODO @liq22 sample 1 id rather than tensor
+src/data_factory/samplers/FS_sampler.py:264:    pass # TODO normal few-shot sampler for N-way K-shot tasks, not hierarchical
+src/data_factory/samplers/del/ID_selector.py:1:# TODO using IDselector to extend other ID selector
+src/data_factory/dataset_task/ID_dataset.py:167:# TODO: Implement balanced ID sampling functionality
+src/data_factory/reader/RM_026_HUST23.py:1:# TODO
+src/data_factory/reader/RM_025_KAIST.py:1: # TODO
+src/task_factory/task/GFS/matching.py:48:            file_id = batch['file_id'][0].item()  # 确保 id 是字符串 TODO @liq22 sample 1 id rather than tensor
+src/data_factory/data_factory.py:12:from .dataset_task.Dataset_cluster import IdIncludedDataset # ,Balanced_DataLoader_Dict_Iterator # TODO del balanced_data_loader
+src/data_factory/data_factory.py:274:        # TODO
+src/data_factory/data_factory.py:387:    TODO : 处理子集的情况

@@ -1,0 +1,586 @@
+src/Pipeline_02_pretrain_fewshot.py:209:        raise
+src/configs/contrastive_config.py:74:        raise ValueError("损失列表不能为空")
+src/configs/contrastive_config.py:402:        raise KeyError(f"对比学习模板 '{template_name}' 不存在。可用模板: {available}")
+src/configs/hse_contrastive_builder.py:355:        raise ValueError("contrast_weight must be between 0.0 and 1.0")
+src/configs/hse_contrastive_builder.py:359:        raise ValueError(f"loss_type must be one of {valid_losses}")
+src/configs/hse_contrastive_builder.py:363:        raise ValueError(f"prompt_fusion must be one of {valid_fusions}")
+src/configs/hse_contrastive_builder.py:366:        raise ValueError("temperature must be positive")
+src/configs/hse_contrastive_builder.py:369:        raise ValueError("margin must be positive")
+src/configs/hse_contrastive_builder.py:380:        raise ValueError("loss_types cannot be empty")
+src/configs/hse_contrastive_builder.py:385:            raise ValueError(f"loss_type '{loss_type}' must be one of {valid_losses}")
+src/configs/hse_contrastive_builder.py:388:        raise ValueError("weights must have the same length as loss_types")
+src/configs/hse_contrastive_builder.py:392:        raise ValueError(f"prompt_fusion must be one of {valid_fusions}")
+src/configs/hse_contrastive_builder.py:396:        raise ValueError(f"system_sampling_strategy must be one of {valid_strategies}")
+src/configs/deprecated/config_manager_old.py:126:            raise ValueError(f"不支持的格式: {format}")
+src/configs/deprecated/config_manager_old.py:253:            raise FileNotFoundError(f"配置文件不存在: {config_path}")
+src/configs/deprecated/config_manager_old.py:267:            raise FileNotFoundError(f"覆盖文件不存在: {override_path}")
+src/configs/deprecated/config_manager_old.py:288:                raise ValueError(f"不支持的文件格式: {suffix}")
+src/configs/deprecated/config_manager_old.py:294:            raise ImportError(f"无法加载Python配置文件: {file_path}")
+src/configs/deprecated/config_manager_old.py:311:        raise ValueError(f"Python配置文件中未找到 'config' 或 'CONFIG' 对象: {file_path}")
+src/configs/deprecated/config_manager_old.py:357:            raise ValueError(error_msg)
+src/configs/deprecated/config_schema.py:89:            raise ValueError("stride不能大于window_size")
+src/configs/deprecated/config_schema.py:142:                raise ValueError(f"ISFM模型缺少必需字段: {missing}")
+src/configs/deprecated/presets.py:568:        raise ValueError(f"未知预设 '{preset_name}'，可用预设: {available}")
+src/utils/validation/OneEpochValidator.py:142:                raise ValueError(f"Invalid config type: {type(config)}")
+src/utils/validation/OneEpochValidator.py:151:            raise
+src/utils/validation/OneEpochValidator.py:276:                    raise NotImplementedError("Actual data loading not implemented yet")
+src/configs/deprecated/legacy_compat.py:192:        raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{name}'")
+src/configs/config_utils.py:58:        raise KeyError(key)
+src/configs/config_utils.py:87:            raise TypeError(f"update需要ConfigWrapper或SimpleNamespace，得到{type(other)}")
+src/configs/config_utils.py:225:            raise FileNotFoundError(f"配置 {source_str} 不存在")
+src/configs/config_utils.py:230:        raise TypeError(f"不支持的类型: {type(source)}")
+src/configs/config_utils.py:264:            raise ValueError(f"缺少配置节: {section}")
+src/configs/config_utils.py:272:                raise ValueError(f"缺少必需字段: {section}.{field}")
+src/configs/config_utils.py:299:            raise ValueError("对比学习策略配置缺少 'type' 字段")
+src/configs/config_utils.py:303:            raise ValueError(f"不支持的对比学习策略类型: {strategy_type}")
+src/configs/config_utils.py:308:                raise ValueError("单策略配置缺少 'loss_type' 字段")
+src/configs/config_utils.py:313:                raise ValueError(f"不支持的对比损失类型: {loss_type}")
+src/configs/config_utils.py:318:                    raise ValueError(f"{loss_type} 损失需要 'temperature' 参数")
+src/configs/config_utils.py:321:                    raise ValueError(f"温度参数应在(0,1)范围内，当前值: {temp}")
+src/configs/config_utils.py:326:                raise ValueError("集成策略配置缺少 'losses' 列表")
+src/configs/config_utils.py:330:                raise ValueError("集成策略的 'losses' 必须是非空列表")
+src/configs/config_utils.py:336:                    raise ValueError(f"损失配置[{i}]应为SimpleNamespace对象")
+src/configs/config_utils.py:339:                    raise ValueError(f"损失配置[{i}]缺少 'loss_type' 字段")
+src/configs/config_utils.py:343:                    raise ValueError(f"不支持的对比损失类型[{i}]: {loss_type}")
+src/configs/config_utils.py:347:                    raise ValueError(f"损失配置[{i}]缺少 'weight' 字段")
+src/configs/config_utils.py:351:                    raise ValueError(f"损失权重[{i}]应在(0,1]范围内，当前值: {weight}")
+src/configs/config_utils.py:356:                        raise ValueError(f"{loss_type} 损失配置[{i}]需要 'temperature' 参数")
+src/configs/config_utils.py:359:                        raise ValueError(f"温度参数[{i}]应在(0,1)范围内，当前值: {temp}")
+src/configs/config_utils.py:364:                        raise ValueError(f"Triplet损失配置[{i}]需要 'margin' 参数")
+src/configs/config_utils.py:367:                        raise ValueError(f"Triplet margin[{i}]应在(0,2)范围内，当前值: {margin}")
+src/configs/config_utils.py:376:                raise ValueError(f"不支持的对比损失类型: {contrast_loss}")
+src/configs/config_utils.py:382:                    raise ValueError(f"{contrast_loss} 损失需要 'temperature' 参数")
+src/configs/config_utils.py:384:                    raise ValueError(f"温度参数应在(0,1)范围内，当前值: {temperature}")
+src/configs/config_utils.py:390:            raise ValueError(f"对比学习权重应在(0,2]范围内，当前值: {contrast_weight}")
+src/configs/config_utils.py:396:            raise ValueError(f"投影头维度必须为正整数，当前值: {proj_dim}")
+src/configs/config_utils.py:551:            raise ValueError(f"不支持的文件格式: {path.suffix}")
+src/configs/config_utils.py:578:            raise ValueError(f"--set 参数格式错误: {arg}，应为 key=value")
+src/configs/ablation_helper.py:226:        raise ValueError("必须提供参数网格，使用param_grid字典或**kwargs参数")
+src/model_factory/NO/NeuralODE.py:277:        assert output_reg.shape == (batch_size, seq_len, args_reg.output_dim)
+src/model_factory/NO/NeuralODE.py:298:        assert output_cls.shape == (batch_size, args_cls.num_classes)
+src/utils/training/two_stage_orchestrator.py:145:            raise ValueError(f"Invalid override format: {override}")
+src/utils/training/two_stage_orchestrator.py:438:            raise ValueError("Stage config must be dict / ConfigWrapper / SimpleNamespace")
+src/utils/training/two_stage_orchestrator.py:578:            raise ValueError("MultiStageOrchestrator 需要至少一个 stage 配置")
+src/utils/training/two_stage_orchestrator.py:614:                raise ValueError("Two-stage view requires at least one stage")
+src/configs/plan/optimization_plan_20250829.md:275:            raise ValueError(f"缺少配置节: {section}")
+src/configs/plan/optimization_plan_20250829.md:279:                raise ValueError(f"缺少配置: {section}.{field}")
+src/configs/plan/optimization_plan_20250829.md:871:            raise FileNotFoundError(f"配置文件或预设 {config_source} 不存在")
+src/configs/plan/test_results_and_fix_plan_20250829.md:305:    assert config.model.dropout == 0.5
+src/configs/plan/test_results_and_fix_plan_20250829.md:316:    assert config.model.dropout == 0.5
+src/configs/plan/test_results_and_fix_plan_20250829.md:317:    assert config.model.d_model == 256
+src/configs/plan/test_results_and_fix_plan_20250829.md:318:    assert config.task.lr == 0.001
+src/configs/plan/test_results_and_fix_plan_20250829.md:328:    assert config.model.num_layers == 8
+src/configs/plan/test_results_and_fix_plan_20250829.md:329:    assert config.task.lr == 0.001
+src/configs/plan/test_results_and_fix_plan_20250829.md:336:    assert configs[0].model.dropout == 0.1
+src/configs/plan/test_results_and_fix_plan_20250829.md:337:    assert configs[1].model.dropout == 0.2
+src/configs/plan/test_results_and_fix_plan_20250829.md:338:    assert configs[2].model.dropout == 0.3
+src/configs/plan/optimization_plan_v5_final_20250829.md:77:            raise FileNotFoundError(f"配置 {source} 不存在")
+src/configs/plan/optimization_plan_v5_final_20250829.md:82:        raise TypeError(f"不支持的类型: {type(source)}")
+src/configs/plan/optimization_plan_v5_final_20250829.md:102:            raise TypeError(f"update需要ConfigWrapper，得到{type(other)}")
+src/configs/plan/optimization_plan_v5_final_20250829.md:137:        raise KeyError(key)
+src/configs/plan/optimization_plan_v5_final_20250829.md:346:    assert all([isinstance(c, ConfigWrapper) for c in [c1,c2,c3,c4]])
+src/configs/plan/optimization_plan_v5_final_20250829.md:353:    assert all([isinstance(c, ConfigWrapper) for c in [c5,c6,c7,c8]])
+src/configs/plan/optimization_plan_v5_final_20250829.md:359:    assert base.task.epochs == 100
+src/configs/plan/optimization_plan_v5_final_20250829.md:367:    assert config.model.d_model == 256
+src/configs/plan/optimization_plan_v5_final_20250829.md:368:    assert config.task.lr == 0.001
+src/configs/plan/optimization_plan_v5_final_20250829.md:374:    assert c1.model.layer1.units == 128  # 保留
+src/configs/plan/optimization_plan_v5_final_20250829.md:375:    assert c1.model.layer1.dropout == 0.1  # 新增
+src/model_factory/model_factory.py:60:        raise RuntimeError(f"创建模型实例时出错: {str(e)}")
+src/model_factory/model_factory.py:74:        raise FileNotFoundError(f"Checkpoint file {ckpt_path} does not exist.")
+src/task_factory/Components/metrics.py:47:            raise ValueError(f"数据集 '{data_name}' 的配置缺少 'n_classes'")
+src/task_factory/Components/contrastive_losses.py:50:            raise ValueError(f"Temperature must be positive, got {temperature}")
+src/task_factory/Components/contrastive_losses.py:140:            raise ValueError(f"Unsupported distance function: {distance_fn}")
+src/task_factory/Components/contrastive_losses.py:344:            raise ValueError(f"Unsupported distance function: {distance_fn}")
+src/model_factory/NO/GraphNO.py:368:        assert output_reg.shape == (batch_size, seq_len, args_reg.output_dim)
+src/model_factory/NO/GraphNO.py:389:        assert output_cls.shape == (batch_size, args_cls.num_classes)
+src/configs/CLAUDE.md:603:        raise ValueError("Large models need larger batch sizes")
+src/configs/CLAUDE.md:606:        raise ValueError("Pretraining needs more epochs")
+src/task_factory/Components/mean_flow_loss.py:11:        assert mode in ['minmax', 'mean_std'], "mode must be 'minmax' or 'mean_std'"
+src/task_factory/Components/mean_flow_loss.py:16:                raise ValueError("mean and std must be provided for 'mean_std' mode")
+src/task_factory/Components/mean_flow_loss.py:97:        assert jvp_api in ['funtorch', 'autograd'], "jvp_api must be 'funtorch' or 'autograd'"
+src/task_factory/Components/mean_flow_loss.py:143:            assert self.cfg_ratio is not None
+src/utils/registry.py:22:            raise KeyError(f"{name} is not registered")
+src/Pipeline_03_multitask_pretrain_finetune.py:640:            assert hasattr(pipeline, 'configs')
+src/Pipeline_03_multitask_pretrain_finetune.py:641:            assert 'training' in pipeline.configs
+src/Pipeline_03_multitask_pretrain_finetune.py:642:            assert 'stage_1_pretraining' in pipeline.configs['training']
+src/Pipeline_03_multitask_pretrain_finetune.py:643:            assert 'stage_2_finetuning' in pipeline.configs['training']
+src/Pipeline_03_multitask_pretrain_finetune.py:666:        assert config['task']['name'] == 'masked_reconstruction'
+src/Pipeline_03_multitask_pretrain_finetune.py:667:        assert config['task']['type'] == 'pretrain'
+src/Pipeline_03_multitask_pretrain_finetune.py:668:        assert config['task']['mask_ratio'] == 0.15
+src/Pipeline_03_multitask_pretrain_finetune.py:700:        assert x_masked.shape == signal.shape
+src/Pipeline_03_multitask_pretrain_finetune.py:701:        assert total_mask.shape == signal.shape
+src/Pipeline_03_multitask_pretrain_finetune.py:702:        assert total_mask.dtype == torch.bool
+src/Pipeline_03_multitask_pretrain_finetune.py:703:        assert total_mask.sum() > 0  # Some elements should be masked
+src/Pipeline_03_multitask_pretrain_finetune.py:725:            assert 'model' in pretrain_config
+src/Pipeline_03_multitask_pretrain_finetune.py:726:            assert pretrain_config['model']['backbone'] == 'B_08_PatchTST'
+src/Pipeline_03_multitask_pretrain_finetune.py:727:            assert pretrain_config['task']['name'] == 'pretraining'
+src/Pipeline_03_multitask_pretrain_finetune.py:738:            assert 'model' in finetune_config
+src/Pipeline_03_multitask_pretrain_finetune.py:739:            assert finetune_config['model']['backbone'] == 'B_08_PatchTST'
+src/Pipeline_03_multitask_pretrain_finetune.py:740:            assert finetune_config['task']['name'] == 'classification'
+src/Pipeline_03_multitask_pretrain_finetune.py:778:            assert 'successful_pretraining' in summary
+src/Pipeline_03_multitask_pretrain_finetune.py:779:            assert 'total_backbones' in summary
+src/Pipeline_03_multitask_pretrain_finetune.py:780:            assert 'text' in summary
+src/Pipeline_03_multitask_pretrain_finetune.py:781:            assert summary['successful_pretraining'] == 3  # 3 successful out of 4
+src/Pipeline_03_multitask_pretrain_finetune.py:782:            assert summary['total_backbones'] == 4
+src/utils/utils.py:45:        raise ValueError("ModelCheckpoint callback not found in trainer's callbacks.")
+src/utils/utils.py:146:            raise ValueError(f"Dataset_id {dataset_id} not found in metadata")
+src/utils/utils.py:178:            raise ValueError(f"Dataset_id {dataset_id} not found in metadata")
+src/task_factory/Components/loss.py:42:        raise ValueError(
+src/model_factory/NO/WaveletNO.py:41:            raise ValueError(f"Unsupported wavelet type: {wavelet_type}")
+src/model_factory/NO/WaveletNO.py:341:        assert output_reg.shape == (batch_size, seq_len, args_reg.output_dim)
+src/model_factory/NO/WaveletNO.py:361:        assert output_cls.shape == (batch_size, args_cls.num_classes)
+src/task_factory/Components/metric_loss_cross_domainv2.py:124:                raise ValueError(
+src/task_factory/Components/metric_loss_cross_domainv2.py:156:    assert total == cfg.num_domains * samples_per_domain, (
+src/task_factory/Components/metric_loss_cross_domainv2.py:208:        raise ValueError(f"Unsupported pairing mode: {cfg.pairing}")
+src/task_factory/Components/metric_loss_cross_domainv2.py:223:    raise ValueError(f"Unsupported metric: {metric}")
+src/task_factory/task/FS/prototypical_network.py:44:             raise ValueError("Cannot compute prototypes. Support set might be empty or invalid, or feature_dim unknown for fallback.")
+src/model_factory/NO/DeepONet.py:284:        assert output.shape == (batch_size, seq_len, args.output_dim)
+src/model_factory/NO/DeepONet.py:294:        assert output2.shape == (batch_size, seq_len, args.output_dim)
+src/task_factory/Components/README_CONTRASTIVE_STRATEGIES.md:375:        raise ValueError("Features cannot be None")
+src/task_factory/Components/README_CONTRASTIVE_STRATEGIES.md:377:        raise ValueError("Projections cannot be None")
+src/task_factory/Components/README_CONTRASTIVE_STRATEGIES.md:380:        raise ValueError("This strategy requires ground truth labels")
+src/model_factory/ISFM/embedding/E_02_HSE_rec.py:28:            raise ValueError(f"序列长度 ({L}) 不能小于补丁大小 ({self.patch_size})")
+src/model_factory/ISFM/embedding/E_02_HSE_rec.py:42:            raise ValueError("L_original 尚未设置，请先调用 update_start_indices 方法。")
+src/model_factory/ISFM/embedding/E_02_HSE_rec.py:48:            raise ValueError("start_indices 尚未设置，请先调用 update_start_indices 方法。")
+src/model_factory/ISFM/embedding/E_02_HSE_rec.py:54:            raise ValueError(f"序列长度 ({L}) 不能小于补丁大小 ({self.patch_size})")
+src/model_factory/ISFM/embedding/E_02_HSE_rec.py:68:        assert T == self.num_patches and P == self.patch_size
+src/model_factory/ISFM/embedding/E_02_HSE_rec.py:200:            raise ValueError("system_ids must be scalar or per-sample list/tensor")
+src/model_factory/ISFM/embedding/E_02_HSE_rec.py:211:                raise KeyError(f"Missing channel embedder for system_id '{key}' in E_02_HSE_v2.")
+src/model_factory/ISFM/embedding/E_02_HSE_rec.py:277:    assert x_tokens_vib.shape == (B, args.num_patches, args.hidden_dim)
+src/model_factory/ISFM/embedding/E_02_HSE_rec.py:289:    assert x_tokens_temp.shape == (B, args.num_patches, args.hidden_dim)
+src/task_factory/Components/metric_loss_cross_domain.py:100:                raise ValueError(
+src/task_factory/Components/metric_loss_cross_domain.py:132:    assert total == cfg.num_domains * samples_per_domain, (
+src/task_factory/Components/metric_loss_cross_domain.py:184:        raise ValueError(f"Unsupported pairing mode: {cfg.pairing}")
+src/task_factory/Components/metric_loss_cross_domain.py:199:    raise ValueError(f"Unsupported metric: {metric}")
+src/task_factory/Components/metric_loss.py:125:    assert total == cfg.num_domains * samples_per_domain, \
+src/task_factory/Components/metric_loss.py:171:    raise ValueError(f"Unsupported metric: {metric}")
+src/model_factory/NO/FNO.py:190:        assert output_tensor.shape == expected_shape, f"Expected {expected_shape}, got {output_tensor.shape}"
+src/utils/evaluation/ZeroShotEvaluator.py:344:                    raise ValueError(f"Unsupported batch format: {type(batch)}")
+src/model_factory/ISFM/embedding/test.py:48:    assert out.shape == (batch_size, args.num_patches, args.output_dim), "形状不匹配!"
+src/model_factory/ISFM/embedding/test.py:56:    assert out.shape == (batch_size, args.num_patches, args.output_dim), "形状不匹配!"
+src/model_factory/ISFM/embedding/test.py:65:    assert out.shape == (batch_size, args.num_patches, args.output_dim), "形状不匹配!"
+src/model_factory/ISFM/embedding/test.py:74:    assert out.shape == (batch_size, args.num_patches, args.output_dim), "形状不匹配!"
+src/model_factory/ISFM/embedding/test.py:84:    assert out.shape == (batch_size, expected_patches, args.output_dim), "形状不匹配!"
+src/model_factory/ISFM/embedding/test.py:93:    assert out.shape == (batch_size, args.num_patches, args.output_dim), "形状不匹配!"
+src/model_factory/ISFM/embedding/test.py:102:    assert out.shape == (batch_size, args.num_patches, args.output_dim), "形状不匹配!"
+src/model_factory/Transformer/ConvTransformer.py:332:        assert output_reg.shape == (batch_size, seq_len, args_reg.output_dim)
+src/model_factory/Transformer/ConvTransformer.py:353:        assert output_cls.shape == (batch_size, args_cls.num_classes)
+src/task_factory/Components/prompt_contrastive.py:101:            raise ValueError(f"Unsupported loss type: {loss_type}. "
+src/model_factory/ISFM/embedding/E_03_Patch.py:65:            raise ValueError(f"E_03_Patch expects 3D input, got {len(x.shape)}D input with shape {x.shape}")
+src/model_factory/ISFM/embedding/E_03_Patch.py:74:                raise ValueError(f"Channel dimension mismatch: expected {self.in_chans}, got {dim2}")
+src/model_factory/ISFM/embedding/E_03_Patch.py:80:                raise ValueError(f"Channel dimension mismatch: expected {self.in_chans}, got {dim1}")
+src/model_factory/ISFM/embedding/E_03_Patch.py:83:            raise ValueError(f"Cannot determine input format: {x.shape}. Expected (B, C, L) or (B, L, C)")
+src/model_factory/ISFM/embedding/E_03_Patch.py:89:            raise ValueError(f"Channel mismatch: model expects {self.in_chans}, got {C}")
+src/utils/config_utils.py:37:            raise ValueError(f"Invalid override format: '{override}'. Use key=value format.")
+src/utils/config_utils.py:75:            raise ValueError(f"Cannot set nested key '{key}': '{k}' is not a dict")
+src/utils/config_utils.py:176:                raise ValueError(f"Cannot set nested attribute '{key}': '{k}' does not exist")
+src/task_factory/Components/contrastive_strategies.py:52:        assert feature_dim % num_heads == 0, "feature_dim must be divisible by num_heads"
+src/task_factory/Components/contrastive_strategies.py:297:            raise ValueError("Features cannot be None")
+src/task_factory/Components/contrastive_strategies.py:299:            raise ValueError("Projections cannot be None")
+src/task_factory/Components/contrastive_strategies.py:304:            raise ValueError(f"Batch size mismatch: features {batch_size}, projections {projections.size(0)}")
+src/task_factory/Components/contrastive_strategies.py:307:            raise ValueError("This strategy requires ground truth labels")
+src/task_factory/Components/contrastive_strategies.py:356:                    raise ValueError(f"{self.loss_type} requires labels")
+src/task_factory/Components/contrastive_strategies.py:366:                raise ValueError(f"Unsupported loss type: {self.loss_type}")
+src/task_factory/Components/contrastive_strategies.py:408:                raise ValueError(f"Missing required config key: {key}")
+src/task_factory/Components/contrastive_strategies.py:412:            raise ValueError(f"Unsupported loss type: {self.config['loss_type']}")
+src/task_factory/Components/contrastive_strategies.py:1075:            raise ValueError("Ensemble strategy requires 'losses' configuration")
+src/task_factory/Components/contrastive_strategies.py:1078:            raise ValueError("Losses list cannot be empty")
+src/task_factory/Components/contrastive_strategies.py:1083:                raise ValueError(f"Loss config {i} must be a dictionary")
+src/task_factory/Components/contrastive_strategies.py:1088:                    raise ValueError(f"Loss config {i} missing required key: {key}")
+src/task_factory/Components/contrastive_strategies.py:1091:                raise ValueError(f"Weight in loss config {i} must be numeric")
+src/task_factory/Components/contrastive_strategies.py:1099:                raise ValueError("Total weight cannot be zero")
+src/task_factory/Components/contrastive_strategies.py:1150:            raise NotImplementedError("Adaptive strategy not yet implemented")
+src/task_factory/Components/contrastive_strategies.py:1152:            raise ValueError(f"Unsupported strategy type: {strategy_type}")
+src/task_factory/Components/contrastive_strategies.py:1190:            raise ValueError("No strategy is currently set")
+src/model_factory/CNN/MobileNet1D.py:303:        assert output_cls.shape == (batch_size, args_cls.num_classes)
+src/model_factory/CNN/MobileNet1D.py:324:        assert output_wide.shape == (batch_size, args_wide.num_classes)
+src/model_factory/Transformer/PatchTST.py:289:        assert output_reg.shape == (batch_size, seq_len, args_reg.output_dim)
+src/model_factory/Transformer/PatchTST.py:311:        assert output_cls.shape == (batch_size, args_cls.num_classes)
+src/task_factory/task/FS/finetuning.py:24:            raise ValueError("FinetuningTask requires 'network.output_dim' or 'args_model.feature_dim' to be defined.")
+src/model_factory/ISFM/embedding/E_com_00_PE.py:44:            assert self.patch_len and self.stride and self.padding, "Require patch parameters"
+src/model_factory/ISFM/embedding/E_com_00_PE.py:60:            raise ValueError(f"Unsupported embedding type: {self.embed_type}")
+src/model_factory/ISFM/embedding/E_com_00_PE.py:98:            raise RuntimeError(f"Unhandled embedding type: {self.embed_type}")
+src/model_factory/ISFM/embedding/E_com_00_PE.py:303:            assert seq_len == self.in_steps, f"Input seq_len {seq_len} != initialized in_steps {self.in_steps}"
+src/utils/CLAUDE.md:303:            raise ValueError(f"Missing required configuration section: {field}")
+src/utils/CLAUDE.md:307:        raise ValueError("batch_size must be positive")
+src/model_factory/CNN/ResNet1D.py:168:            raise ValueError(f"Unsupported block type: {self.block_type}")
+src/model_factory/CNN/ResNet1D.py:305:        assert output_basic_cls.shape == (batch_size, args_basic_cls.num_classes)
+src/model_factory/CNN/ResNet1D.py:327:        assert output_bottleneck_reg.shape[0] == batch_size
+src/model_factory/CNN/ResNet1D.py:328:        assert output_bottleneck_reg.shape[2] == args_bottleneck_reg.output_dim
+src/model_factory/CNN/MultiScaleCNN.py:325:        assert output_cls.shape == (batch_size, args_cls.num_classes)
+src/model_factory/CNN/MultiScaleCNN.py:343:        assert output_scales.shape == (batch_size, args_scales.num_classes)
+src/task_factory/task_factory.py:67:                raise AttributeError(f"No task class found in {module_path} (tried: {class_name_from_file}, {standard_name}, task)")
+src/model_factory/CNN/TCN.py:227:        assert output_reg.shape == (batch_size, seq_len, args_reg.output_dim)
+src/model_factory/CNN/TCN.py:245:        assert output_cls.shape == (batch_size, args_cls.num_classes)
+src/model_factory/CNN/TCN.py:263:        assert output_large_kernel.shape == (batch_size, args_large_kernel.num_classes)
+src/model_factory/CNN/AttentionCNN.py:379:        assert output_cls.shape == (batch_size, args_cls.num_classes)
+src/model_factory/CNN/AttentionCNN.py:397:        assert output_no_attn.shape == (batch_size, args_no_attn.num_classes)
+src/task_factory/Default_task.py:147:            raise ValueError(f" Error: {e}")
+src/task_factory/Default_task.py:249:            raise ValueError(f"不支持的优化器: {optimizer_name}")
+src/task_factory/Default_task.py:290:            raise ValueError(f"不支持的调度器: {scheduler_name}")
+src/model_factory/ISFM/backbone/B_09_FNO.py:125:    assert input_tensor.shape == output_tensor.shape
+src/model_factory/X_model/Feature_extract.py:20:            raise NotImplementedError("Feature method function is not registered.")
+src/model_factory/X_model/Feature_extract.py:31:            raise KeyError(f"No feature extraction module found for key: {key}")
+src/task_factory/task/In_distribution/multi_task_phm.py:125:                    raise ValueError(f"Task '{task}' not supported by current dataset(s)")
+src/task_factory/task/In_distribution/multi_task_phm.py:135:                raise ValueError("No valid tasks found after validation")
+src/task_factory/task/In_distribution/multi_task_phm.py:474:                raise ValueError(f"Mismatch: batch_size={batch_size}, file_ids={len(file_ids)}")
+src/model_factory/X_model/TSPN.py:88:            assert out_channels % self.signal_processing_layers[i].module_num == 0 
+src/model_factory/ISFM/layers/StandardNorm.py:30:            raise NotImplementedError
+src/model_factory/ISFM/backbone/B_11_MomentumEncoder.py:58:            raise ValueError("base_encoder must be provided in configs")
+src/model_factory/ISFM/backbone/B_11_MomentumEncoder.py:77:            raise ValueError(f"momentum must be in [0, 1], got {self.momentum}")
+src/model_factory/ISFM/backbone/B_11_MomentumEncoder.py:215:        assert torch.allclose(query_features, query_features_2), "Query features mismatch"
+src/model_factory/ISFM/backbone/B_11_MomentumEncoder.py:216:        assert torch.allclose(key_features, key_features_2), "Key features mismatch"
+src/model_factory/ISFM/backbone/B_11_MomentumEncoder.py:238:        assert momentum_encoder.get_momentum_coefficient() == momentum_val
+src/model_factory/ISFM/backbone/B_11_MomentumEncoder.py:240:        assert momentum_encoder.get_momentum_coefficient() == 0.95
+src/model_factory/X_model/Signal_processing.py:30:        raise NotImplementedError("This method should be implemented by subclass.")
+src/model_factory/X_model/Signal_processing.py:35:        assert output.shape == (2, self.out_dim, self.out_channels), f"\
+src/model_factory/X_model/Signal_processing.py:69:        raise NotImplementedError("This method should be implemented by subclass.")
+src/model_factory/X_model/Signal_processing.py:74:        assert output.shape == (2, self.out_dim, self.out_channels), f"\
+src/model_factory/X_model/Signal_processing.py:88:            raise KeyError(f"No signal processing module found for key: {key}")
+src/model_factory/ISFM/layers/SelfAttention_Family.py:148:            assert (L_Q == L_V)
+src/model_factory/ISFM/layers/SelfAttention_Family.py:256:        # inside reformer: assert N % (bucket_size * 2) == 0
+src/model_factory/Transformer/Autoformer.py:385:        assert output_reg.shape == (batch_size, seq_len, args_reg.output_dim)
+src/model_factory/Transformer/Autoformer.py:406:        assert output_cls.shape == (batch_size, args_cls.num_classes)
+src/model_factory/Transformer/Informer.py:334:        assert output_reg.shape == (batch_size, seq_len, args_reg.output_dim)
+src/model_factory/Transformer/Informer.py:355:        assert output_cls.shape == (batch_size, args_cls.num_classes)
+src/model_factory/Transformer/Linformer.py:335:        assert output_reg.shape == (batch_size, seq_len, args_reg.output_dim)
+src/model_factory/Transformer/Linformer.py:357:        assert output_cls.shape == (batch_size, args_cls.num_classes)
+src/utils/hse/integration_utils.py:403:    assert pretrain_config['model']['name'] == 'M_02_ISFM_Prompt'
+src/utils/hse/integration_utils.py:404:    assert pretrain_config['model']['embedding'] == 'E_01_HSE_v2'
+src/utils/hse/integration_utils.py:405:    assert pretrain_config['model']['backbone'] == 'B_08_PatchTST'
+src/utils/hse/integration_utils.py:406:    assert pretrain_config['model']['use_prompt'] == True
+src/utils/hse/integration_utils.py:407:    assert pretrain_config['model']['training_stage'] == 'pretraining'
+src/utils/hse/integration_utils.py:408:    assert pretrain_config['task']['name'] == 'hse_contrastive'
+src/utils/hse/integration_utils.py:409:    assert pretrain_config['data']['target_systems'] == [1, 6, 13]
+src/utils/hse/integration_utils.py:428:    assert finetune_config['model']['name'] == 'M_02_ISFM_Prompt'
+src/utils/hse/integration_utils.py:429:    assert finetune_config['model']['training_stage'] == 'finetuning'
+src/utils/hse/integration_utils.py:430:    assert finetune_config['model']['freeze_prompt'] == True
+src/utils/hse/integration_utils.py:431:    assert finetune_config['task']['name'] == 'classification'
+src/utils/hse/integration_utils.py:432:    assert finetune_config['data']['target_systems'] == [1]
+src/utils/hse/integration_utils.py:443:    assert adapted_config['load_pretrained'] == False  # False because checkpoint doesn't exist
+src/utils/hse/integration_utils.py:444:    assert adapted_config['pretrained_path'] == '/fake/checkpoint.ckpt'
+src/utils/hse/integration_utils.py:445:    assert adapted_config['load_backbone_only'] == True
+src/utils/hse/integration_utils.py:446:    assert adapted_config['strict_loading'] == False
+src/utils/hse/integration_utils.py:455:    assert compat_pretrain['model']['backbone'] == 'B_04_Dlinear'
+src/utils/hse/integration_utils.py:459:    assert compat_finetune['model']['backbone'] == 'B_04_Dlinear'
+src/utils/hse/integration_utils.py:460:    assert compat_finetune['data']['target_systems'] == [6]
+src/utils/hse/integration_utils.py:464:    assert compat_adapt['load_pretrained'] == False  # False because checkpoint doesn't exist
+src/utils/hse/integration_utils.py:473:        assert param in pretrain_config['model'], f"Missing required model parameter: {param}"
+src/utils/hse/integration_utils.py:474:        assert param in finetune_config['model'], f"Missing required model parameter: {param}"
+src/utils/hse/integration_utils.py:478:        assert param in pretrain_config['task'], f"Missing required task parameter: {param}"
+src/utils/hse/integration_utils.py:479:        assert param in finetune_config['task'], f"Missing required task parameter: {param}"
+src/model_factory/ISFM/layers/MultiWaveletCorrelation.py:146:        raise Exception('Base not supported')
+src/model_factory/ISFM/layers/MultiWaveletCorrelation.py:383:        assert ich == 2 * self.k
+src/model_factory/ISFM/layers/MultiWaveletCorrelation.py:445:            raise Exception('{} actiation function is not implemented'.format(self.activation))
+src/model_factory/ISFM/layers/MultiWaveletCorrelation.py:579:        assert ich == 2 * self.k
+src/model_factory/ISFM/backbone/B_08_PatchTST.py:126:    assert z.shape == (B, L, C), "Output shape should match input shape [B, L, C]"
+src/model_factory/ISFM/layers/DWT_Decomposition.py:159:            assert len(wave) == 2
+src/model_factory/ISFM/layers/DWT_Decomposition.py:181:        assert x.ndim == 3, "Can only handle 3d inputs (N, C, L)"
+src/model_factory/ISFM/layers/DWT_Decomposition.py:215:            assert len(wave) == 2
+src/model_factory/ISFM/layers/DWT_Decomposition.py:238:        assert x0.ndim == 3, "Can only handle 3d inputs (N, C, L)"
+src/model_factory/ISFM/layers/DWT_Decomposition.py:331:        raise ValueError("Unkown pad type: {}".format(mode))
+src/model_factory/ISFM/layers/DWT_Decomposition.py:425:            raise ValueError("Unkown pad type: {}".format(mode))
+src/model_factory/ISFM/layers/DWT_Decomposition.py:534:            raise ValueError("Unkown pad type: {}".format(mode))
+src/model_factory/ISFM/layers/DWT_Decomposition.py:555:        raise ValueError("Unkown pad type: {}".format(mode))
+src/model_factory/ISFM/layers/DWT_Decomposition.py:574:        raise ValueError("Unkown pad type: {}".format(mode))
+src/model_factory/ISFM/layers/DWT_Decomposition.py:736:        raise ValueError("Unknown form for input filts")
+src/model_factory/ISFM/layers/DWT_Decomposition.py:785:        raise ValueError("Unknown form for input filts")
+src/model_factory/ISFM/layers/DWT_Decomposition.py:864:        raise ValueError("Unkown pad type: {}".format(mode))
+src/model_factory/ISFM/layers/DWT_Decomposition.py:907:        raise ValueError("Unknown form for input filts")
+src/model_factory/ISFM/layers/DWT_Decomposition.py:1052:            raise ValueError("Unkown form for input filts")
+src/model_factory/ISFM/layers/DWT_Decomposition.py:1069:        raise ValueError("Unkown pad type: {}".format(mode))
+src/data_factory/__init__.py:35:        raise
+src/model_factory/ISFM/layers/VIB_attnetion.py:105:        assert dim % num_heads == 0, 'dim should be divisible by num_heads'
+src/task_factory/task/GFS/matching.py:53:            raise ValueError(f" Error: {e}")
+src/task_factory/task/MT/multi_task_lightning.py:305:            raise ValueError(f"Error processing batch: {e}")
+src/task_factory/task/MT/multi_task_lightning.py:412:            raise ValueError(f"Unsupported optimizer: {optimizer_name}")
+src/task_factory/task/MT/multi_task_lightning.py:450:            raise ValueError(f"Unsupported scheduler: {scheduler_name}")
+src/task_factory/task/MT/multi_task_lightning.py:521:    assert 'classification' in outputs
+src/task_factory/task/MT/multi_task_lightning.py:522:    assert 'rul_prediction' in outputs
+src/task_factory/task/MT/multi_task_lightning.py:523:    assert 'anomaly_detection' in outputs
+src/task_factory/task/MT/multi_task_lightning.py:528:    assert isinstance(loss, torch.Tensor)
+src/task_factory/task/MT/multi_task_lightning.py:529:    assert loss.requires_grad
+src/model_factory/ISFM/layers/FourierCorrelation.py:152:            raise Exception('{} actiation function is not implemented'.format(self.activation))
+src/model_factory/ISFM/layers/ETSformer_EncDec.py:116:        assert self.d_head * self.nhead == self.d_model, "d_model must be divisible by nhead"
+src/model_factory/MLP/ResNetMLP.py:39:            raise ValueError(f"Unsupported activation: {activation}")
+src/model_factory/MLP/ResNetMLP.py:212:        assert output_reg.shape == (batch_size, seq_len, args_reg.output_dim)
+src/model_factory/MLP/ResNetMLP.py:231:        assert output_cls.shape == (batch_size, args_cls.num_classes)
+src/model_factory/MLP/Dlinear.py:269:        assert output.shape == x.shape, f"Shape mismatch: {output.shape} != {x.shape}"
+src/model_factory/MLP/Dlinear.py:278:        assert output_individual.shape == x.shape
+src/task_factory/task/ID/ID_task.py:92:            raise ValueError(f"Missing required data processing parameters: {missing_params}")
+src/task_factory/task/ID/ID_task.py:96:            raise ValueError(f"window_size must be positive, got {self.args_data.window_size}")
+src/task_factory/task/ID/ID_task.py:98:            raise ValueError(f"stride must be positive, got {self.args_data.stride}")
+src/task_factory/task/ID/ID_task.py:100:            raise ValueError(f"num_window must be positive, got {self.args_data.num_window}")
+src/task_factory/task/ID/ID_task.py:134:            raise ValueError(f"Data must be 1D or 2D, got shape {data.shape}")
+src/task_factory/task/ID/ID_task.py:162:            raise ValueError(f"Unknown windowing strategy: {strat}")
+src/task_factory/task/ID/ID_task.py:261:            raise ValueError("Cannot process empty data array")
+src/model_factory/MLP/gMLP.py:23:        assert hidden_dim % 2 == 0, "Hidden dimension must be even for gMLP"
+src/model_factory/MLP/gMLP.py:289:        assert output_reg.shape == (batch_size, args_reg.seq_len, args_reg.output_dim)
+src/model_factory/MLP/gMLP.py:309:        assert output_cls.shape == (batch_size, args_cls.num_classes)
+src/data_factory/samplers/FS_sampler.py:62:            raise ValueError("Dataset must be an IdIncludedDataset instance with "
+src/data_factory/samplers/FS_sampler.py:118:            raise ValueError("Cannot prepare for sampling as no sample data was loaded into the DataFrame.")
+src/data_factory/samplers/FS_sampler.py:122:            raise ValueError(
+src/data_factory/samplers/FS_sampler.py:133:            raise ValueError(
+src/data_factory/samplers/FS_sampler.py:145:        #     raise ValueError(
+src/data_factory/samplers/FS_sampler.py:151:            raise ValueError(
+src/data_factory/samplers/FS_sampler.py:294:                raise IndexError("Global index out of range")
+src/model_factory/MLP/DenseNetMLP.py:323:        assert output_reg.shape == (batch_size, seq_len, args_reg.output_dim)
+src/model_factory/MLP/DenseNetMLP.py:343:        assert output_cls.shape == (batch_size, args_cls.num_classes)
+src/model_factory/ISFM/task_head/H_09_multiple_task.py:44:                raise ValueError("task_id is None and no default task head could be determined.")
+src/model_factory/ISFM/task_head/H_09_multiple_task.py:48:            raise ValueError(f"task_id '{task_id}' not found in configured task_heads: {list(self.task_heads.keys())}")
+src/model_factory/ISFM/task_head/H_09_multiple_task.py:54:                raise ValueError("system_id must be provided for classification tasks.")
+src/model_factory/ISFM/task_head/H_02_Linear_cla_heterogeneous_batch.py:32:            raise ValueError(
+src/model_factory/ISFM/task_head/H_02_Linear_cla_heterogeneous_batch.py:65:    assert logits.shape == (4, 3)
+src/model_factory/ISFM/layers/utils/timefeatures.py:144:    raise RuntimeError(supported_freq_msg)
+src/model_factory/ISFM/task_head/H_06_Anomaly_det.py:119:            raise ValueError(f"Expected input with 2 or 3 dimensions, got {x.dim()}")
+src/model_factory/ISFM/task_head/H_06_Anomaly_det.py:199:    assert logits.shape == (batch_size,), f"Expected (16,), got {logits.shape}"
+src/model_factory/ISFM/task_head/H_06_Anomaly_det.py:204:    assert proba.shape == (batch_size,), f"Expected (16,), got {proba.shape}"
+src/model_factory/ISFM/task_head/H_06_Anomaly_det.py:205:    assert torch.all(proba >= 0) and torch.all(proba <= 1), "Probabilities should be in [0, 1]"
+src/model_factory/ISFM/task_head/H_06_Anomaly_det.py:210:    assert predictions.shape == (batch_size,), f"Expected (16,), got {predictions.shape}"
+src/model_factory/ISFM/task_head/H_06_Anomaly_det.py:211:    assert torch.all((predictions == 0) | (predictions == 1)), "Predictions should be binary (0 or 1)"
+src/model_factory/ISFM/task_head/H_06_Anomaly_det.py:217:    assert output_2d.shape == (batch_size,), f"Expected (16,), got {output_2d.shape}"
+src/model_factory/ISFM/task_head/H_06_Anomaly_det.py:222:    assert features.shape == (batch_size, 128), f"Expected (16, 128), got {features.shape}"
+src/task_factory/task/pretrain/masked_reconstruction.py:225:            raise ValueError(f"Error processing batch: {e}")
+src/model_factory/ISFM/task_head/H_04_VIB_pred.py:71:                raise ValueError(f"序列长度 ({L}) 不能小于补丁大小 ({self.patch_size})")
+src/model_factory/ISFM/task_head/H_04_VIB_pred.py:85:                raise ValueError("L_original 尚未设置，请先调用 update_start_indices 方法。")
+src/model_factory/ISFM/task_head/H_04_VIB_pred.py:91:                raise ValueError("start_indices 尚未设置，请先调用 update_start_indices 方法。")
+src/model_factory/ISFM/task_head/H_04_VIB_pred.py:97:                raise ValueError(f"序列长度 ({L}) 不能小于补丁大小 ({self.patch_size})")
+src/model_factory/ISFM/task_head/H_04_VIB_pred.py:115:            assert T == self.num_patches and P == self.patch_size
+src/model_factory/ISFM/task_head/H_04_VIB_pred.py:176:    assert output_ts.shape == (B, L_variable, C_out)
+src/model_factory/MLP/MLPMixer.py:236:        assert output_reg.shape == (batch_size, args_reg.seq_len, args_reg.output_dim)
+src/model_factory/MLP/MLPMixer.py:257:        assert output_cls.shape == (batch_size, args_cls.num_classes)
+src/model_factory/ISFM/backbone/B_03_FITS.py:104:        assert output.shape == (batch_size, seq_len + pred_len, channels), "输出形状错误！"
+src/model_factory/ISFM/backbone/B_03_FITS.py:105:        # assert low_freq_output.shape == (batch_size, seq_len + pred_len, channels), "低频输出形状错误！"
+src/model_factory/ISFM/backbone/B_03_FITS.py:106:        assert not torch.isnan(output).any(), "输出包含NaN值！"
+src/model_factory/ISFM/backbone/B_03_FITS.py:118:        assert output.shape == (batch_size, seq_len + pred_len, channels), "输出形状错误！"
+src/model_factory/ISFM/backbone/B_03_FITS.py:119:        assert not torch.isnan(output).any(), "输出包含NaN值！"
+src/model_factory/ISFM/task_head/H_03_Linear_pred.py:53:            raise ValueError("Input must be (B,L,C)")
+src/model_factory/ISFM/task_head/H_03_Linear_pred.py:65:            raise ValueError(f"Requested sequence length ({pred_len}) exceeds "
+src/model_factory/ISFM/task_head/H_05_RUL_pred.py:100:            raise ValueError(f"Expected input with 2 or 3 dimensions, got {x.dim()}")
+src/model_factory/ISFM/task_head/H_05_RUL_pred.py:142:    assert output_3d.shape == (batch_size, 1), f"Expected (16, 1), got {output_3d.shape}"
+src/model_factory/ISFM/task_head/H_05_RUL_pred.py:143:    assert torch.all(output_3d >= 0), "RUL values should be non-negative"
+src/model_factory/ISFM/task_head/H_05_RUL_pred.py:144:    assert torch.all(output_3d <= 2000.0), f"RUL values should be <= max_value, got max={output_3d.max()}"
+src/model_factory/ISFM/task_head/H_05_RUL_pred.py:150:    assert output_2d.shape == (batch_size, 1), f"Expected (16, 1), got {output_2d.shape}"
+src/model_factory/ISFM/task_head/H_05_RUL_pred.py:155:    assert features.shape == (batch_size, 1), f"Expected (16, 1), got {features.shape}"
+src/data_factory/samplers/del/ID_selector.py:83:        raise NotImplementedError("子类必须实现_select_ids方法")
+src/model_factory/ISFM/layers/utils/dtw_metric.py:18:    assert len(x)
+src/model_factory/ISFM/layers/utils/dtw_metric.py:19:    assert len(y)
+src/model_factory/ISFM/layers/utils/dtw_metric.py:20:    assert isinf(w) or (w >= abs(len(x) - len(y)))
+src/model_factory/ISFM/layers/utils/dtw_metric.py:21:    assert s > 0
+src/model_factory/ISFM/layers/utils/dtw_metric.py:71:    assert len(x)
+src/model_factory/ISFM/layers/utils/dtw_metric.py:72:    assert len(y)
+src/task_factory/task/pretrain/hse_contrastive.py:288:            if "device-side assert" in str(exc):
+src/task_factory/task/pretrain/hse_contrastive.py:289:                logger.error(f"[hse_contrastive] CUDA device-side assert in CE loss, logits shape: {logits.shape}, y shape: {y.shape}")
+src/task_factory/task/pretrain/hse_contrastive.py:300:            raise TypeError(f"[hse_contrastive] features must be tensor, got {type(features)}")
+src/task_factory/task/pretrain/hse_contrastive.py:302:            raise TypeError(f"[hse_contrastive] y must be tensor, got {type(y)}")
+src/task_factory/task/pretrain/hse_contrastive.py:332:        # 部分损失需要标签，先做最小一致性检查，避免在 CUDA 中触发 device-side assert
+src/model_factory/ISFM/layers/utils/augmentation.py:368:        raise ValueError("Input must be (batch_size, sequence_length, num_channels) dimensional")
+src/model_factory/ISFM/layers/utils/dtw.py:57:    assert p != 0, "Prototype empty!"
+src/model_factory/ISFM/layers/utils/dtw.py:59:    assert s != 0, "Sample empty!"
+src/model_factory/ISFM/layers/utils/dtw.py:113:    assert p != 0, "Prototype empty!"
+src/model_factory/ISFM/layers/utils/dtw.py:115:    assert s != 0, "Sample empty!"
+src/data_factory/test.py:76:    # Handle appropriately, maybe set a default or raise error
+src/model_factory/ISFM/component/TemporalDynamicsSSL.py:97:            raise ValueError(f"Unknown augmentation type: {augmentation_type}")
+src/model_factory/ISFM/component/TemporalDynamicsSSL.py:227:            raise ValueError(f"Unknown task type: {task_type}")
+src/model_factory/ISFM/component/TemporalDynamicsSSL.py:480:        assert output_downstream.shape == (batch_size, args.num_classes)
+src/model_factory/ISFM/component/README.md:553:        raise ValueError(f"Invalid embedding: {config.embedding}")
+src/model_factory/ISFM/component/README.md:555:        raise ValueError(f"Invalid backbone: {config.backbone}")
+src/model_factory/ISFM/component/README.md:557:        raise ValueError(f"Invalid task_head: {config.task_head}")
+src/model_factory/ISFM/component/README.md:1374:        raise ValueError(f"d_model must be divisible by 8, got {d_model}")
+src/model_factory/ISFM/component/README.md:1382:        raise ValueError(f"d_model ({d_model}) must be divisible by num_heads ({num_heads})")
+src/model_factory/ISFM/component/README.md:1387:        raise ValueError(f"dropout must be in [0, 1], got {dropout}")
+src/model_factory/ISFM/component/SignalLanguageFM.py:426:        assert output_downstream.shape == (batch_size, args.num_classes)
+src/data_factory/data_utils.py:94:            raise Exception(f"无法读取Excel文件 {file_path}: {e}")
+src/data_factory/data_utils.py:142:            raise Exception(f"无法读取文件 {file_path}，尝试了所有常见格式: {e}")
+src/data_factory/data_utils.py:172:            raise KeyError(f"找不到ID为{key}的记录")
+src/model_factory/ISFM/component/MaskedAutoencoder.py:477:        assert output_downstream.shape == (batch_size, args.num_classes)
+src/model_factory/ISFM/component/ContrastiveSSL.py:406:        assert output_downstream.shape == (batch_size, args.num_classes)
+src/model_factory/ISFM/task_head/H_01_Linear_cla.py:33:            raise KeyError(f"Missing head for system_id '{key}' in H_01_Linear_cla.")
+src/model_factory/ISFM/backbone/B_04_Dlinear.py:134:        assert output.shape == (batch_size, configs.num_patches, configs.output_dim), "输出形状应为 [B, L, C]"
+src/model_factory/ISFM/component/MultiModalFM.py:137:        assert hidden_dim % num_heads == 0
+src/model_factory/ISFM/component/MultiModalFM.py:221:            raise ValueError(f"Unknown fusion type: {fusion_type}")
+src/model_factory/ISFM/component/MultiModalFM.py:422:        assert output.shape == (batch_size, args.num_classes)
+src/model_factory/ISFM/component/MultiModalFM.py:432:        assert output_concat.shape == (batch_size, args.num_classes)
+src/data_factory/samplers/Get_sampler.py:22:        raise ValueError(f"Unknown mode for GFS sampler: {mode}")
+src/data_factory/samplers/Get_sampler.py:41:        raise ValueError(f"Unknown mode for CDDG sampler: {mode}")
+src/data_factory/samplers/Get_sampler.py:60:        raise ValueError(f"Unknown mode for DG sampler: {mode}")
+src/data_factory/samplers/Get_sampler.py:79:        raise ValueError(f"Unknown mode for Pretrain sampler: {mode}")
+src/data_factory/samplers/Get_sampler.py:116:            raise ValueError(f"Unknown mode for FS sampler: {mode}")
+src/data_factory/samplers/Get_sampler.py:129:        raise ValueError(f"Unknown task type for sampler: {args_task.type}")
+src/task_factory/task/pretrain/classification_prediction.py:51:            raise ValueError(f" Error: {e}")
+src/data_factory/samplers/del/episodic_sampler.py:36:            raise ValueError(f"The number of classes in the dataset ({len(self.labels)}) is less than n_way ({self.n_way}).")
+src/data_factory/samplers/del/episodic_sampler.py:40:                raise ValueError(f"Class {label} has only {len(indices)} samples, but {self.k_shot_support + self.k_shot_query} are required for support and query sets.")
+src/task_factory/task/pretrain/prediction.py:51:            raise ValueError(f" Error: {e}")
+src/model_factory/ISFM/task_head/H_02_distance_cla.py:32:        assert dim % num_heads == 0, 'dim should be divisible by num_heads'
+src/model_factory/ISFM/system_utils.py:129:    raise ValueError(f"system_id must be scalar or per-sample list/tensor, got {type(system_id)} with value {system_id}")
+src/model_factory/ISFM/system_utils.py:159:        raise RuntimeError("group_forward_by_system: head_dict is empty.")
+src/model_factory/ISFM/system_utils.py:168:            raise KeyError(f"Missing head for system_id '{key}'.")
+src/data_factory/H5DataDict.py:49:            raise KeyError(f"ID {key} not found in HDF5 file")
+src/data_factory/samplers/Sampler.py:31:            raise ValueError("dataset 必须是 IdIncludedDataset 的实例。")
+src/data_factory/samplers/Sampler.py:33:            raise ValueError("batch_size 必须是正整数。")
+src/data_factory/samplers/Sampler.py:35:            raise ValueError("dataset 必须具有 'metadata' 属性。")
+src/data_factory/samplers/Sampler.py:132:            raise ValueError("data_source 必须是 IdIncludedDataset 的实例，或具有 'flat_sample_map' 属性。")
+src/data_factory/samplers/Sampler.py:216:            raise ValueError("data_source 必须是 IdIncludedDataset 的实例。")
+src/data_factory/samplers/Sampler.py:218:            raise ValueError("batch_size 必须是正整数。")
+src/data_factory/ID/Get_id.py:16:        raise ValueError(f"列 '{label_column}' 不存在于DataFrame中")
+src/data_factory/samplers/del/id_searcher.py:18:        raise ValueError(f"列 '{label_column}' 不存在于DataFrame中")
+src/model_factory/ISFM/task_head/H_10_ProjectionHead.py:85:            raise ValueError(f"Expected input dimension 2 or 3, got {x.dim()}")
+src/model_factory/ISFM/task_head/H_10_ProjectionHead.py:120:    assert out1.shape == (4, 128), f"Expected (4, 128), got {out1.shape}"
+src/model_factory/ISFM/task_head/H_10_ProjectionHead.py:126:    assert out2.shape == (4, 128), f"Expected (4, 128), got {out2.shape}"
+src/model_factory/ISFM/task_head/H_10_ProjectionHead.py:144:    assert out.shape == (2, 64), f"Expected (2, 64), got {out.shape}"
+src/model_factory/ISFM/task_head/H_10_ProjectionHead.py:158:    assert out.shape == (3, 96), f"Expected (3, 96), got {out.shape}"
+src/model_factory/ISFM/task_head/H_10_ProjectionHead.py:176:        assert out.shape == (2, 64), f"Failed for activation {act}"
+src/model_factory/ISFM/task_head/H_10_ProjectionHead.py:182:    assert output_dim == 128, f"Expected 128, got {output_dim}"
+src/model_factory/ISFM/task_head/H_10_ProjectionHead.py:189:        assert False, "Should have raised ValueError for 4D input"
+src/model_factory/ISFM/task_head/H_10_ProjectionHead.py:200:        assert out_gpu.is_cuda, "Output should be on GPU"
+src/model_factory/ISFM_Prompt/components/PromptSelector.py:66:            raise ValueError(f"Unsupported selection mode '{mode}'")
+src/model_factory/ISFM_Prompt/components/PromptSelector.py:116:                raise ValueError("features must have shape (B, M, N, D) or (B, N, D)")
+src/model_factory/ISFM_Prompt/components/PromptSelector.py:120:            raise ValueError("features must have shape (B, M, N, D)")
+src/model_factory/ISFM/task_head/multi_task_head.py:209:            raise ValueError(f"Expected input with 2 or 3 dimensions, got {x.dim()}")
+src/model_factory/ISFM/task_head/multi_task_head.py:229:            raise ValueError(f"Unknown task_id: {task_id}")
+src/model_factory/ISFM/task_head/multi_task_head.py:234:            raise ValueError("system_id must be provided for classification task")
+src/model_factory/ISFM/task_head/multi_task_head.py:238:            raise ValueError(f"No classification head found for system_id: {system_id}")
+src/model_factory/ISFM/task_head/multi_task_head.py:311:    assert cls_output.shape == (batch_size, 5), f"Expected (16, 5), got {cls_output.shape}"
+src/model_factory/ISFM/task_head/multi_task_head.py:316:    assert rul_output.shape == (batch_size, 1), f"Expected (16, 1), got {rul_output.shape}"
+src/model_factory/ISFM/task_head/multi_task_head.py:317:    assert torch.all(rul_output >= 0), "RUL values should be non-negative"
+src/model_factory/ISFM/task_head/multi_task_head.py:322:    assert anomaly_output.shape == (batch_size, 1), f"Expected (16, 1), got {anomaly_output.shape}"
+src/model_factory/ISFM/task_head/multi_task_head.py:328:    assert 'classification' in all_outputs
+src/model_factory/ISFM/task_head/multi_task_head.py:329:    assert 'rul_prediction' in all_outputs
+src/model_factory/ISFM/task_head/multi_task_head.py:330:    assert 'anomaly_detection' in all_outputs
+src/model_factory/ISFM/task_head/multi_task_head.py:336:    assert features.shape == (batch_size, 256), f"Expected (16, 256), got {features.shape}"
+src/model_factory/ISFM/task_head/multi_task_head.py:343:    assert output_2d.shape == (batch_size, 7), f"Expected (16, 7), got {output_2d.shape}"
+src/model_factory/ISFM_Prompt/test_simplified.py:82:    assert out.shape == (B, args.num_patches, args.output_dim), f"Unexpected shape: {out.shape}"
+src/model_factory/ISFM_Prompt/test_simplified.py:87:    assert out_no_prompt.shape == out.shape, "Signal-only path returns different shape"
+src/model_factory/ISFM_Prompt/test_simplified.py:103:    assert out.shape == (B, args.num_patches, args.output_dim), f"Unexpected shape: {out.shape}"
+src/model_factory/ISFM_Prompt/test_simplified.py:118:    assert logits.shape == (B, 3), f"Unexpected logits shape: {logits.shape}"
+src/model_factory/ISFM_Prompt/test_simplified.py:125:    assert logits2.shape == (B, 3), f"Unexpected logits shape with return_feature: {logits2.shape}"
+src/model_factory/ISFM_Prompt/test_simplified.py:126:    assert features.shape[0] == B, f"Unexpected feature batch size: {features.shape}"
+src/model_factory/ISFM_Prompt/test_simplified.py:149:    raise SystemExit(main())
+src/model_factory/ISFM_Prompt/components/SystemPromptEncoder.py:181:    assert prompt.shape == expected_shape, f"Expected {expected_shape}, got {prompt.shape}"
+src/model_factory/ISFM_Prompt/components/SystemPromptEncoder.py:203:        assert test_prompt.shape == (test_batch_size, prompt_dim)
+src/model_factory/ISFM_Prompt/components/SystemPromptEncoder.py:221:        assert grad_norm > 0, "No gradients computed"
+src/data_factory/dataset_task/Default_dataset.py:133:            raise ValueError(f"Unknown window_sampling_strategy: {self.window_sampling_strategy}")
+src/data_factory/dataset_task/Default_dataset.py:162:            raise ValueError(f"Unknown normalization method: {norm}")
+src/data_factory/dataset_task/Default_dataset.py:216:            raise IndexError(f"索引 {idx} 超出范围")
+src/model_factory/ISFM_Prompt/components/PromptInjector.py:110:            raise ValueError("tokens must have shape (B, N_p, token_dim)")
+src/model_factory/ISFM_Prompt/components/PromptInjector.py:112:            raise ValueError("prompt_candidates must have shape (B, M_p, prompt_dim)")
+src/model_factory/ISFM_Prompt/components/PromptInjector.py:114:            raise ValueError("Batch size mismatch between tokens and prompt_candidates")
+src/model_factory/ISFM_Prompt/components/PromptInjector.py:118:            raise ValueError(f"Unsupported injection mode '{mode}'")
+src/model_factory/ISFM_Prompt/components/PromptInjector.py:133:        raise RuntimeError("Unhandled injection mode")
+src/model_factory/ISFM_Prompt/components/PromptInjector.py:182:            raise RuntimeError("FiLM projections not initialised.")
+src/model_factory/ISFM_Prompt/embedding/HSE_prompt.py:88:            raise ValueError(f"prompt_combination must be 'add' or 'concat', got '{self.prompt_combination}'")
+src/model_factory/ISFM_Prompt/embedding/HSE_prompt.py:238:                        raise ValueError("Numerical instability in prompt projection")
+src/model_factory/ISFM_Prompt/embedding/HSE_prompt.py:255:                        raise ValueError("Numerical instability in prompt expansion")
+src/model_factory/ISFM_Prompt/embedding/HSE_prompt.py:264:                        raise ValueError("Numerical instability in concat projection")
+src/model_factory/ISFM_Prompt/embedding/HSE_prompt.py:431:    assert output.shape == expected_shape, f"Expected {expected_shape}, got {output.shape}"
+src/model_factory/ISFM_Prompt/embedding/HSE_prompt.py:440:    assert output_no_prompt.shape == expected_shape
+src/model_factory/ISFM_Prompt/embedding/HSE_prompt.py:454:        assert test_output.shape == expected_shape
+src/model_factory/ISFM_Prompt/embedding/HSE_prompt.py:471:        assert grad_norm > 0, "No gradients computed"
+src/model_factory/ISFM_Prompt/embedding/HSE_prompt.py:496:        assert test_output.shape == expected, f"Size test failed: {test_output.shape} != {expected}"
+src/model_factory/ISFM_Prompt/embedding/HSE_prompt.py:507:        assert False, "Should have raised error"
+src/model_factory/ISFM_Prompt/embedding/HSE_prompt.py:515:        assert False, "Should have raised ValueError"
+src/data_factory/dataset_task/Dataset_cluster.py:72:            raise IndexError(f"全局索引 {global_idx} 超出范围 (总样本数: {self._total_samples})")
+src/data_factory/dataset_task/FS/Episode_dataset.py:33:             raise ValueError(f"Expected {self.samples_per_episode} indices for an episode, but got {len(episode_indices)}.")
+src/model_factory/ISFM_Prompt/embedding/E_01_HSE_v2.py:326:    assert output.shape == expected_shape, f"Expected {expected_shape}, got {output.shape}"
+src/model_factory/ISFM_Prompt/embedding/E_01_HSE_v2.py:335:    assert output_no_metadata.shape == expected_shape
+src/model_factory/ISFM_Prompt/embedding/E_01_HSE_v2.py:343:    assert embedding.training_stage == 'pretraining'
+src/model_factory/ISFM_Prompt/embedding/E_01_HSE_v2.py:345:    assert prompt_params_trainable, "Prompt parameters should be trainable in pretraining"
+src/model_factory/ISFM_Prompt/embedding/E_01_HSE_v2.py:350:    assert embedding.training_stage == 'finetuning'
+src/model_factory/ISFM_Prompt/embedding/E_01_HSE_v2.py:352:    assert prompt_params_frozen, "Prompt parameters should be frozen in finetuning"
+src/model_factory/ISFM_Prompt/embedding/E_01_HSE_v2.py:370:        assert grad_norm > 0, "No gradients computed"
+src/model_factory/ISFM_Prompt/embedding/E_01_HSE_v2.py:389:        assert output.shape == expected_shape
+src/model_factory/ISFM_Prompt/embedding/E_01_HSE_v2.py:401:    assert output.shape == expected_shape
+src/model_factory/ISFM_Prompt/embedding/E_01_HSE_v2.py:428:        assert output.shape == expected, f"Size test failed: {output.shape} != {expected}"
+src/model_factory/ISFM_Prompt/components/MemoryOptimizedFusion.py:334:        assert signal_dim == self.signal_dim, f"Signal dim mismatch: {signal_dim} vs {self.signal_dim}"
+src/model_factory/ISFM_Prompt/components/MemoryOptimizedFusion.py:600:        assert output.shape == expected_shape, f"Shape mismatch: {output.shape} vs {expected_shape}"
+src/model_factory/ISFM_Prompt/components/MemoryOptimizedFusion.py:617:    assert signal_emb.grad is not None, "Gradient not computed for signal_emb"
+src/model_factory/ISFM_Prompt/components/MemoryOptimizedFusion.py:618:    assert prompt_emb.grad is not None, "Gradient not computed for prompt_emb"
+src/model_factory/ISFM_Prompt/components/MemoryOptimizedFusion.py:679:        assert fusion_non_efficient.enable_checkpointing == True
+src/model_factory/ISFM_Prompt/components/MemoryOptimizedFusion.py:680:        assert fusion_non_efficient.auto_optimize == True
+src/model_factory/ISFM_Prompt/components/MemoryOptimizedFusion.py:684:    assert fusion_non_efficient.enable_checkpointing == False
+src/model_factory/ISFM_Prompt/components/MemoryOptimizedFusion.py:685:    assert fusion_non_efficient.auto_optimize == False
+src/model_factory/ISFM_Prompt/components/MemoryOptimizedFusion.py:701:    assert factory_fusion.signal_dim == 512
+src/model_factory/ISFM_Prompt/components/MemoryOptimizedFusion.py:702:    assert factory_fusion.prompt_dim == 64
+src/model_factory/ISFM_Prompt/components/MemoryOptimizedFusion.py:703:    assert factory_fusion.fusion_type == 'gating'
+src/model_factory/ISFM_Prompt/components/MemoryOptimizedFusion.py:711:    assert fusion.memory_threshold_gb == 8.0
+src/model_factory/ISFM_Prompt/components/MemoryOptimizedFusion.py:714:    assert len(fusion.optimal_batch_sizes) == 0
+src/model_factory/ISFM_Prompt/components/MemoryOptimizedFusion.py:720:    assert reset_stats['forward_calls'] == 0
+src/model_factory/ISFM_Prompt/components/SimpleSystemPromptEncoder.py:80:            raise ValueError(f"dataset_ids must be 1D tensor, got shape {dataset_ids.shape}")
+src/model_factory/ISFM_Prompt/components/SimpleSystemPromptEncoder.py:83:            raise ValueError(f"dataset_id {dataset_ids.max().item()} exceeds max_dataset_ids {self.max_dataset_ids}")
+src/model_factory/ISFM_Prompt/components/SimpleSystemPromptEncoder.py:86:            raise ValueError(f"dataset_id {dataset_ids.min().item()} must be non-negative")
+src/model_factory/ISFM_Prompt/components/SimpleSystemPromptEncoder.py:119:            raise ValueError(f"dataset_id {dataset_id} out of range [0, {self.max_dataset_ids})")
+src/model_factory/ISFM_Prompt/components/SimpleSystemPromptEncoder.py:173:    assert prompt_vectors.shape == expected_shape, f"Expected {expected_shape}, got {prompt_vectors.shape}"
+src/model_factory/ISFM_Prompt/components/SimpleSystemPromptEncoder.py:200:        assert grad_norm > 0, "No gradients computed"
+src/model_factory/ISFM_Prompt/components/SimpleSystemPromptEncoder.py:214:        assert test_prompt_vectors.shape == expected_shape, f"Expected {expected_shape}, got {test_prompt_vectors.shape}"
+src/model_factory/ISFM_Prompt/components/SimpleSystemPromptEncoder.py:225:        assert False, "Should have raised ValueError"
+src/model_factory/ISFM_Prompt/components/SimpleSystemPromptEncoder.py:233:        assert False, "Should have raised ValueError"
+src/model_factory/ISFM_Prompt/components/SimpleSystemPromptEncoder.py:241:        assert False, "Should have raised ValueError"
+src/model_factory/ISFM_Prompt/components/SimpleSystemPromptEncoder.py:250:    assert single_prompt.shape == (prompt_dim,), f"Expected ({prompt_dim},), got {single_prompt.shape}"
+src/model_factory/ISFM_Prompt/components/SimpleSystemPromptEncoder.py:251:    assert single_prompt.device == device, f"Prompt vector on wrong device: {single_prompt.device}"
+src/model_factory/ISFM_Prompt/components/SimpleSystemPromptEncoder.py:265:    assert large_prompt_vectors.shape == expected_shape
+src/model_factory/ISFM_Prompt/components/SimpleSystemPromptEncoder.py:271:    assert total_params == expected_params, f"Expected {expected_params} parameters, got {total_params}"
+src/model_factory/RNN/AttentionLSTM.py:216:        assert output_reg.shape == (batch_size, seq_len, args_reg.output_dim)
+src/model_factory/RNN/AttentionLSTM.py:236:        assert output_cls.shape == (batch_size, args_cls.num_classes)
+src/model_factory/RNN/AttentionLSTM.py:256:        assert output_uni.shape == (batch_size, args_uni.num_classes)
+src/model_factory/ISFM_Prompt/test_prompt_components.py:45:    assert prompts.shape == (4, 64), f"Unexpected shape: {prompts.shape}"
+src/model_factory/ISFM_Prompt/test_prompt_components.py:56:    assert total_grad > 0, "No gradients computed for SimpleSystemPromptEncoder"
+src/model_factory/ISFM_Prompt/test_prompt_components.py:69:            raise AssertionError("Expected ValueError for dataset_id >= max_dataset_ids")
+src/model_factory/ISFM_Prompt/test_prompt_components.py:76:            raise AssertionError("Expected ValueError for negative dataset_id")
+src/model_factory/ISFM_Prompt/test_prompt_components.py:83:            raise AssertionError("Expected ValueError for wrong input dim")
+src/model_factory/ISFM_Prompt/test_prompt_components.py:100:        assert prompts.shape == (
+src/model_factory/ISFM_Prompt/test_prompt_components.py:126:    raise SystemExit(main())
+src/data_factory/dataset_task/ID_dataset.py:51:            raise TypeError(f"metadata must be a dictionary, got {type(metadata)}")
+src/data_factory/dataset_task/ID_dataset.py:54:            raise ValueError("metadata cannot be empty")
+src/data_factory/dataset_task/ID_dataset.py:58:            raise ValueError(f"mode must be one of {valid_modes}, got '{mode}'")
+src/data_factory/dataset_task/ID_dataset.py:87:            raise IndexError(f"Index {idx} out of range [0, {len(self.ids)})")
+src/data_factory/dataset_task/ID_dataset.py:113:            raise KeyError(f"ID '{sample_id}' not found in metadata")
+src/model_factory/ISFM_Prompt/components/PromptLibrary.py:76:            raise ValueError(f"Unsupported library_type '{library_type}'. "
+src/model_factory/ISFM_Prompt/components/PromptLibrary.py:80:            raise ValueError(f"Unsupported combination '{combination}'. "
+src/model_factory/ISFM_Prompt/components/PromptLibrary.py:84:            raise ValueError("num_prompts must be >= 1")
+src/model_factory/ISFM_Prompt/components/PromptLibrary.py:181:                raise RuntimeError("System prompts are not initialised for random mode.")
+src/model_factory/ISFM_Prompt/components/PromptLibrary.py:208:            raise KeyError("metadata_dict must contain 'Dataset_id' and 'Domain_id'")
+src/model_factory/ISFM_Prompt/components/PromptLibrary.py:214:            raise ValueError(
+src/model_factory/ISFM_Prompt/components/PromptLibrary.py:218:            raise ValueError(
+src/model_factory/ISFM_Prompt/components/PromptLibrary.py:227:            raise ValueError(
+src/model_factory/ISFM_Prompt/components/PromptLibrary.py:258:            raise RuntimeError("Hybrid mode requires system prompts.")
+src/model_factory/ISFM_Prompt/components/MixedPrecisionWrapper.py:628:    assert output.shape == (batch_size, 10), f"Expected shape {(batch_size, 10)}, got {output.shape}"
+src/model_factory/ISFM_Prompt/components/MixedPrecisionWrapper.py:710:        assert os.path.exists(checkpoint_path), "Checkpoint file not created"
+src/model_factory/ISFM_Prompt/components/MixedPrecisionWrapper.py:717:        assert additional_info['epoch'] == 1, "Additional info not loaded correctly"
+src/model_factory/ISFM_Prompt/components/MixedPrecisionWrapper.py:718:        assert additional_info['best_loss'] == 0.5, "Additional info not loaded correctly"
+src/model_factory/ISFM_Prompt/components/MixedPrecisionWrapper.py:726:    assert not fallback_wrapper.enabled, "Forced disable failed"
+src/model_factory/ISFM_Prompt/components/MixedPrecisionWrapper.py:743:    assert factory_wrapper.enabled == (factory_wrapper.is_compatible and config['enabled'])
+src/data_factory/data_factory.py:71:            raise
+src/data_factory/data_factory.py:82:            raise
+src/data_factory/data_factory.py:327:            raise ValueError(f"Unknown mode for get_sampler: {mode}")
+src/model_factory/RNN/TransformerRNN.py:78:            raise ValueError(f"Unsupported RNN type: {rnn_type}")
+src/model_factory/RNN/TransformerRNN.py:288:        assert output_lstm_reg.shape == (batch_size, seq_len, args_lstm_reg.output_dim)
+src/model_factory/RNN/TransformerRNN.py:309:        assert output_gru_cls.shape == (batch_size, args_gru_cls.num_classes)
+src/model_factory/RNN/TransformerRNN.py:330:        assert output_large.shape == (batch_size, args_large.num_classes)
+src/model_factory/RNN/AttentionGRU.py:26:        assert hidden_dim % num_heads == 0
+src/model_factory/RNN/AttentionGRU.py:301:        assert output_reg.shape == (batch_size, seq_len, args_reg.output_dim)
+src/model_factory/RNN/AttentionGRU.py:320:        assert output_cls.shape == (batch_size, args_cls.num_classes)
+src/model_factory/RNN/AttentionGRU.py:339:        assert output_heads.shape == (batch_size, args_heads.num_classes)
+src/model_factory/ISFM_Prompt/components/PromptFusion.py:92:            raise ValueError(f"Unsupported fusion_type: {fusion_type}. "
+src/model_factory/ISFM_Prompt/components/PromptFusion.py:230:            raise ValueError(f"signal_emb must be 3D (B, num_patches, signal_dim), got {signal_emb.shape}")
+src/model_factory/ISFM_Prompt/components/PromptFusion.py:234:            raise ValueError(f"prompt_emb must be 2D (B, prompt_dim), got {prompt_emb.shape}")
+src/model_factory/ISFM_Prompt/components/PromptFusion.py:238:            raise ValueError(f"Batch size mismatch: signal_emb {signal_emb.size(0)} vs prompt_emb {prompt_emb.size(0)}")
+src/model_factory/ISFM_Prompt/components/PromptFusion.py:242:            raise ValueError(f"signal_emb last dim {signal_emb.size(-1)} != expected signal_dim {self.signal_dim}")
+src/model_factory/ISFM_Prompt/components/PromptFusion.py:245:            raise ValueError(f"prompt_emb last dim {prompt_emb.size(-1)} != expected prompt_dim {self.prompt_dim}")
+src/model_factory/ISFM_Prompt/components/PromptFusion.py:305:        assert fused.shape == expected_shape, f"Expected {expected_shape}, got {fused.shape}"
+src/model_factory/ISFM_Prompt/components/PromptFusion.py:343:        assert False, "Should have raised ValueError"
+src/model_factory/ISFM_Prompt/components/PromptFusion.py:351:        assert False, "Should have raised ValueError"
+src/model_factory/ISFM_Prompt/components/PromptFusion.py:359:        assert False, "Should have raised ValueError"
+src/model_factory/ISFM_Prompt/components/PromptFusion.py:366:        assert False, "Should have raised ValueError"
+src/model_factory/ISFM_Prompt/components/PromptFusion.py:389:        assert result.shape == expected, f"Size test failed: {result.shape} != {expected}"
+src/model_factory/RNN/ResidualRNN.py:200:                raise ValueError(f"Unsupported RNN type: {self.rnn_type}")
+src/model_factory/RNN/ResidualRNN.py:288:        assert output_lstm_reg.shape == (batch_size, seq_len, args_lstm_reg.output_dim)
+src/model_factory/RNN/ResidualRNN.py:307:        assert output_gru_cls.shape == (batch_size, args_gru_cls.num_classes)
+src/model_factory/RNN/ResidualRNN.py:326:        assert output_deep.shape == (batch_size, args_deep.num_classes)
+src/model_factory/RNN/ConvLSTM.py:291:        assert output_reg.shape == (batch_size, seq_len, args_reg.output_dim)
+src/model_factory/RNN/ConvLSTM.py:311:        assert output_cls.shape == (batch_size, args_cls.num_classes)
+src/data_factory/reader/RM_011_pump.py:12:#         raise TimeoutError(f"操作超时 ({duration}秒)")
+src/data_factory/reader/RM_011_pump.py:52:                raise Exception("所有Excel读取引擎都失败")
+src/data_factory/reader/utils.py:63:        raise ValueError("Unsupported file type. Supported types are: 'mat', 'csv', 'txt'.")
+src/data_factory/reader/utils.py:107:                    raise ValueError(f"无法读取文件 {metadata_path}: {str(e)}")
+src/data_factory/reader/utils.py:110:        raise
+src/data_factory/reader/RM_023_HIT23.py:31:        raise ValueError(f"未找到有效的数组数据在文件 {file_path}")

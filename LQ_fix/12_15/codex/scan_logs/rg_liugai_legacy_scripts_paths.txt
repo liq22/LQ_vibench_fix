@@ -1,0 +1,49 @@
+src/readme.md:78:- Purpose: Unified metric learning across multiple datasets (Stage 1 unified pretraining → Stage 2 fine‑tuning). Tightly integrated with `script/unified_metric/` utilities.
+src/readme.md:82:  - `python main.py --pipeline Pipeline_04_unified_metric --config script/unified_metric/configs/unified_experiments_1epoch.yaml [--local_config configs/local/local.yaml]`
+src/readme.md:84:    - Health check: `python script/unified_metric/pipeline/quick_validate.py --mode health_check --config script/unified_metric/configs/unified_experiments_1epoch.yaml`
+src/readme.md:85:    - Runner: `python script/unified_metric/pipeline/run_unified_experiments.py --mode complete --config script/unified_metric/configs/unified_experiments_1epoch.yaml`
+docs/HPC.md:15:├─ scripts/                 # 数据预处理、评测脚本
+docs/HPC.md:195:sbatch /vast/palmer/home.grace/ql334/LQ/PHM-Vibench/script/Vibench_paper/foundation_model/run.sbatch
+docs/HPC.md:196:sbatch /vast/palmer/home.grace/ql334/LQ/PHM-Vibench/script/Vibench_paper/foundation_model/run.sbatch
+docs/HPC.md:202:cat /vast/palmer/home.grace/ql334/LQ/PHM-Vibench/script/Vibench_paper/foundation_model/run.sbatch
+docs/HPC.md:205:less /vast/palmer/home.grace/ql334/LQ/PHM-Vibench/script/Vibench_paper/foundation_model/run.sbatch
+docs/HPC.md:211:ls -la /vast/palmer/home.grace/ql334/LQ/PHM-Vibench/script/Vibench_paper/foundation_model/run.sbatch
+docs/HPC.md:214:chmod +x /vast/palmer/home.grace/ql334/LQ/PHM-Vibench/script/Vibench_paper/foundation_model/run.sbatch
+docs/HPC.md:217:sbatch /vast/palmer/home.grace/ql334/LQ/PHM-Vibench/script/Vibench_paper/foundation_model/run.sbatch
+docs/HPC.md:227:cat script/Vibench_paper/foundation_model/run.sbatch
+docs/HPC.md:230:sbatch script/Vibench_paper/foundation_model/run.sbatch
+docs/HPC.md:260:sbatch script/Vibench_paper/foundation_model/run.sbatch
+docs/hse-implementation/README.md:11:> 本文档描述的是完整的 HSE 工程化实现与论文流水线，其中部分路径（如 `scripts/*`、`configs/pipeline_03/*`）对应的是扩展工程仓库（例如 `PHM-Vibench-metric`）。  
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:14:  - 多任务脚本整体迁移到 `dev/script/**` 目录，老的 `script/Vibench_paper/foundation model/**` 保留或清理按照计划执行；
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:167:- `script/Vibench_paper/foundation model/*`
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:168:- `dev/script/Vibench_paper/foundation model/*`
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:169:- `dev/script/Vibench_paper/foundation_model/*`
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:171:在 v0.1.0 中，这些脚本被系统性迁移到 `dev/script/**`，并统一为更规范的目录结构（通常去掉路径中的空格，如 `foundation_model`）。
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:180:1. 对 `dev/script/Vibench_paper/**` 中的冲突文件，一律：
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:183:   git checkout --theirs dev/script/Vibench_paper/foundation_model/multitask_B_04_Dlinear.yaml
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:184:   git checkout --theirs dev/script/Vibench_paper/foundation_model/multitask_B_06_TimesNet.yaml
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:185:   git checkout --theirs dev/script/Vibench_paper/foundation_model/multitask_B_08_PatchTST.yaml
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:186:   git checkout --theirs dev/script/Vibench_paper/foundation_model/multitask_B_09_FNO.yaml
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:187:   git checkout --theirs dev/script/Vibench_paper/foundation_model/run.sbatch
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:188:   git checkout --theirs dev/script/Vibench_paper/foundation_model/run_multitask_a100.sh
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:189:   git checkout --theirs dev/script/Vibench_paper/foundation_model/run_multitask_experiments.sh
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:190:   git checkout --theirs dev/script/Vibench_paper/foundation_model/test_a100_local.sh
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:191:   git checkout --theirs dev/script/Vibench_paper/foundation_model/test_multitask.sh
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:192:   git checkout --theirs dev/script/Vibench_paper/plans/fix_multitask_model_init_20250831.md
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:195:2. 对老的 `script/Vibench_paper/foundation model/*` 冲突路径：
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:197:   - 这些脚本已经有等价版本被迁移到 `dev/script/...`；
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:198:   - 建议接受 **删除**，即不做额外 checkout，保持 v0.1.0 的目录结构（`script/` 中不再保留这些文件）。
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:203:> ls script/Vibench_paper
+docs/v0.1.0/codex/merge_conflict_resolution_plan_v0.1.0.md:204:> ls dev/script/Vibench_paper
+docs/hse-implementation/execution-plan.md:272:python script/unified_metric/collect_results.py \
+docs/hse-implementation/execution-plan.md:278:python script/unified_metric/generate_summary_report.py \
+docs/hse-implementation/execution-plan.md:312:python script/unified_metric/paper_visualization.py \
+docs/hse-implementation/execution-plan.md:318:python script/unified_metric/sota_comparison.py \
+docs/hse-implementation/pipeline-guide.md:8:> 本文档中的 `scripts/*`、`configs/pipeline_03/*` 等路径属于论文级工程内容，计划迁移到 paper submodule（见 `paper/README_SUBMODULE.md`）。  
+docs/hse-implementation/pipeline-guide.md:241:python script/unified_metric/collect_results.py \
+docs/hse-implementation/pipeline-guide.md:340:python scripts/generate_benchmark_report.py \
+src/model_factory/ISFM/M_03_ISFM.py:117:    config_path = os.path.join(project_root, 'script/LQ1/Pretraining/Pretraining_C+P.yaml')
+src/model_factory/ISFM/M_03_ISFM.py:118:    # config_path = os.path.join(project_root, 'script/LQ1/GFS/GFS_C+M.yaml')
+docs/past/QUICKSTART.md:250:python scripts/create_dummy_data.py
+docs/past/QUICKSTART.md:284:python scripts/hyperparameter_search.py
+docs/past/QUICKSTART.md:290:python scripts/result_analysis.py

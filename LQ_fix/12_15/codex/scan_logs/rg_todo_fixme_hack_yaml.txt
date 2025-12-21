@@ -1,0 +1,5 @@
+configs/v0.0.9/demo/GFS/GFS_demo.yaml:124:  early_stopping: True # TODO bug? 
+configs/v0.0.9/demo/X_Single_DG/TSPN/HUST.yaml:22:  batch_size: 64 # TODO: 和task.batch_size 保持一致
+configs/v0.0.9/demo/X_Single_DG/TSPN/HUST.yaml:37:  device: cuda # TODO: 和trainer.device 保持一致
+configs/v0.0.9/demo/X_Single_DG/MWA_CNN/HUST.yaml:23:  batch_size: 64 # TODO: 和task.batch_size 保持一致
+configs/v0.0.9/demo/X_Single_DG/MWA_CNN/HUST.yaml:37:  device: cuda # TODO: 和trainer.device 保持一致

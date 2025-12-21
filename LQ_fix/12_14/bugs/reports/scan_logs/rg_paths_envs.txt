@@ -1,0 +1,406 @@
+src/readme.md:96:- For cross‑device paths (e.g., `data.data_dir`), keep the main YAML portable and place machine‑specific settings in `configs/local/local.yaml`, or pass `--local_config`.
+src/Pipeline_01_default.py:75:    # 创建实验目录（依赖 environment.output_dir / path_name，不再强制依赖 VBENCH_* 变量）
+src/Pipeline_01_default.py:159:                        default='/home/user/LQ/B_Signal/Signal_foundation_model/Vbench/configs/demo/Single_DG/CWRU.yaml',
+src/Pipeline_03_multitask_pretrain_finetune.py:600:            output_dir = pipeline.env_config.get('output_dir', 'results/multitask_pretrain_finetune')
+src/Pipeline_03_multitask_pretrain_finetune.py:601:            os.makedirs(output_dir, exist_ok=True)
+src/Pipeline_03_multitask_pretrain_finetune.py:603:            results_file = os.path.join(output_dir, 'pipeline_results.json')
+configs/readme.md:13:**data base（均使用 metadata.xlsx + 统一 data_dir）**
+configs/readme.md:17:| `configs/base/data/base_classification.yaml`      | 单数据集分类 / DG         | `data_dir=/home/user/data/PHMbenchdata/PHM-Vibench`, `metadata_file=metadata.xlsx` |
+configs/readme.md:51:| `configs/base/environment/base.yaml`       | 提供 `PROJECT_HOME` / 默认 `iterations` 等 |
+configs/readme.md:65:- data 仅使用统一的 `metadata.xlsx` / `data_dir`，不再引入 `source_dataset` / `target_dataset` 字段。
+src/configs/README.md:319:- `data`: data_dir, metadata_file
+src/Pipeline_04_unified_metric.py:84:        args_environment.VBENCH_HOME = '/home/lq/LQcode/2_project/PHMBench/PHM-Vibench'
+src/Pipeline_04_unified_metric.py:95:    VBENCH_DATA = args_data.data_dir
+src/configs/config_utils.py:257:        'data': ['data_dir', 'metadata_file'],
+src/configs/config_utils.py:427:    Uses output_dir from config if available, otherwise defaults to 'save'.
+src/configs/config_utils.py:443:    # Check for output_dir in different possible locations
+src/configs/config_utils.py:446:    # Try to get output_dir from environment config
+src/configs/config_utils.py:447:    if 'environment' in configs and 'output_dir' in configs['environment']:
+src/configs/config_utils.py:448:        base_dir = configs['environment']['output_dir']
+src/configs/config_utils.py:449:    # Also check top-level output_dir
+src/configs/config_utils.py:450:    elif 'output_dir' in configs:
+src/configs/config_utils.py:451:        base_dir = configs['output_dir']
+src/configs/config_utils.py:717:                'data': {'data_dir': '/test/data', 'metadata_file': 'test.xlsx', 'batch_size': 32},
+src/configs/deprecated/config_manager_old.py:423:    data__data_dir="{config.data.data_dir}",
+src/configs/ablation_helper.py:166:            if not hasattr(config.data, 'data_dir') or not hasattr(config.data, 'metadata_file'):
+src/configs/ablation_helper.py:167:                print("⚠️  数据配置缺少必需字段: data_dir 或 metadata_file")
+src/configs/README_ContrastiveLearning.md:328:  output_dir: "results/hse_infonce_basic"
+src/configs/README_ContrastiveLearning.md:331:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+src/configs/deprecated/config_schema.py:52:    output_dir: str = Field(default="save", description="输出目录")
+src/configs/deprecated/config_schema.py:62:    data_dir: str = Field(..., description="数据根目录")
+src/configs/deprecated/config_schema.py:429:            data_dir="./data",
+src/configs/deprecated/config_schema.py:449:        data__data_dir="./data",
+src/configs/deprecated/presets.py:57:            data_dir="./data",
+src/configs/deprecated/presets.py:122:            data_dir="./data",
+src/configs/deprecated/presets.py:194:            data_dir="./data",
+src/configs/deprecated/presets.py:282:            data_dir="./data",
+src/configs/deprecated/presets.py:366:            data_dir="./data",
+src/configs/deprecated/presets.py:445:            data_dir="./data",
+src/configs/deprecated/legacy_compat.py:157:        'data': ['data_dir', 'metadata_file', 'batch_size'],
+src/configs/deprecated/legacy_compat.py:395:            'data': {'data_dir': './data'},
+src/configs/deprecated/config_validator.py:37:        'data': ['data_dir', 'metadata_file', 'batch_size'],
+src/configs/deprecated/config_validator.py:422:                'data_dir': './data',
+configs/demo/06_pretrain_cddg/pretrain_hse_cddg.yaml:15:  output_dir: "results/demo/pretrain_hse_cddg"
+configs/default.yaml:7:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/Vbench"
+configs/default.yaml:8:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/default.yaml:9:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/default.yaml:13:  output_dir: "results/dummy_test"
+configs/default.yaml:19:  # data_dir: "/mnt/crucial/LQ/PHMbench_data"  # 数据目录
+configs/default.yaml:20:  data_dir: "/mnt/crucial/LQ/PHM-Vibench"  # for dummy test
+configs/demo/05_pretrain_fewshot/pretrain_hse_then_fewshot.yaml:15:  output_dir: "results/demo/pretrain_hse_then_fewshot"
+src/configs/CLAUDE.md:126:        'data_dir': '/path/to/data',
+src/configs/CLAUDE.md:500:ValueError: 缺少必需字段: data.data_dir
+src/configs/CLAUDE.md:507:        'data_dir': '/path/to/data',
+configs/v0.0.9/pipeline_03/ablation/hse_sample_prompt_only.yaml:6:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/Vbench"
+configs/v0.0.9/pipeline_03/ablation/hse_sample_prompt_only.yaml:7:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/pipeline_03/ablation/hse_sample_prompt_only.yaml:8:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/pipeline_03/ablation/hse_sample_prompt_only.yaml:11:  output_dir: "results/pipeline_03/ablation/sample_prompt_only"
+configs/v0.0.9/pipeline_03/ablation/hse_sample_prompt_only.yaml:17:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/base/local.yaml:2:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/demo/02_cross_system/multi_system_cddg.yaml:15:  output_dir: "results/demo/multi_system_cddg"
+configs/v0.0.9/pipeline_03/ablation/hse_no_prompt_baseline.yaml:6:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/Vbench"
+configs/v0.0.9/pipeline_03/ablation/hse_no_prompt_baseline.yaml:7:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/pipeline_03/ablation/hse_no_prompt_baseline.yaml:8:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/pipeline_03/ablation/hse_no_prompt_baseline.yaml:11:  output_dir: "results/pipeline_03/ablation/no_prompt_baseline"
+configs/v0.0.9/pipeline_03/ablation/hse_no_prompt_baseline.yaml:17:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+src/configs/plan/optimization_plan_20250829.md:190:sys.path.append('/home/lq/LQcode/2_project/PHMBench/PHM-Vibench')
+src/configs/plan/optimization_plan_20250829.md:268:        'data': ['data_dir', 'metadata_file'],
+src/configs/plan/optimization_plan_20250829.md:653:  data_dir: ./data
+src/configs/plan/test_results_and_fix_plan_20250829.md:79:   Dir: save/metadata_6_1.xlsx/M_Transformer_Dummy/T_DGclassification_29_152718/iter_0
+configs/v0.0.9/pipeline_03/ablation/hse_system_prompt_only.yaml:6:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/Vbench"
+configs/v0.0.9/pipeline_03/ablation/hse_system_prompt_only.yaml:7:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/pipeline_03/ablation/hse_system_prompt_only.yaml:8:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/pipeline_03/ablation/hse_system_prompt_only.yaml:11:  output_dir: "results/pipeline_03/ablation/system_prompt_only"
+configs/v0.0.9/pipeline_03/ablation/hse_system_prompt_only.yaml:17:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/reference/experiment_4_cddg_ablation.yaml:9:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/reference/experiment_4_cddg_ablation.yaml:12:  output_dir: "paper/2025-10_foundation_model_0_metric/results/cddg/exp4_ablation"
+configs/reference/experiment_4_cddg_ablation.yaml:17:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/base/data/base_cross_system_fewshot.yaml:2:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/reference/experiment_7_cddg_noise.yaml:8:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/reference/experiment_7_cddg_noise.yaml:11:  output_dir: "paper/2025-10_foundation_model_0_metric/results/cddg/exp7_noise"
+configs/reference/experiment_7_cddg_noise.yaml:16:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/reference/experiment_6_cddg_backbone.yaml:8:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/reference/experiment_6_cddg_backbone.yaml:11:  output_dir: "paper/2025-10_foundation_model_0_metric/results/cddg/exp6_backbone"
+configs/reference/experiment_6_cddg_backbone.yaml:16:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/pipeline_03/hse_prompt_multitask_config.yaml:18:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/Vbench"
+configs/v0.0.9/pipeline_03/hse_prompt_multitask_config.yaml:19:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/pipeline_03/hse_prompt_multitask_config.yaml:20:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/pipeline_03/hse_prompt_multitask_config.yaml:22:  output_dir: "results/pipeline_03/unified_metric_learning"
+configs/v0.0.9/pipeline_03/hse_prompt_multitask_config.yaml:39:  data_dir: "/home/lq/LQcode/2_project/PHMBench/PHM-Vibench-metric/data"
+configs/config_registry.csv:2:base_env_default,base_environment,configs/base/environment/base.yaml,"通用 environment base（PROJECT_HOME + iterations）",,,,,,/ 
+configs/base/data/base_cross_system.yaml:2:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/reference/experiment_4_cddg_ablation_twostage.yaml:12:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/reference/experiment_4_cddg_ablation_twostage.yaml:15:  output_dir: "paper/2025-10_foundation_model_0_metric/results/cddg/exp4_ablation_twostage"
+configs/reference/experiment_4_cddg_ablation_twostage.yaml:20:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/reference/experiment_7_cddg_noise_twostage.yaml:8:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/reference/experiment_7_cddg_noise_twostage.yaml:11:  output_dir: "paper/2025-10_foundation_model_0_metric/results/cddg/exp7_noise_twostage"
+configs/reference/experiment_7_cddg_noise_twostage.yaml:16:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/base/data/base_cross_domain.yaml:2:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/demo/01_cross_domain/cwru_dg.yaml:15:  output_dir: "results/demo/cwru_to_ottawa_dg"
+src/data_factory/CLAUDE.md:69:  data_dir: "/path/to/data"
+src/data_factory/CLAUDE.md:155:    def __init__(self, data_dir):
+src/data_factory/CLAUDE.md:188:  data_dir: "/path/to/data"      # Root data directory
+src/data_factory/CLAUDE.md:222:    def __init__(self, data_dir, **kwargs):
+src/data_factory/CLAUDE.md:223:        self.data_dir = data_dir
+src/data_factory/CLAUDE.md:272:2. **Missing Data**: Check data_dir path and metadata file
+configs/reference/experiment_0_cddg_baseline.yaml:7:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/reference/experiment_0_cddg_baseline.yaml:10:  output_dir: "paper/2025-10_foundation_model_0_metric/results/cddg/exp0_baseline"
+configs/reference/experiment_0_cddg_baseline.yaml:16:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/base/data/base_classification.yaml:2:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/reference/experiment_1_cddg_hse.yaml:5:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/reference/experiment_1_cddg_hse.yaml:8:  output_dir: "paper/2025-10_foundation_model_0_metric/results/cddg/exp1_hse"
+configs/reference/experiment_1_cddg_hse.yaml:13:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/reference/experiment_3_cddg_hse_prompt.yaml:5:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/reference/experiment_3_cddg_hse_prompt.yaml:8:  output_dir: "paper/2025-10_foundation_model_0_metric/results/cddg/exp3_hse_prompt"
+configs/reference/experiment_3_cddg_hse_prompt.yaml:13:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/baseline/cwru_baseline.yaml:12:  output_dir: "results/baseline/cwru_simple"
+configs/v0.0.9/baseline/cwru_baseline.yaml:18:  data_dir: "./data"
+configs/base/data/base_fewshot.yaml:2:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/reference/experiment_1_gfs_hse.yaml:4:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/reference/experiment_1_gfs_hse.yaml:7:  output_dir: "paper/2025-10_foundation_model_0_metric/results/gfs/exp1_hse"
+configs/reference/experiment_1_gfs_hse.yaml:12:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/reference/experiment_6_cddg_backbone_twostage.yaml:9:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/reference/experiment_6_cddg_backbone_twostage.yaml:12:  output_dir: "paper/2025-10_foundation_model_0_metric/results/cddg/exp6_backbone_twostage"
+configs/reference/experiment_6_cddg_backbone_twostage.yaml:17:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/demo/04_cross_system_fewshot/cross_system_tspn.yaml:15:  output_dir: "results/demo/cross_system_fewshot_tspn"
+configs/base/environment/base.yaml:2:  PROJECT_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/base/environment/base.yaml:5:  output_dir: "results/demo"
+configs/v0.0.9/demo/Single_DG/CWRU.yaml:7:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/Vbench"
+configs/v0.0.9/demo/Single_DG/CWRU.yaml:8:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/demo/Single_DG/CWRU.yaml:9:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/demo/Single_DG/CWRU.yaml:13:  output_dir: "results/dummy_test"
+configs/v0.0.9/demo/Single_DG/CWRU.yaml:19:  # data_dir: "/mnt/crucial/LQ/PHMbench_data"  # 数据目录
+configs/v0.0.9/demo/Single_DG/CWRU.yaml:20:  data_dir: "/mnt/crucial/LQ/PHM-Vibench"  # for dummy test
+configs/v0.0.9/demo/Single_DG/THU_wuzhui.yaml:7:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/Vbench"
+configs/v0.0.9/demo/Single_DG/THU_wuzhui.yaml:8:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/demo/Single_DG/THU_wuzhui.yaml:9:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/demo/Single_DG/THU_wuzhui.yaml:13:  output_dir: "results/dummy_test"
+configs/v0.0.9/demo/Single_DG/THU_wuzhui.yaml:19:  # data_dir: "/mnt/crucial/LQ/PHMbench_data"  # 数据目录
+configs/v0.0.9/demo/Single_DG/THU_wuzhui.yaml:20:  data_dir: "./PHM-Vibench"  # for test 需要
+configs/v0.0.9/demo/X_Single_DG/MWA_CNN/HUST.yaml:14:  output_dir: "results/dummy_test"
+configs/v0.0.9/demo/X_Single_DG/MWA_CNN/HUST.yaml:20:  # data_dir: "/mnt/crucial/LQ/PHMbench_data"  # 数据目录
+configs/v0.0.9/demo/X_Single_DG/MWA_CNN/HUST.yaml:21:  data_dir: "D:/Vbench/PHMbench-raw_data"  # for dummy test
+configs/v0.0.9/demo/Single_DG/THU.yaml:7:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/Vbench"
+configs/v0.0.9/demo/Single_DG/THU.yaml:8:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/demo/Single_DG/THU.yaml:9:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/demo/Single_DG/THU.yaml:13:  output_dir: "results/dummy_test"
+configs/v0.0.9/demo/Single_DG/THU.yaml:19:  # data_dir: "/mnt/crucial/LQ/PHMbench_data"  # 数据目录
+configs/v0.0.9/demo/Single_DG/THU.yaml:20:  data_dir: "/mnt/crucial/LQ/PHM-Vibench"  # for test 需要
+configs/reference/experiment_2_cddg_hse_pretrain.yaml:5:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/reference/experiment_2_cddg_hse_pretrain.yaml:8:  output_dir: "paper/2025-10_foundation_model_0_metric/results/cddg/exp2_hse_pretrain"
+configs/reference/experiment_2_cddg_hse_pretrain.yaml:13:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/local/local.sample.yaml:5:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/local/local.sample.yaml:12:#   VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+src/data_factory/datainfo.py:216:    root_dir = '/home/user/data/PHMbenchdata'
+configs/v0.0.9/local/local.yaml:5:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/local/local.yaml:12:#   VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/local/README.md:3:Place machine-specific minimal override YAMLs here to adapt paths like `data.data_dir` across devices without editing the main experiment YAMLs.
+configs/v0.0.9/local/README.md:18:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/local/README.md:25:#   PROJECT_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/local/README.md:35:- putting all environment fields (including `PROJECT_HOME`) into `configs/base/environment/base.yaml`, and
+configs/v0.0.9/demo/X_Single_DG/TSPN/HUST.yaml:13:  output_dir: "results/dummy_test"
+configs/v0.0.9/demo/X_Single_DG/TSPN/HUST.yaml:19:  # data_dir: "/mnt/crucial/LQ/PHMbench_data"  # 数据目录
+configs/v0.0.9/demo/X_Single_DG/TSPN/HUST.yaml:20:  data_dir: "D:/Vbench/PHMbench-raw_data"  # for dummy test
+configs/v0.0.9/demo/Pretraining/Pretraining_demo.yaml:8:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/Vbench"
+configs/v0.0.9/demo/Pretraining/Pretraining_demo.yaml:9:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/demo/Pretraining/Pretraining_demo.yaml:10:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/demo/Pretraining/Pretraining_demo.yaml:13:  output_dir: "results/dummy_test"
+configs/v0.0.9/demo/Pretraining/Pretraining_demo.yaml:20:  # data_dir: "/mnt/crucial/LQ/PHMbench_data"  # 数据目录
+configs/v0.0.9/demo/Pretraining/Pretraining_demo.yaml:21:  data_dir: "/mnt/crucial/LQ/PHM-Vibench"  # for dummy test
+configs/v0.0.9/demo/Multiple_DG/CWRU_THU_using_ISFM.yaml:8:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/Vbench"
+configs/v0.0.9/demo/Multiple_DG/CWRU_THU_using_ISFM.yaml:9:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/demo/Multiple_DG/CWRU_THU_using_ISFM.yaml:10:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/demo/Multiple_DG/CWRU_THU_using_ISFM.yaml:13:  output_dir: "results/dummy_test"
+configs/v0.0.9/demo/Multiple_DG/CWRU_THU_using_ISFM.yaml:20:  # data_dir: "/mnt/crucial/LQ/PHMbench_data"  # 数据目录
+configs/v0.0.9/demo/Multiple_DG/CWRU_THU_using_ISFM.yaml:21:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"  # for dummy test
+configs/v0.0.9/multitask_pretrain_finetune_config.yaml:12:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/PHM-Vibench"
+configs/v0.0.9/multitask_pretrain_finetune_config.yaml:13:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/multitask_pretrain_finetune_config.yaml:14:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/multitask_pretrain_finetune_config.yaml:17:  output_dir: "results/multitask_pretrain_finetune"
+configs/v0.0.9/multitask_pretrain_finetune_config.yaml:106:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/demo/Multiple_DG/all.yaml:8:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/Vbench"
+configs/v0.0.9/demo/Multiple_DG/all.yaml:9:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/demo/Multiple_DG/all.yaml:10:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/demo/Multiple_DG/all.yaml:13:  output_dir: "results/dummy_test"
+configs/v0.0.9/demo/Multiple_DG/all.yaml:20:  # data_dir: "/mnt/crucial/LQ/PHMbench_data"  # 数据目录
+configs/v0.0.9/demo/Multiple_DG/all.yaml:21:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"  # for dummy test
+configs/v0.0.9/demo/Paper_Experiments/Table4_Ablation_Study.yaml:5:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/demo/Paper_Experiments/Table4_Ablation_Study.yaml:6:  PYTHONPATH: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/demo/Paper_Experiments/Table4_Ablation_Study.yaml:9:  output_dir: "results/paper/table4_ablation"
+configs/v0.0.9/demo/Paper_Experiments/Table4_Ablation_Study.yaml:15:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/demo/Paper_Experiments/Table4_Ablation_Study.yaml:126:  save_dir: "save/paper/table4_ablation"
+configs/v0.0.9/demo/ID/id_demo.yaml:10:  output_dir: "results/id_demo"
+configs/v0.0.9/demo/ID/id_demo.yaml:16:  data_dir: "./data"
+configs/v0.0.9/template/Pretraining_C+P_patchtst.yaml:8:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/Vbench"
+configs/v0.0.9/template/Pretraining_C+P_patchtst.yaml:9:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/template/Pretraining_C+P_patchtst.yaml:10:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/template/Pretraining_C+P_patchtst.yaml:13:  output_dir: "results/LQ_Vibench"
+configs/v0.0.9/template/Pretraining_C+P_patchtst.yaml:24:  # data_dir: "/mnt/crucial/LQ/PHMbench_data"  # 数据目录
+configs/v0.0.9/template/Pretraining_C+P_patchtst.yaml:25:  # data_dir: "/mnt/crucial/LQ/PHM-Vibench"  # for dummy test
+configs/v0.0.9/template/Pretraining_C+P_patchtst.yaml:26:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"  # for dummy test
+configs/v0.0.9/demo/HSE_Contrastive/ablation_temperature.yaml:10:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/demo/Paper_Experiments/Table2_FewShot_Pretrain.yaml:5:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/demo/Paper_Experiments/Table2_FewShot_Pretrain.yaml:6:  PYTHONPATH: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/demo/Paper_Experiments/Table2_FewShot_Pretrain.yaml:9:  output_dir: "results/paper/table2_fewshot_pretrain"
+configs/v0.0.9/demo/Paper_Experiments/Table2_FewShot_Pretrain.yaml:15:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/demo/Paper_Experiments/Table2_FewShot_Pretrain.yaml:133:  save_dir: "save/paper/table2_fewshot_pretrain"
+configs/v0.0.9/multi_task_config.yaml:15:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/PHM-Vibench"
+configs/v0.0.9/multi_task_config.yaml:16:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/multi_task_config.yaml:17:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/multi_task_config.yaml:20:  output_dir: "results/multi_task_phm"
+configs/v0.0.9/multi_task_config.yaml:29:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/demo/Simplified_Prompt/hse_prompt_demo.yaml:7:  PYTHONPATH: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/demo/Simplified_Prompt/hse_prompt_demo.yaml:8:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/demo/Simplified_Prompt/hse_prompt_demo.yaml:13:output_dir: "results/hse_prompt_demo"
+configs/v0.0.9/demo/Simplified_Prompt/hse_prompt_demo.yaml:26:  data_dir: "data/raw/CWRU"
+configs/v0.0.9/demo/Simplified_Prompt/hse_prompt_demo.yaml:106:  save_dir: "save/hse_prompt_demo"
+configs/v0.0.9/demo/HSE_Contrastive/README.md:78:save/metadata_6_1/M_01_ISFM/CDDG_hse_contrastive_Default_trainer_[timestamp]/
+configs/v0.0.9/demo/Paper_Experiments/Table2_FewShot_Finetune.yaml:5:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/demo/Paper_Experiments/Table2_FewShot_Finetune.yaml:6:  PYTHONPATH: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/demo/Paper_Experiments/Table2_FewShot_Finetune.yaml:9:  output_dir: "results/paper/table2_fewshot_finetune"
+configs/v0.0.9/demo/Paper_Experiments/Table2_FewShot_Finetune.yaml:15:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/demo/Paper_Experiments/Table2_FewShot_Finetune.yaml:136:  save_dir: "save/paper/table2_fewshot_finetune"
+configs/v0.0.9/demo/Paper_Experiments/Table1_Baseline_Dlinear.yaml:5:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/demo/Paper_Experiments/Table1_Baseline_Dlinear.yaml:6:  PYTHONPATH: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/demo/Paper_Experiments/Table1_Baseline_Dlinear.yaml:9:  output_dir: "results/paper/table1_baselines"
+configs/v0.0.9/demo/Paper_Experiments/Table1_Baseline_Dlinear.yaml:15:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/demo/Paper_Experiments/Table1_Baseline_Dlinear.yaml:96:  save_dir: "save/paper/table1_dlinear_baseline"
+configs/v0.0.9/demo/HSE_Contrastive/hse_prompt_pretrain.yaml:5:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/Vbench"
+configs/v0.0.9/demo/HSE_Contrastive/hse_prompt_pretrain.yaml:6:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/demo/HSE_Contrastive/hse_prompt_pretrain.yaml:7:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/demo/HSE_Contrastive/hse_prompt_pretrain.yaml:10:  output_dir: "results/hse_prompt_pretrain"
+configs/v0.0.9/demo/HSE_Contrastive/hse_prompt_pretrain.yaml:16:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/demo/Paper_Experiments/Table1a_Backbone_Universality.yaml:5:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/demo/Paper_Experiments/Table1a_Backbone_Universality.yaml:6:  PYTHONPATH: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/demo/Paper_Experiments/Table1a_Backbone_Universality.yaml:9:  output_dir: "results/paper/table1a_backbone_universality"
+configs/v0.0.9/demo/Paper_Experiments/Table1a_Backbone_Universality.yaml:15:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/demo/Paper_Experiments/Table1a_Backbone_Universality.yaml:125:  save_dir: "save/paper/table1a_backbone_universality"
+configs/v0.0.9/demo/Paper_Experiments/Table1_Optimization_Strategy_Main.yaml:6:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/demo/Paper_Experiments/Table1_Optimization_Strategy_Main.yaml:7:  PYTHONPATH: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/demo/Paper_Experiments/Table1_Optimization_Strategy_Main.yaml:10:  output_dir: "results/paper/table1_optimization_strategy"
+configs/v0.0.9/demo/Paper_Experiments/Table1_Optimization_Strategy_Main.yaml:16:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/demo/Paper_Experiments/Table1_Optimization_Strategy_Main.yaml:127:  save_dir: "save/paper/table1_cross_machinery"
+configs/v0.0.9/demo/HSE_Contrastive/ablation_no_momentum.yaml:10:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/demo/Paper_Experiments/Table1_Baseline_PatchTST.yaml:5:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/demo/Paper_Experiments/Table1_Baseline_PatchTST.yaml:6:  PYTHONPATH: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/demo/Paper_Experiments/Table1_Baseline_PatchTST.yaml:9:  output_dir: "results/paper/table1_baselines"
+configs/v0.0.9/demo/Paper_Experiments/Table1_Baseline_PatchTST.yaml:15:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/demo/Paper_Experiments/Table1_Baseline_PatchTST.yaml:96:  save_dir: "save/paper/table1_patchtst"
+configs/v0.0.9/demo/HSE_Contrastive/hse_prompt_finetune.yaml:5:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/Vbench"
+configs/v0.0.9/demo/HSE_Contrastive/hse_prompt_finetune.yaml:6:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/demo/HSE_Contrastive/hse_prompt_finetune.yaml:7:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/demo/HSE_Contrastive/hse_prompt_finetune.yaml:10:  output_dir: "results/hse_prompt_finetune"
+configs/v0.0.9/demo/HSE_Contrastive/hse_prompt_finetune.yaml:16:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/demo/HSE_Contrastive/ablation_prompt_fusion.yaml:5:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/Vbench"
+configs/v0.0.9/demo/HSE_Contrastive/ablation_prompt_fusion.yaml:6:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/demo/HSE_Contrastive/ablation_prompt_fusion.yaml:7:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/demo/HSE_Contrastive/ablation_prompt_fusion.yaml:10:  output_dir: "results/ablation_fusion"
+configs/v0.0.9/demo/HSE_Contrastive/ablation_prompt_fusion.yaml:16:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/demo/Paper_Experiments/Table3_Noise_Robustness.yaml:5:  VBENCH_HOME: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/demo/Paper_Experiments/Table3_Noise_Robustness.yaml:6:  PYTHONPATH: "/home/user/LQ/B_Signal/Signal_foundation_model/Vbench"
+configs/v0.0.9/demo/Paper_Experiments/Table3_Noise_Robustness.yaml:9:  output_dir: "results/paper/table3_noise_robustness"
+configs/v0.0.9/demo/Paper_Experiments/Table3_Noise_Robustness.yaml:15:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/demo/Paper_Experiments/Table3_Noise_Robustness.yaml:141:  save_dir: "save/paper/table3_noise_robustness"
+configs/v0.0.9/demo/GFS/GFS_demo.yaml:8:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/Vbench"
+configs/v0.0.9/demo/GFS/GFS_demo.yaml:9:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/demo/GFS/GFS_demo.yaml:10:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/demo/GFS/GFS_demo.yaml:13:  output_dir: "results/dummy_test"
+configs/v0.0.9/demo/GFS/GFS_demo.yaml:20:  # data_dir: "/mnt/crucial/LQ/PHMbench_data"  # 数据目录
+configs/v0.0.9/demo/GFS/GFS_demo.yaml:21:  data_dir: "/mnt/crucial/LQ/PHM-Vibench"  # for dummy test
+configs/v0.0.9/demo/HSE_Contrastive/hse_prompt_ablation_fusion.yaml:5:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/Vbench"
+configs/v0.0.9/demo/HSE_Contrastive/hse_prompt_ablation_fusion.yaml:6:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/demo/HSE_Contrastive/hse_prompt_ablation_fusion.yaml:7:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/demo/HSE_Contrastive/hse_prompt_ablation_fusion.yaml:10:  output_dir: "results/hse_ablation_fusion"
+configs/v0.0.9/demo/HSE_Contrastive/hse_prompt_ablation_fusion.yaml:16:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/demo/FewShot/protonet.yaml:9:  data_dir: "/path/to/data"
+configs/v0.0.9/demo/HSE_Contrastive/hse_cddg.yaml:9:  output_dir: "save/"
+configs/v0.0.9/demo/HSE_Contrastive/hse_cddg.yaml:12:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"  # 标准化数据路径
+configs/v0.0.9/demo/HSE_Contrastive/ablation_no_contrast.yaml:6:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/Vbench"
+configs/v0.0.9/demo/HSE_Contrastive/ablation_no_contrast.yaml:7:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/demo/HSE_Contrastive/ablation_no_contrast.yaml:8:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/demo/HSE_Contrastive/ablation_no_contrast.yaml:11:  output_dir: "results/hse_ablation_no_contrast"
+configs/v0.0.9/demo/HSE_Contrastive/ablation_no_contrast.yaml:17:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+configs/v0.0.9/demo/HSE_Contrastive/high_contrast.yaml:6:  VBENCH_HOME: "/home/lq/LQcode/2_project/PHMBench/Vbench"
+configs/v0.0.9/demo/HSE_Contrastive/high_contrast.yaml:7:  PYTHONPATH: "/home/lq/.conda/envs/lq"
+configs/v0.0.9/demo/HSE_Contrastive/high_contrast.yaml:8:  PHMBench: "/home/lq/LQcode/2_project/PHMBench"
+configs/v0.0.9/demo/HSE_Contrastive/high_contrast.yaml:11:  output_dir: "results/hse_high_contrast"
+configs/v0.0.9/demo/HSE_Contrastive/high_contrast.yaml:17:  data_dir: "/home/user/data/PHMbenchdata/PHM-Vibench"
+src/model_factory/ISFM/embedding/test.py:4:sys.path.append('/home/user/LQ/B_Signal/Signal_foundation_model/ISFM')
+src/model_factory/ISFM_Prompt/components/MixedPrecisionWrapper.py:699:    # Test 7: Checkpoint save/load
+src/model_factory/ISFM_Prompt/components/MixedPrecisionWrapper.py:761:    print("  • Checkpoint save/load with mixed precision state")
+src/data_factory/data_factory.py:42:            args_data: 包含data_dir和metadata_file的字典或命名空间
+src/data_factory/data_factory.py:59:            args_data: 包含data_dir和metadata_file的字典或命名空间
+src/data_factory/data_factory.py:67:                                           save_path=args_data.data_dir,
+src/data_factory/data_factory.py:75:            metadata_path = os.path.join(args_data.data_dir, args_data.metadata_file)
+src/data_factory/data_factory.py:94:            Should provide ``data_dir`` and ``metadata_file``.
+src/data_factory/data_factory.py:105:            download_data(data_file=args_data.metadata_file, save_path=args_data.data_dir, source='auto')
+src/data_factory/data_factory.py:107:            file_path = os.path.join(args_data.data_dir, f"raw/{name}/{file_name}")
+src/data_factory/data_factory.py:125:            Contains ``data_dir``.
+src/data_factory/data_factory.py:136:        os.makedirs(args_data.data_dir, exist_ok=True)
+src/data_factory/data_factory.py:145:            name_cache_file = os.path.join(args_data.data_dir, f"{name}.h5")
+src/data_factory/data_factory.py:168:            Supplies ``data_dir`` and ``metadata_file``.
+src/data_factory/data_factory.py:174:        name_cache_file = os.path.join(args_data.data_dir, f"{name}.h5")
+src/data_factory/data_factory.py:204:            Provides ``data_dir`` where caches reside.
+src/data_factory/data_factory.py:213:        final_cache_path = os.path.join(args_data.data_dir, "cache.h5")
+src/data_factory/data_factory.py:228:                    name_cache_file = os.path.join(args_data.data_dir, f"{name}.h5")
+src/data_factory/data_factory.py:243:            Data configuration with ``data_dir`` and ``metadata_file``.
+src/utils/evaluation/ZeroShotEvaluator.py:248:                 output_dir: Optional[Union[str, Path]] = None,
+src/utils/evaluation/ZeroShotEvaluator.py:254:            output_dir: Directory for saving evaluation results
+src/utils/evaluation/ZeroShotEvaluator.py:257:        self.output_dir = Path(output_dir) if output_dir else Path("evaluation_outputs")
+src/utils/evaluation/ZeroShotEvaluator.py:258:        self.output_dir.mkdir(parents=True, exist_ok=True)
+src/utils/evaluation/ZeroShotEvaluator.py:274:        self.logger.info(f"📁 Output directory: {self.output_dir}")
+src/utils/evaluation/ZeroShotEvaluator.py:285:        log_file = self.output_dir / f"zero_shot_evaluation_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
+src/utils/evaluation/ZeroShotEvaluator.py:761:        results_file = self.output_dir / f"zero_shot_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+src/utils/evaluation/ZeroShotEvaluator.py:942:    parser.add_argument("--output_dir", type=str, default="evaluation_outputs",
+src/utils/evaluation/ZeroShotEvaluator.py:961:        output_dir=args.output_dir,
+src/utils/CLAUDE.md:95:# Output: save/metadata_6_11.xlsx/M_01_ISFM/T_classification_13_20250825/
+src/utils/config/path_standardizer.py:15:    DEFAULT_DATA_ROOT = "/home/user/data/PHMbenchdata/PHM-Vibench"
+src/utils/config/path_standardizer.py:61:            # Standardize data_dir
+src/utils/config/path_standardizer.py:62:            if 'data_dir' in data_config:
+src/utils/config/path_standardizer.py:63:                data_config['data_dir'] = self.standardize_data_path(data_config['data_dir'])
+src/utils/config/path_standardizer.py:78:            # Standardize output_dir if relative
+src/utils/config/path_standardizer.py:79:            if 'output_dir' in env_config:
+src/utils/config/path_standardizer.py:80:                output_dir = env_config['output_dir']
+src/utils/config/path_standardizer.py:81:                if not os.path.isabs(output_dir):
+src/utils/config/path_standardizer.py:134:            # Check data_dir
+src/utils/config/path_standardizer.py:135:            if 'data_dir' in data_config:
+src/utils/config/path_standardizer.py:136:                data_dir = Path(data_config['data_dir'])
+src/utils/config/path_standardizer.py:137:                validation_results['data_dir'] = data_dir.exists()
+src/utils/config/path_standardizer.py:140:            if 'metadata_file' in data_config and 'data_dir' in data_config:
+src/utils/config/path_standardizer.py:141:                metadata_path = Path(data_config['data_dir']) / data_config['metadata_file']
+src/utils/config/path_standardizer.py:179:            'data_dir': '/old/path/to/data',
+src/utils/config/path_standardizer.py:184:            'output_dir': 'results/test',
+src/utils/config/path_standardizer.py:193:    standardizer = PathStandardizer('/home/user/data/PHMbenchdata/PHM-Vibench')
+src/utils/config/path_standardizer.py:213:    print(f"  data_dir: {test_config['data']['data_dir']}")
+src/utils/config/path_standardizer.py:217:    print(f"  data_dir: {standardized_config['data']['data_dir']}")
+src/utils/config/path_standardizer.py:232:        print(f"  New data_dir: {processed_config['data']['data_dir']}")
+src/utils/validation/OneEpochValidator.py:55:                 output_dir: Optional[Union[str, Path]] = None):
+src/utils/validation/OneEpochValidator.py:62:            output_dir: Directory for validation outputs
+src/utils/validation/OneEpochValidator.py:65:        self.output_dir = Path(output_dir) if output_dir else Path("validation_outputs")
+src/utils/validation/OneEpochValidator.py:66:        self.output_dir.mkdir(parents=True, exist_ok=True)
+src/utils/validation/OneEpochValidator.py:90:        self.logger.info(f"📁 Output directory: {self.output_dir}")
+src/utils/validation/OneEpochValidator.py:101:        log_file = self.output_dir / f"validation_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
+src/utils/validation/OneEpochValidator.py:884:        report_path = self.output_dir / "one_epoch_validation_report.md"
+src/utils/validation/OneEpochValidator.py:892:        json_path = self.output_dir / "validation_results.json"
+src/utils/validation/OneEpochValidator.py:983:    parser.add_argument("--output_dir", type=str, default="validation_outputs",
+src/utils/validation/OneEpochValidator.py:998:        output_dir=args.output_dir
+src/utils/training/two_stage_orchestrator.py:455:        # path and logging（包含 environment，允许使用 environment.output_dir 控制结果根目录）
+src/utils/env_builders.py:30:    data_dir: str,
+src/utils/env_builders.py:41:    data_dir : str
+src/utils/env_builders.py:64:        "data_dir": data_dir,
+src/data_factory/reader/RM_020_DIRG.py:35:    test_reader(metadata_path = '/home/user/LQ/B_Signal/Signal_foundation_model/Vbench/data/metadata_5_data.csv',
+src/data_factory/reader/RM_020_DIRG.py:36:                 data_dir = '/home/user/data/PHMbenchdata/raw/',
+src/data_factory/reader/RM_020_DIRG.py:38:                 output_dir = '/home/user/LQ/B_Signal/Signal_foundation_model/Vbench/src/data_factory/reader/output',
+src/data_factory/reader/utils.py:76:def test_reader(metadata_path = '/home/user/LQ/B_Signal/Signal_foundation_model/Vbench/data/metadata_5_data.csv',
+src/data_factory/reader/utils.py:77:                 data_dir = '/user/data/PHMbenchdata/raw/',name = 'RM_017_Ottawa19',output_dir = './output',read = None):
+src/data_factory/reader/utils.py:124:        file_path = os.path.join(data_dir, current_name, file_name)
+src/data_factory/reader/utils.py:148:        output_path = f'{output_dir}/test_results_{current_name}.csv'
+src/data_factory/reader/RM_018_THU24.py:33:    test_reader(metadata_path = '/home/user/LQ/B_Signal/Signal_foundation_model/Vbench/data/metadata_5_data.csv',
+src/data_factory/reader/RM_018_THU24.py:34:                 data_dir = '/home/user/data/PHMbenchdata/raw/',
+src/data_factory/reader/RM_018_THU24.py:36:                 output_dir = '/home/user/LQ/B_Signal/Signal_foundation_model/Vbench/src/data_factory/reader/output',
+src/data_factory/reader/RM_027_PU.py:30:    # path_ori = '/home/user/data/PHMbenchdata/raw/RM_027_PU/'
+src/data_factory/reader/RM_027_PU.py:45:    test_reader(metadata_path = '/home/user/data/PHMbenchdata/PHM-Vibench/metadata_6_1.xlsx',
+src/data_factory/reader/RM_027_PU.py:46:                 data_dir = '/home/user/data/PHMbenchdata/PHM-Vibench/raw/',
+src/data_factory/reader/RM_027_PU.py:48:                 output_dir = '/home/user/LQ/B_Signal/Signal_foundation_model/Vbench/src/data_factory/reader/output',
+src/data_factory/reader/RM_004_IMS.py:28:    file_path = "/home/user/data/PHMbenchdata/PHM-Vibench/raw/RM_004_IMS/1st_test/2003.10.22.12.06.24"
+src/data_factory/reader/RM_004_IMS.py:32:    file_path = "/home/user/data/PHMbenchdata/RM_004_IMS/2nd_test/2004.02.12.10.32.39"
+src/data_factory/reader/RM_023_HIT23.py:49:    test_reader(metadata_path = '/home/user/LQ/B_Signal/Signal_foundation_model/Vbench/data/metadata_5_data.csv',
+src/data_factory/reader/RM_023_HIT23.py:50:                 data_dir = '/home/user/data/PHMbenchdata/raw/',
+src/data_factory/reader/RM_023_HIT23.py:52:                 output_dir = '/home/user/LQ/B_Signal/Signal_foundation_model/Vbench/src/data_factory/reader/output',
+src/data_factory/reader/RM_006_THU.py:27:    test_reader(metadata_path = '/home/user/LQ/B_Signal/Signal_foundation_model/Vbench/data/metadata_5_data.csv',
+src/data_factory/reader/RM_006_THU.py:28:                 data_dir = '/home/user/data/PHMbenchdata/PHM-Vibench/raw',
+src/data_factory/reader/RM_006_THU.py:30:                 output_dir = '/home/user/LQ/B_Signal/Signal_foundation_model/Vbench/src/data_factory/reader/output',
+src/data_factory/reader/RM_003_FEMTO.py:29:    file_path = "/home/user/data/PHMbenchdata/RM_003_FEMTO/Learning_set/Bearing1_2/acc_00001.csv"
+src/data_factory/reader/RM_003_FEMTO.py:33:    file_path = "/home/user/data/PHMbenchdata/RM_003_FEMTO/Test_Set/Bearing1_4/acc_00001.csv"
+src/data_factory/reader/RM_007_MFPT.py:18:    file_path = "/home/user/data/a_bearing/a_007_MFPT_raw/1 - Three Baseline Conditions/baseline_1.mat"
+src/data_factory/reader/RM_007_MFPT.py:22:    file_path = "/home/user/data/a_bearing/a_007_MFPT_raw/3 - Seven More Outer Race Fault Conditions/OuterRaceFault_vload_1.mat"
+src/data_factory/reader/RM_007_MFPT.py:26:    file_path = "/home/user/data/a_bearing/a_007_MFPT_raw/6 - Real World Examples/IntermediateSpeedBearing.mat"
+src/utils/hse/prompt_validator.py:165:        required_fields = ['data_dir', 'metadata_file', 'batch_size']
+src/utils/hse/prompt_validator.py:171:        # Validate data_dir exists
+src/utils/hse/prompt_validator.py:172:        if 'data_dir' in data_config:
+src/utils/hse/prompt_validator.py:173:            data_dir = Path(data_config['data_dir'])
+src/utils/hse/prompt_validator.py:174:            if not data_dir.exists():
+src/utils/hse/prompt_validator.py:175:                self.validation_errors.append(f"Data directory does not exist: {data_dir}")
+src/utils/hse/prompt_validator.py:178:        if 'data_dir' in data_config and 'metadata_file' in data_config:
+src/utils/hse/prompt_validator.py:179:            metadata_path = Path(data_config['data_dir']) / data_config['metadata_file']
+src/utils/hse/prompt_validator.py:277:        if 'output_dir' in env_config:
+src/utils/hse/prompt_validator.py:278:            output_dir = Path(env_config['output_dir'])
+src/utils/hse/prompt_validator.py:279:            parent_dir = output_dir.parent
+src/utils/hse/prompt_validator.py:846:            'output_dir': 'save/test_experiment'
+src/utils/hse/prompt_validator.py:849:            'data_dir': '/home/user/data/PHMbenchdata/PHM-Vibench',
+src/data_factory/reader/RM_002_XJTU.py:12:    file_path = "/home/user/data/PHMbenchdata/RM_002_XJTU/35Hz12kN/Bearing1_1/1.csv"
+src/data_factory/reader/RM_011_pump.py:75:    test_reader(metadata_path = '/home/user/data/PHMbenchdata/metadata_5_29.xlsx',
+src/data_factory/reader/RM_011_pump.py:76:                 data_dir = '/home/user/data/PHMbenchdata/raw/',
+src/data_factory/reader/RM_011_pump.py:78:                 output_dir = '/home/user/LQ/B_Signal/Signal_foundation_model/Vbench/src/data_factory/reader/output',
+src/data_factory/reader/RM_005_Ottawa23.py:45:    test_reader(metadata_path = '/home/user/LQ/B_Signal/Signal_foundation_model/Vbench/data/metadata_5_data.csv',
+src/data_factory/reader/RM_005_Ottawa23.py:46:                 data_dir = '/home/user/data/PHMbenchdata/raw/',
+src/data_factory/reader/RM_005_Ottawa23.py:48:                 output_dir = '/home/user/LQ/B_Signal/Signal_foundation_model/Vbench/src/data_factory/reader/output',
+src/data_factory/reader/RM_024_JUST.py:38:    test_reader(metadata_path = '/home/user/LQ/B_Signal/Signal_foundation_model/Vbench/data/metadata_5_data.csv',
+src/data_factory/reader/RM_024_JUST.py:39:                 data_dir = '/home/user/data/PHMbenchdata/PHM-Vibench/raw',
+src/data_factory/reader/RM_024_JUST.py:41:                 output_dir = '/home/user/LQ/B_Signal/Signal_foundation_model/Vbench/src/data_factory/reader/output',
+src/data_factory/reader/RM_001_CWRU.py:80:    file_path = "/home/user/data/PHMbenchdata/RM_001_CWRU/98.mat"
+src/data_factory/reader/RM_008_UNSW.py:20:    file_path = "/home/user/data/a_bearing/a_008_UNSW_raw/Test 2/6Hz/vib_000005664_06.mat"
+src/data_factory/reader/RM_008_UNSW.py:24:    file_path = "/home/user/data/a_bearing/a_008_UNSW_raw/Test 3/Multiple speeds/vib_000334687_15.mat"
+src/data_factory/reader/RM_017_Ottawa19.py:35:    test_reader(metadata_path = '/home/user/LQ/B_Signal/Signal_foundation_model/Vbench/data/metadata_5_data.csv',
+src/data_factory/reader/RM_017_Ottawa19.py:36:                 data_dir = '/home/user/data/PHMbenchdata/raw/',
+src/data_factory/reader/RM_017_Ottawa19.py:38:                 output_dir = '/home/user/LQ/B_Signal/Signal_foundation_model/Vbench/src/data_factory/reader/output',
