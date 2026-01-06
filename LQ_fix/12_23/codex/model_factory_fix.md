@@ -12,21 +12,24 @@
 * **入口**：`src/model_factory/model_factory.py` 根据 `type` 和 `name` 动态实例化模型。
 * **现有模型**：`M_01_ISFM.py` 内部定义了 `Embedding_dict`, `Backbone_dict`, `TaskHead_dict` 来硬编码组件。
 * **组件位置**：`src/model_factory/ISFM/backbone/`, `task_head/`, `embedding/`。
+* **重要现实约束**：`model_factory` 会 import `src.model_factory.{type}.{name}`，因此 `model.name` 必须对应 `src/model_factory/ISFM/<name>.py` 的模块文件名；而 `configs/demo/00_smoke/dummy_dg.yaml` 不含 `model:`，模型字段来自 `base_configs.model` 指向的 `configs/base/model/*.yaml`。
 
 # Execution Plan (执行步骤)
 
-## Step 1: 创建注册中心
+## Step 1: 创建注册中心（复用仓库现有 Registry 工具）
 新建文件 `src/model_factory/ISFM/registry.py`。
-* 实现 `Registry` 类和 `GLOBAL_REGISTRY` 单例。
-* 提供 `register_backbone`, `register_head`, `register_embedding` 装饰器/函数。
-* 提供 `bootstrap()` 方法，在第一次调用时动态 import 子包 (`.backbone`, `.task_head`, `.embedding`)。
+* 复用 `src/utils/registry.py::Registry`，在 ISFM 内建立三个 registry：Embedding / Backbone / TaskHead。
+* 提供 `register_backbone`, `register_head`, `register_embedding`（decorator 形式，供 `__init__.py` 追加注册使用）。
+* 提供 `bootstrap()`：首次调用时 import `src.model_factory.ISFM.backbone / embedding / task_head`，触发各自 `__init__.py` 的注册逻辑。
+* 提供 `get_backbone/get_embedding/get_head`：找不到 key 时给出可用选项，便于定位配置拼写问题。
 
 ## Step 2: 实施“无侵入”注册
 修改以下三个文件的 `__init__.py`，在文件末尾**追加**注册逻辑（保留原有 export 不变）：
 * `src/model_factory/ISFM/backbone/__init__.py`
 * `src/model_factory/ISFM/task_head/__init__.py`
 * `src/model_factory/ISFM/embedding/__init__.py`
-* **操作**：引入 `GLOBAL_REGISTRY`，并将该目录下 `__all__` 或已导入的类注册进去。
+* **操作**：基于 `__all__` 做自动注册（不手写长名单），注册 key 直接使用类名字符串，保证与 `M_01_ISFM.py` 的 dict key 字面一致。
+* **错误处理策略**：默认不吞异常（导入失败应尽早暴露）；如确有“可选依赖缺失但 baseline 仍需跑”的历史包袱，再添加最小化的 `ImportError` warn（不要静默 `pass`）。
 
 ## Step 3: 派生新模型 M_04
 1.  复制：`cp src/model_factory/ISFM/M_01_ISFM.py src/model_factory/ISFM/M_04_ISFM_Registry.py`
@@ -34,76 +37,78 @@
     * 保留所有 import（为了兼容性）。
     * **删除** `Embedding_dict`, `Backbone_dict`, `TaskHead_dict` 定义。
     * 修改 `__init__` 方法：
-        * 调用 `GLOBAL_REGISTRY.bootstrap()`。
-        * 使用 `GLOBAL_REGISTRY.get_backbone(args_m.backbone)` 替代字典查找。
+        * 调用 `bootstrap()` 触发注册。
+        * 使用 `get_backbone/get_embedding/get_head` 替代字典查找。
         * (注意参数名是 `args_m`)。
-3.  暴露新模型：在 `src/model_factory/ISFM/__init__.py` 中导出 `M_04_ISFM_Registry`。
+3.  可选导出：可在 `src/model_factory/ISFM/__init__.py` 中导出 `M_04_ISFM_Registry`（不影响 `model_factory` 的按模块路径导入）。
 
-## Step 4: 冒烟测试配置
-1.  新建 `configs/demo/00_smoke/dummy_registry_test.yaml`。
-2.  内容完全复制自 `configs/demo/00_smoke/dummy_dg.yaml`。
-3.  仅修改一行：将 `model.name` 从 `M_01_ISFM` 改为 `M_04_ISFM_Registry`。
+## Step 4: 冒烟测试配置（符合 base_configs 叠加机制）
+推荐做法（更可追溯）：
+1. 新建 `configs/base/model/backbone_dlinear_registry.yaml`（从 `configs/base/model/backbone_dlinear.yaml` 复制，仅改 `model.name: "M_04_ISFM_Registry"`）。
+2. 新建 `configs/demo/00_smoke/dummy_dg_registry.yaml`（从 `configs/demo/00_smoke/dummy_dg.yaml` 复制，仅改 `base_configs.model` 指向上面的新 base model）。
+
+备选做法（不加文件，适合临时验证）：
+* `python main.py --config configs/demo/00_smoke/dummy_dg.yaml --override model.name=M_04_ISFM_Registry`
+
+## Step 5: 验收
+* 旧模型：`python main.py --config configs/demo/00_smoke/dummy_dg.yaml`
+* 新模型：`python main.py --config configs/demo/00_smoke/dummy_dg_registry.yaml`（或用 CLI override 方案）
+* 可选（若新增 configs）：`python -m scripts.validate_configs`
 
 # Deliverables (代码产物)
-请生成以下 4 个代码块，我将直接写入文件。
+请生成以下代码块（可直接写入文件）。
 
 ## 1. `src/model_factory/ISFM/registry.py`
 ```python
-from typing import Any, Callable, Dict, Optional, Type
-import importlib
+from __future__ import annotations
+
+from typing import Any, Type
+
+from src.utils.registry import Registry
 
 class RegistryKeyError(KeyError):
-    pass
+    """Raised when a component key is missing from the ISFM registries."""
 
-class Registry:
-    def __init__(self):
-        self._backbones: Dict[str, Type] = {}
-        self._heads: Dict[str, Type] = {}
-        self._embeddings: Dict[str, Type] = {}
-        self._bootstrapped = False
+_BOOTSTRAPPED = False
 
-    def bootstrap(self):
-        """Lazy import to trigger registration decorators."""
-        if self._bootstrapped:
-            return
-        # 这些 import 会触发各个子模块 __init__.py 里的注册代码
-        from . import backbone, task_head, embedding
-        self._bootstrapped = True
+BACKBONES: Registry = Registry()
+EMBEDDINGS: Registry = Registry()
+HEADS: Registry = Registry()
 
-    def register_backbone(self, name: str, cls: Type, override: bool = False):
-        self._register(self._backbones, name, cls, override, "backbone")
+def bootstrap() -> None:
+    """Lazy import to trigger auto-registration in component packages."""
+    global _BOOTSTRAPPED
+    if _BOOTSTRAPPED:
+        return
+    _BOOTSTRAPPED = True
+    from . import backbone  # noqa: F401
+    from . import embedding  # noqa: F401
+    from . import task_head  # noqa: F401
 
-    def register_head(self, name: str, cls: Type, override: bool = False):
-        self._register(self._heads, name, cls, override, "task_head")
+def register_backbone(name: str):
+    return BACKBONES.register(name)
 
-    def register_embedding(self, name: str, cls: Type, override: bool = False):
-        self._register(self._embeddings, name, cls, override, "embedding")
+def register_embedding(name: str):
+    return EMBEDDINGS.register(name)
 
-    def get_backbone(self, name: str) -> Type:
-        return self._get(self._backbones, name, "backbone")
+def register_head(name: str):
+    return HEADS.register(name)
 
-    def get_head(self, name: str) -> Type:
-        return self._get(self._heads, name, "task_head")
+def _get_or_raise(registry: Registry, name: str, kind: str) -> Any:
+    try:
+        return registry.get(name)
+    except KeyError as exc:  # pragma: no cover - defensive error path
+        options = ", ".join(sorted(registry.available().keys()))
+        raise RegistryKeyError(f"Unknown {kind}: '{name}'. Available: {options}") from exc
 
-    def get_embedding(self, name: str) -> Type:
-        return self._get(self._embeddings, name, "embedding")
+def get_backbone(name: str) -> Type:
+    return _get_or_raise(BACKBONES, name, "backbone")
 
-    def list_backbones(self): return list(self._backbones.keys())
-    def list_heads(self): return list(self._heads.keys())
-    def list_embeddings(self): return list(self._embeddings.keys())
+def get_embedding(name: str) -> Type:
+    return _get_or_raise(EMBEDDINGS, name, "embedding")
 
-    def _register(self, store, name, cls, override, kind):
-        if name in store and not override:
-            raise ValueError(f"{kind} '{name}' already registered.")
-        store[name] = cls
-
-    def _get(self, store, name, kind):
-        if name not in store:
-            options = ", ".join(sorted(store.keys())[:10])
-            raise RegistryKeyError(f"Unknown {kind}: '{name}'. Available: {options}...")
-        return store[name]
-
-GLOBAL_REGISTRY = Registry()
+def get_head(name: str) -> Type:
+    return _get_or_raise(HEADS, name, "task_head")
 
 ```
 
@@ -115,33 +120,56 @@ GLOBAL_REGISTRY = Registry()
 # ... (保留原有 imports)
 
 # --- Registry Auto-Registration ---
-from ..registry import GLOBAL_REGISTRY
+from ..registry import register_backbone
 
-# 将当前模块导出的所有 Backbone 类注册到全局注册表
-# 假设上方已经 import 了 B_04_Dlinear 等类
-try:
-    GLOBAL_REGISTRY.register_backbone('B_01_basic_transformer', B_01_basic_transformer)
-    GLOBAL_REGISTRY.register_backbone('B_03_FITS', B_03_FITS)
-    GLOBAL_REGISTRY.register_backbone('B_04_Dlinear', B_04_Dlinear)
-    GLOBAL_REGISTRY.register_backbone('B_05_Mamba', B_05_Mamba)
-    GLOBAL_REGISTRY.register_backbone('B_06_TimesNet', B_06_TimesNet)
-    GLOBAL_REGISTRY.register_backbone('B_07_TSMixer', B_07_TSMixer)
-    GLOBAL_REGISTRY.register_backbone('B_08_PatchTST', B_08_PatchTST)
-    GLOBAL_REGISTRY.register_backbone('B_09_FNO', B_09_FNO)
-    GLOBAL_REGISTRY.register_backbone('B_10_VIBT', B_10_VIBT)
-    GLOBAL_REGISTRY.register_backbone('B_11_MomentumEncoder', B_11_MomentumEncoder)
-except NameError:
-    pass # 防止部分依赖缺失导致导入失败
+for _name in __all__:
+    _obj = globals().get(_name)
+    if isinstance(_obj, type):
+        register_backbone(_name)(_obj)
 
 ```
 
-## 3. `src/model_factory/ISFM/M_04_ISFM_Registry.py` (Core Logic)
+## 3. `src/model_factory/ISFM/embedding/__init__.py` (Append Snippet)
+
+*请在文件末尾追加以下代码（不要删除原有内容）：*
+
+```python
+# ... (保留原有 imports)
+
+# --- Registry Auto-Registration ---
+from ..registry import register_embedding
+
+for _name in __all__:
+    _obj = globals().get(_name)
+    if isinstance(_obj, type):
+        register_embedding(_name)(_obj)
+
+```
+
+## 4. `src/model_factory/ISFM/task_head/__init__.py` (Append Snippet)
+
+*请在文件末尾追加以下代码（不要删除原有内容）：*
+
+```python
+# ... (保留原有 imports)
+
+# --- Registry Auto-Registration ---
+from ..registry import register_head
+
+for _name in __all__:
+    _obj = globals().get(_name)
+    if isinstance(_obj, type):
+        register_head(_name)(_obj)
+
+```
+
+## 5. `src/model_factory/ISFM/M_04_ISFM_Registry.py` (Core Logic)
 
 *这是基于 M_01 修改后的核心代码片段，请确保替换掉原有的 Dict 定义和 **init** 逻辑：*
 
 ```python
 # ... (Imports same as M_01)
-from src.model_factory.ISFM.registry import GLOBAL_REGISTRY
+from src.model_factory.ISFM.registry import bootstrap, get_backbone, get_embedding, get_head
 
 # (Delete Embedding_dict, Backbone_dict, TaskHead_dict definitions)
 
@@ -156,12 +184,12 @@ class Model(nn.Module):
         self.args_m = args_m
         
         # 1. 懒加载触发注册
-        GLOBAL_REGISTRY.bootstrap()
+        bootstrap()
 
         # 2. 从 Registry 获取类 (替代原来的 Dict[key])
-        EmbeddingCls = GLOBAL_REGISTRY.get_embedding(args_m.embedding)
-        BackboneCls = GLOBAL_REGISTRY.get_backbone(args_m.backbone)
-        TaskHeadCls = GLOBAL_REGISTRY.get_head(args_m.task_head)
+        EmbeddingCls = get_embedding(args_m.embedding)
+        BackboneCls = get_backbone(args_m.backbone)
+        TaskHeadCls = get_head(args_m.task_head)
 
         # 3. 实例化 (保持与 M_01 完全一致的参数传递)
         self.embedding = EmbeddingCls(args_m)
@@ -176,17 +204,16 @@ class Model(nn.Module):
 
 ```
 
-## 4. `configs/demo/00_smoke/dummy_registry_test.yaml` (Generation Command)
+## 6. 冒烟配置生成命令（推荐的“新增 base + 新增 demo”）
 
-*直接运行以下 Shell 命令生成测试配置：*
+*直接运行以下 Shell 命令生成测试配置（更贴合当前仓库的 base_configs 机制）：*
 
 ```bash
-cp configs/demo/00_smoke/dummy_dg.yaml configs/demo/00_smoke/dummy_registry_test.yaml
-# 使用 sed 或编辑器将 model.name: M_01_ISFM 修改为 model.name: M_04_ISFM_Registry
-# 所有的 embedding/backbone/task_head 参数保持不变
+cp configs/base/model/backbone_dlinear.yaml configs/base/model/backbone_dlinear_registry.yaml
+# 编辑 configs/base/model/backbone_dlinear_registry.yaml:
+# 将 model.name: "M_01_ISFM" 改为 model.name: "M_04_ISFM_Registry"
 
-```
-
-```
-
+cp configs/demo/00_smoke/dummy_dg.yaml configs/demo/00_smoke/dummy_dg_registry.yaml
+# 编辑 configs/demo/00_smoke/dummy_dg_registry.yaml:
+# 将 base_configs.model 改为 "configs/base/model/backbone_dlinear_registry.yaml"
 ```
