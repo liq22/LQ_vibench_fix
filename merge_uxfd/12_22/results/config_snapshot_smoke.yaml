@@ -1,0 +1,73 @@
+data:
+  batch_size: 4
+  data_dir: data
+  dtype: float32
+  metadata_file: metadata_dummy.csv
+  normalization: standardization
+  num_window: 8
+  num_workers: 0
+  pin_memory: true
+  stride: 16
+  test_ratio: 0.1
+  train_ratio: 0.8
+  val_ratio: 0.1
+  window_size: 128
+environment:
+  PROJECT_HOME: .
+  iterations: 1
+  notes: Smoke test on repo-shipped dummy metadata + raw csv.
+  output_dir: results/demo/dummy_dg_smoke
+  project: demo_dummy_dg_smoke
+  seed: 0
+model:
+  activation: relu
+  backbone: B_04_Dlinear
+  d_ff: 256
+  d_model: 256
+  dropout: 0.1
+  e_layers: 2
+  embedding: E_01_HSE
+  input_dim: 2
+  name: M_01_ISFM
+  num_heads: 4
+  num_layers: 2
+  num_patches: 32
+  output_dim: 128
+  patch_size_C: 1
+  patch_size_L: 128
+  prompt_dim: 0
+  task_head: H_01_Linear_cla
+  type: ISFM
+  use_prompt: false
+pipeline: Pipeline_01_default
+task:
+  batch_size: 32
+  epochs: 10
+  log_interval: 10
+  loss: CE
+  lr: 0.001
+  metrics:
+  - acc
+  name: classification
+  num_workers: 4
+  optimizer: adam
+  pin_memory: true
+  shuffle: true
+  source_domain_id:
+  - 0
+  target_domain_id:
+  - 1
+  target_system_id:
+  - 0
+  type: DG
+  weight_decay: 0.0001
+trainer:
+  device: cpu
+  early_stopping: true
+  gpus: 1
+  logger_name: metadata_dummy.csv/M_M_01_ISFM/T_DGclassification_21_171900
+  monitor: val_loss
+  name: Default_trainer
+  num_epochs: 1
+  patience: 5
+

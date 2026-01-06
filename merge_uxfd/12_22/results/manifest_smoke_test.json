@@ -1,0 +1,24 @@
+{
+  "paper_id": "",
+  "preset_version": "",
+  "run_id": "metadata_dummy.csv/M_M_01_ISFM/T_DGclassification_21_171900",
+  "run_dir": "results/demo/dummy_dg_smoke/metadata_dummy.csv/M_M_01_ISFM/T_DGclassification_21_171900/iter_0",
+  "stage": "test",
+  "timestamp": "2025-12-21T09:19:01.768194Z",
+  "config_snapshot": "results/demo/dummy_dg_smoke/metadata_dummy.csv/M_M_01_ISFM/T_DGclassification_21_171900/iter_0/config_snapshot.yaml",
+  "metrics_path": "results/demo/dummy_dg_smoke/metadata_dummy.csv/M_M_01_ISFM/T_DGclassification_21_171900/iter_0/test_result_0.csv",
+  "metrics_csv_logger": "results/demo/dummy_dg_smoke/metadata_dummy.csv/M_M_01_ISFM/T_DGclassification_21_171900/iter_0/logs/version_0/metrics.csv",
+  "figures_dir": "",
+  "data_metadata_snapshot": "results/demo/dummy_dg_smoke/metadata_dummy.csv/M_M_01_ISFM/T_DGclassification_21_171900/iter_0/artifacts/data_metadata_snapshot.json",
+  "eligibility": "",
+  "explain_dir": "",
+  "explain_summary": "",
+  "distilled_dir": "",
+  "metrics_inline": {
+    "test_loss": 0.7253725528717041,
+    "test_Dummy_Data_loss": 0.7253725528717041,
+    "test_acc_Dummy_Data": 0.0,
+    "test_total_loss": 0.7253725528717041
+  }
+}
+
