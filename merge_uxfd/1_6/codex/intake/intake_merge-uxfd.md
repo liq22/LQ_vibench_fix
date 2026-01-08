@@ -3,7 +3,7 @@
 - Goal: 将 `paper/LQ_vibench_fix/merge_uxfd/12_23` 与 `paper/LQ_vibench_fix/merge_uxfd/12_27` 的规划/待办收口为可执行清单，并推进到“至少 1 篇 pilot 可验证跑通”的状态。
 - Scope: 仅覆盖 UXFD merge（WP0–WP5）相关事项；当下优先推进 WP0（pilot min.yaml）与 WP1（Copy+Adapter 组件移植）。
 - Tasks:
-  - T1: 确认 pilot paper（默认建议：`paper/UXFD_paper/1D-2D_fusion_explainable`）。
+  - T1: 确认 pilot paper（默认建议：`paper/UXFD_paper/1D-2D_fusion_explainable`；pilot submodule 仍位于 `paper/UXFD_paper/<pilot>/`）。
   - T2: 在 pilot submodule 内新增并补全 `configs/vibench/min.yaml` 与 `VIBENCH.md`（必要时补 `configs/vibench/README.md`）。
   - T3: 跑通 pilot 最小验证：`python main.py --config paper/UXFD_paper/<pilot>/configs/vibench/min.yaml --override trainer.num_epochs=1`，并确认 `<run_dir>/artifacts/manifest.json` 存在。
   - T4: 使用 post-run 检查：`python scripts/uxfd_postrun.py --config paper/LQ_vibench_fix/merge_uxfd/12_23/uxfd_postrun_config_example.yaml`，确保对“无 run/有 run”都不崩溃且会写 eligibility。
@@ -29,6 +29,7 @@
 - Notes:
   - 任务细化与依赖见原始材料（以原文为准）：`paper/LQ_vibench_fix/merge_uxfd/12_23/TODO_BACKLOG.md`、`paper/LQ_vibench_fix/merge_uxfd/12_23/ops_library_completion_plan.md`、`paper/LQ_vibench_fix/merge_uxfd/12_27/codex/UNFINISHED_WORK.md`、`paper/LQ_vibench_fix/merge_uxfd/12_27/codex/DECISIONS_NEEDED.md`。
 - Evidence:
+  - paper/LQ_vibench_fix/merge_uxfd/1_6/codex/README.md
   - paper/LQ_vibench_fix/merge_uxfd/1_6/codex/intake/intake_merge-uxfd.md
   - paper/LQ_vibench_fix/merge_uxfd/12_23/TODO_BACKLOG.md
   - paper/LQ_vibench_fix/merge_uxfd/12_23/ops_library_completion_plan.md
