@@ -1,4 +1,112 @@
-# 信号处理 / 特征提取 / 逻辑推理（含融合/路由）算子库补全计划（v1.0）
+# UXFD 算子库 + 核心模型装配计划（v2.0）
+
+**状态**: Maintained / Active
+
+本计划的目标已收敛为一句话：**主仓库只维护 1 个“UXFD 核心模型”（单一入口），7 篇 paper 只提供可装配模块与配置**。
+
+SSOT（现状/后续 TODO）：`paper/LQ_vibench_fix/merge_uxfd/1_15/codex/TODO.md`
+
+---
+
+## 0) 核心目标：一个核心模型，七篇 paper 可装配
+
+### 0.1 单一入口（Core Model）
+
+- **核心模型唯一入口**：`model.type: X_model` + `model.name: TSPN_UXFD`
+  - 入口实现：`src/model_factory/X_model/TSPN_UXFD.py`（保持 registry 稳定）
+  - 行为要求：默认配置下行为与现有 `TSPN.py` 保持一致；开启模块时再增量启用（best-effort，不破坏 demos）。
+
+### 0.2 可装配模块（UXFD Module Slots）
+
+核心模型提供一组“插槽”，由 `model.*` 配置决定启用/选择实现：
+
+- `signal_processing_1d`（上游 `Signal_processing.py` 对齐）
+- `signal_processing_2d`（上游 `Signal_processing_2D.py` 对齐；输出约定 BTFC）
+- `fusion`（1D↔2D 融合）
+- `operator_attention`（算子注意力 / routing）
+- `fuzzy`（模糊逻辑推理）
+- （可选）`hook_store`（证据/中间量收集，不改变数学范式）
+
+**实现落位（主仓库）**：优先继续使用现有 `src/model_factory/X_model/UXFD/**` 目录作为组件区（不要并行维护
+`UXFD_component/**`，避免口径分裂）。
+
+**已落地的最小装配示例（WP2 起步）**：
+
+```bash
+# 在任意使用 TSPN_UXFD 的配置上，开启 2D STFT 分支（当前为 STFT + mean-pool + concat 到 classifier）
+python main.py --config paper/UXFD_paper/1D-2D_fusion_explainable/configs/vibench/min.yaml \
+  --override trainer.num_epochs=1 \
+  --override model.uxfd.enable_sp2d=true
+```
+
+### 0.3 7 篇 paper 的责任边界（Submodule Contract）
+
+每个 paper submodule 只做两件事：
+
+1) 提供可跑的 vibench 入口配置：`paper/UXFD_paper/<paper_id>/configs/vibench/min.yaml`
+2) 提供映射文档：`paper/UXFD_paper/<paper_id>/VIBENCH.md`
+
+paper 的差异通过 **配置选择装配模块/超参** 实现；如果某 paper 确需新增模块代码：
+- 优先回收为主仓库可复用能力（放到 `src/model_factory/X_model/UXFD/**`）
+- 仅在“强依赖论文私有实现”时，才允许从 submodule import（必须 optional-import，不影响主仓库 tests/demos）。
+
+### 0.4 Paper → 模块装配矩阵（待补齐）
+
+> 该表用于把“7 篇 paper 的差异”收敛为“核心模型的装配选择”。在 WP0 补齐每篇 paper 的 `min.yaml` 后，再逐行落地。
+
+| paper_id | 核心模型 | 主要模块装配（示例） | 备注 |
+|---|---|---|---|
+| `1D-2D_fusion_explainable` | `TSPN_UXFD` | `signal_processing_2d` + `fusion` | Pilot |
+| `Explainable_FD_Toolkit` | `TSPN_UXFD` | `hook_store` + `explain`（extension） | 基础设施 |
+| `LLM_Explainable_FD_Toolkit` | `TSPN_UXFD` | `distilled`（产物） | 默认不启用网络 |
+| `MOE_explainable` | `TSPN_UXFD` | `operator_attention` / routing | - |
+| `Paper_fuzzy_XFD` | `TSPN_UXFD` | `fuzzy` | - |
+| `Neuralsymbolic_theory` | `TSPN_UXFD` | TBD | - |
+| `TII_operator_attention` | `TSPN_UXFD` | `operator_attention` | - |
+
+---
+
+## 1) DoD（面向“可装配核心模型”的验收）
+
+- 主仓库离线闭环不退化：
+  - `python main.py --config configs/demo/00_smoke/dummy_dg.yaml --override trainer.num_epochs=1`
+  - `python -m scripts.validate_configs`
+  - `python -m pytest test/`
+- 至少 1 个 paper submodule 的 `configs/vibench/min.yaml` 能跑通 1 epoch：
+  - `python main.py --config paper/UXFD_paper/<paper_id>/configs/vibench/min.yaml --override trainer.num_epochs=1`
+- 证据链可收集：
+  - `python -m scripts.collect_uxfd_runs --input results --out_dir reports`
+  - 生成 `reports/uxfd_runs.csv`
+- `plot_factory_migration_plan.md` 的离线 post-run/plot 方案可继续推进（不弃用）：
+  - `paper/LQ_vibench_fix/merge_uxfd/12_23/plot_factory_migration_plan.md`
+
+---
+
+## 2) Work Packages（按“核心模型可装配”收敛）
+
+### WP0：Submodule 入口补齐（阻塞真实验证）
+
+- 每个 paper 至少补齐：`configs/vibench/min.yaml` + `VIBENCH.md`
+- 先完成 P0：`1D-2D_fusion_explainable`（或你指定的 pilot paper）
+
+### WP1：算子库补齐（Copy + Adapter，先跑通）
+
+- 把上游 `${UXFD_UPSTREAM}/model/` 的可复用模块迁移到 `src/model_factory/X_model/UXFD/**`
+- 目标：核心模型的“插槽”都有可用实现（至少 minimal path）。
+
+### WP2：核心模型装配（TSPN_UXFD 从 alias 升级为 orchestrator）
+
+- `TSPN_UXFD` 读取 `model.*` 配置，选择并装配模块（默认不启用，保持兼容）
+- 明确张量布局契约（BLC/BCL/BTFC），必要时在 `UXFD/**` 下提供 adapters（只做形状归一化）。
+
+### WP3：解释/绘图/后处理（保持解耦，不破坏训练）
+
+- explain：保持 `trainer.extensions.explain.*` best-effort，eligibility 可审计
+- plot：按 `plot_factory_migration_plan.md` 做离线工具（基于 manifest/metrics），不强耦合模型内部
+
+---
+
+## Appendix：v1.0 原始计划（保留作历史参考）
 
 目标：把 `${UXFD_UPSTREAM}/model/` 中与 UXFD 相关的三类“可插拔算子”
 （以及 TSPN 里实际依赖的“融合/路由算子”）在 **不偏离上游范式** 的前提下，整理并迁移到 vibench 主仓库的

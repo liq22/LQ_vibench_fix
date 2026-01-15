@@ -1,3 +1,19 @@
+> ⚠️ **已弃用 / 归档 (Deprecated / Archive)**
+>
+> **状态**: 本文档保留供历史参考，已被新的 SSOT 文档取代。
+> **取代于**:
+> - 入口: [README.md](../../README.md)
+> - 快速开始: [00_quickstart.md](../../00_quickstart.md)
+> - 移植手册: [01_porting_playbook.md](../../01_porting_playbook.md)
+>
+> **原因**: 文档已重组为"新人 30 分钟上手"的清晰路径。本文件内容可能过时，请参考上述新文档。
+>
+> ---
+>
+> [原始内容如下...]
+
+---
+
 # UXFD 合并落地操作手册（给本科生的逐步修改指南）
 
 本手册把 `paper/LQ_vibench_fix/merge_uxfd/12_18temp/codex/init_plan.md` 的 PR0–PR5 变成“照做就能完成”的步骤清单。
@@ -359,9 +375,9 @@ python -m pytest test/
 ### PR4 验收
 对一个跑过的 run：
 ```bash
-python -m scripts.collect_uxfd_runs --input save/ --output save/uxfd_summary.csv
+python -m scripts.collect_uxfd_runs --input results --out_dir reports --runs_csv uxfd_summary.csv
 ```
-并确认生成的 `reports/uxfd_runs.csv`（或你指定的输出路径）能直接用 Excel 打开阅读。
+并确认生成的 `reports/uxfd_summary.csv` 能直接用 Excel 打开阅读。
 
 ---
 

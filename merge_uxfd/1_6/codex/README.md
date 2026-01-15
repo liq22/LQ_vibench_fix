@@ -1,3 +1,19 @@
+> ⚠️ **已弃用 / 归档 (Deprecated / Archive)**
+>
+> **状态**: 本目录保留供历史参考，已被新的 SSOT 文档取代。
+> **取代于**:
+> - 入口: [README.md](../../../README.md)
+> - 快速开始: [00_quickstart.md](../../00_quickstart.md)
+> - 移植手册: [01_porting_playbook.md](../../01_porting_playbook.md)
+>
+> **原因**: 文档已重组为"新人 30 分钟上手"的清晰路径。本目录内容（日更/待办）可能过时。
+>
+> ---
+>
+> [原始内容如下...]
+
+---
+
 # Codex 1_6 (merge-uxfd)
 
 入口：

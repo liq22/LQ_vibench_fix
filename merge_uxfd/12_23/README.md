@@ -2,16 +2,24 @@
 
 本目录用于在开始大规模代码移植前，先把“WP0 submodule(min.yaml) 驱动验证 + WP1 算子库移植（含融合/路由）+ HookStore + 最小单测”写清楚，并让你确认后再动手实现。
 
+**说明（维护状态）**：本目录的两份计划文档仍然维护中：
+- `ops_library_completion_plan.md`：算子库补齐 + 核心模型装配（v2.0）
+- `plot_factory_migration_plan.md`：plot/post-run 迁移计划（不弃用）
+
 ## 核心文档
 
 - 执行计划：`paper/LQ_vibench_fix/merge_uxfd/12_23/ops_library_completion_plan.md`（算子库补全主计划）
-- TODO 清单：`paper/LQ_vibench_fix/merge_uxfd/12_23/TODO_BACKLOG.md`（从 12_22 迁移的未完成事项）
+- 历史 TODO 清单：`paper/LQ_vibench_fix/merge_uxfd/12_23/TODO_BACKLOG.md`（已被 SSOT TODO 取代）
 
 ## 配套计划（plot/post-run）
 
 - Plot 目录迁移计划：`paper/LQ_vibench_fix/merge_uxfd/12_23/plot_factory_migration_plan.md`（plot/ → offline 工具 + 可选 src/plot_factory）
 - Post-run 检查+绘图脚本：`scripts/uxfd_postrun.py`
 - Post-run 配置示例：`paper/LQ_vibench_fix/merge_uxfd/12_23/uxfd_postrun_config_example.yaml`
+
+## TODO（SSOT）
+
+- 现状与后续 TODO：`paper/LQ_vibench_fix/merge_uxfd/1_15/codex/TODO.md`
 
 ## 文件依赖关系（简图）
 
@@ -20,4 +28,5 @@
 └── `paper/LQ_vibench_fix/merge_uxfd/12_23/plot_factory_migration_plan.md` → `scripts/uxfd_postrun.py` + `paper/LQ_vibench_fix/merge_uxfd/12_23/uxfd_postrun_config_example.yaml`
 
 说明（命名变更）：
-- 组件区统一命名为 `src/model_factory/X_model/UXFD_component/`（后续会把现有 `src/model_factory/X_model/UXFD/` 作为兼容 shim 逐步淘汰）。
+- 本目录中的“UXFD_component”属于当时的重构提案；当前主仓库实际落位仍以 `src/model_factory/X_model/UXFD/` 为准。
+- 在没有明确决策前，不要同时维护 `UXFD/` 与 `UXFD_component/` 两套目录，避免重复实现与文档口径分裂。

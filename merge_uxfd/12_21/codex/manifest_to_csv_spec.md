@@ -87,10 +87,9 @@
 ## 4) 推荐的 collect CLI（示例）
 
 ```bash
-python -m scripts.collect_uxfd_runs --input save/ --out_dir reports/
+python -m scripts.collect_uxfd_runs --input results --out_dir reports/
 ```
 
 输出：
 - `reports/uxfd_runs.csv`
 - （可选）`reports/uxfd_explain.csv`
-

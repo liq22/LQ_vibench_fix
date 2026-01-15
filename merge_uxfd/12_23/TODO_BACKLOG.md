@@ -127,3 +127,7 @@ export UXFD_UPSTREAM=/home/user/LQ/B_Signal/Unified_X_fault_diagnosis
 - `paper/LQ_vibench_fix/merge_uxfd/12_22/status_review_and_todos.md`
 - `paper/LQ_vibench_fix/merge_uxfd/12_22/upstream_gap_analysis_and_plan.md`
 - `paper/LQ_vibench_fix/merge_uxfd/12_18temp/codex/final_plan.md`
+# TODO_BACKLOG（归档）
+
+> ⚠️ 本文件为历史 backlog（2025-12-23）。现状/后续 TODO 的 SSOT 已迁移到：
+> `paper/LQ_vibench_fix/merge_uxfd/1_15/codex/TODO.md`

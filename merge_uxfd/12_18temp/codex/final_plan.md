@@ -1,3 +1,19 @@
+> ⚠️ **已弃用 / 归档 (Deprecated / Archive)**
+>
+> **状态**: 本文档保留供历史参考，已被新的 SSOT 文档取代。
+> **取代于**:
+> - 入口: [README.md](../../README.md)
+> - 快速开始: [00_quickstart.md](../../00_quickstart.md)
+> - 移植手册: [01_porting_playbook.md](../../01_porting_playbook.md)
+>
+> **原因**: 文档已重组为"新人 30 分钟上手"的清晰路径。本文件内容可能过时，请参考上述新文档。
+>
+> ---
+>
+> [原始内容如下...]
+
+---
+
 # UXFD 合并 Final Plan（最终版）
 
 本文件是 UXFD 合并到 PHM‑Vibench 的**唯一最终计划**（Final SSOT）。目标是做到：
