@@ -49,14 +49,16 @@ python main.py --config configs/demo/00_smoke/dummy_dg.yaml --override trainer.n
 ### 2. （可选）运行 Pilot（1 个 epoch 快速验证）
 
 ```bash
-# 注意：当前仓库的 WP0 尚未补齐（多数 submodule 内还没有 configs/vibench/min.yaml）。
-# 当某个 paper submodule 提供了 min.yaml 后，再用下面命令跑 pilot：
+# WP0 已补齐：7 个 paper submodule 均提供了 `configs/vibench/min.yaml`。
+# 如目录不存在：先执行 `git submodule update --init --recursive`。
 python main.py --config paper/UXFD_paper/<paper_id>/configs/vibench/min.yaml --override trainer.num_epochs=1
 ```
 
 **预期输出**:
 - 训练完成 1 个 epoch
 - 输出目录包含 `artifacts/` 子目录
+- 若该 paper 的 `min.yaml` 启用了 `trainer.extensions.predictions.enable=true`：
+  - 额外生成 `artifacts/predictions.npz`（用于混淆矩阵等离线绘图）
 
 ---
 
@@ -66,6 +68,9 @@ python main.py --config paper/UXFD_paper/<paper_id>/configs/vibench/min.yaml --o
 # 方式 A：用 collect 脚本做“闭环验证”（推荐）
 python -m scripts.collect_uxfd_runs --input results --out_dir reports
 ls -la reports/uxfd_runs.csv
+
+# 方式 A2：post-run 离线检查 + 绘图（学习曲线/混淆矩阵）
+python -m scripts.uxfd_postrun --config paper/LQ_vibench_fix/merge_uxfd/12_23/uxfd_postrun_config_example.yaml
 
 # 方式 B：直接查找最近写出的 manifest.json（不依赖固定 run_dir 名称）
 find results save -path "*/artifacts/manifest.json" -print 2>/dev/null | tail -n 5

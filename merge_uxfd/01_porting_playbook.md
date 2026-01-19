@@ -35,22 +35,21 @@ export VIBENCH_ROOT=$(pwd)  # PHM-Vibench 根目录
 
 | 上游文件 | 目标目录 | 备注 |
 |---------------|------------------|-------|
-| `$UXFD_UPSTREAM/model/Signal_processing_2D.py` | `src/model_factory/X_model/UXFD/signal_processing_2d/` | 输出: BTFC layout |
-| - | `src/model_factory/X_model/UXFD/adapters/` | 新增: BLC↔BTFC 适配器 |
+| `$UXFD_UPSTREAM/model/Signal_processing_2D.py` | `src/model_factory/X_model/UXFD/signal_processing_2d/` | 输出约定: BTFC layout |
 
 **DoD (验证命令)**:
-> ⚠️ 注意：此 DoD 在完成该阶段迁移后才能运行
+> ⚠️ 以当前仓库的最小实现为准：现阶段提供的是 `STFTTimeFrequency`（magnitude-only）。
 ```bash
 # 验证导入
-python -c "from src.model_factory.X_model.UXFD.signal_processing_2d import SP2D_CWT; print('OK')"
+python -c "from src.model_factory.X_model.UXFD.signal_processing_2d import STFTTimeFrequency; print('OK')"
 
 # 验证输出形状 (B, T, F, C)
 python -c "
 import torch
-from src.model_factory.X_model.UXFD.signal_processing_2d import SP2D_CWT
-x = torch.randn(2, 1000, 1)
-y = SP2D_CWT(x)
-print(f'Output shape: {y.shape}')  # 期望: (2, T, F, C)
+from src.model_factory.X_model.UXFD.signal_processing_2d.stft_tfr import STFTConfig, STFTTimeFrequency
+x = torch.randn(2, 128, 2)  # BLC
+y = STFTTimeFrequency(STFTConfig(n_fft=64, hop_length=32))(x)
+print(f'Output shape: {y.shape}')  # 期望: (B, T, F, C)
 "
 ```
 
@@ -64,9 +63,8 @@ print(f'Output shape: {y.shape}')  # 期望: (2, T, F, C)
 | `$UXFD_UPSTREAM/model/Fusion1D2D_simple.py` | `src/model_factory/X_model/UXFD/fusion/` | 简化版 |
 
 **DoD**:
-> ⚠️ 注意：此 DoD 在完成该阶段迁移后才能运行
 ```bash
-python -c "from src.model_factory.X_model.UXFD.fusion import Fusion1D2D; print('OK')"
+python -c "from src.model_factory.X_model.UXFD.fusion import build_fusion; print('OK')"
 ```
 
 ---
@@ -80,12 +78,13 @@ python -c "from src.model_factory.X_model.UXFD.fusion import Fusion1D2D; print('
 | `$UXFD_UPSTREAM/model/FuzzyLogic.py` | `src/model_factory/X_model/UXFD/fuzzy/` | P1 |
 | `$UXFD_UPSTREAM/model/FuzzyLogic_simple.py` | `src/model_factory/X_model/UXFD/fuzzy/` | P1 |
 | `$UXFD_UPSTREAM/model/FuzzyLogic_v2.py` | `src/model_factory/X_model/UXFD/fuzzy/` | P1 |
+| `$UXFD_UPSTREAM/model/Logic_inference.py` | `src/model_factory/X_model/UXFD/neurosymbolic/` | P1 |
 
 **DoD**:
-> ⚠️ 注意：此 DoD 在完成该阶段迁移后才能运行
 ```bash
-python -c "from src.model_factory.X_model.UXFD.operator_attention import OperatorAttention; print('OK')"
-python -c "from src.model_factory.X_model.UXFD.fuzzy import FuzzyLogic; print('OK')"
+python -c "from src.model_factory.X_model.UXFD.operator_attention import OperatorAttention1D; print('OK')"
+python -c "from src.model_factory.X_model.UXFD.fuzzy import FuzzyReasoner; print('OK')"
+python -c "from src.model_factory.X_model.UXFD.neurosymbolic import LogicReasoner; print('OK')"
 ```
 
 ---
@@ -95,8 +94,7 @@ python -c "from src.model_factory.X_model.UXFD.fuzzy import FuzzyLogic; print('O
 | 上游文件 | 目标目录 | 说明 |
 |---------------|------------------|------|
 | `$UXFD_UPSTREAM/model/TSPN.py` | `src/model_factory/X_model/UXFD/tspn/` | 主模型 |
-| - | `src/model_factory/X_model/UXFD/tspn/hook_store.py` | 新增: 证据收集 |
-| - | `src/model_factory/X_model/UXFD/tspn/registry.py` | 新增: 算子注册表 |
+| - | `src/model_factory/X_model/TSPN_UXFD.py` | 主仓库稳定入口（orchestrator；读 `model.uxfd.*`） |
 
 **需要更新 Registry**:
 在 `src/model_factory/model_registry.csv` 中确认存在 `model.name=TSPN_UXFD` 的行（入口应指向可被
@@ -109,22 +107,13 @@ X_model,TSPN_UXFD,src/model_factory/X_model/TSPN_UXFD.py,...
 ```
 
 **DoD**:
-> ⚠️ 注意：此 DoD 在完成该阶段迁移后才能运行
 ```bash
-# 验证注册
-python -m scripts.config_inspect --config configs/demo/00_smoke/dummy_dg.yaml --dump targets | grep TSPN_UXFD
+# 最小闭环：跑通任意一个 paper 的 vibench 配置（CPU 1 epoch）
+python main.py --config paper/UXFD_paper/1D-2D_fusion_explainable/configs/vibench/min.yaml --override trainer.num_epochs=1
 
-# 验证模型实例化
-python -c "
-from src.model_factory.model_factory import model_factory
-class Args: pass
-args = Args()
-args.input_dim = 1
-args.num_classes = 10
-args.model_name = 'TSPN_UXFD'
-# model = model_factory(args)  # 完整验证
-print('Registry OK')
-"
+# 证据链闭环：manifest → CSV
+python -m scripts.collect_uxfd_runs --input results --out_dir reports
+ls -la reports/uxfd_runs.csv
 ```
 
 ---
@@ -133,7 +122,6 @@ print('Registry OK')
 
 | 上游文件 | 目标目录 | 注册名建议 |
 |---------------|------------------|----------|
-| `$UXFD_UPSTREAM/model_collection/GradCAM_XFD.py` | `src/model_factory/X_model/baselines/` | `BASE_GradCAM_XFD` |
 | `$UXFD_UPSTREAM/model_collection/ExplainableCNN.py` | `src/model_factory/X_model/baselines/` | `BASE_ExplainableCNN` |
 
 **DoD**:
@@ -158,7 +146,11 @@ trainer:
   extensions:
     explain:
       enable: true
-      explainer: "router_weights"  # 或 gradients/timefreq/fuzzy_rules
+      explainer: "timefreq"
+    predictions:
+      enable: true
+    agent:
+      enable: true   # LLM-free distillation
 ```
 
 ---
