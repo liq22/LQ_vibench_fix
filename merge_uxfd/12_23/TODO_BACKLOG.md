@@ -1,6 +1,10 @@
-# UXFD Merge Backlog（从 12_22 迁移的未完成 TODO）
+# UXFD Merge Backlog（归档）
 
-目的：把之前分散在 `12_22/*`、`final_plan.md` 等处的“未完成事项”集中到 12/23，形成一个清晰的执行清单。
+本文件为历史 backlog（归档保留）。当前维护中的 SSOT：
+
+- `paper/LQ_vibench_fix/merge_uxfd/1_15/codex/TODO.md`
+- `paper/LQ_vibench_fix/merge_uxfd/12_23/ops_library_completion_plan.md`
+- `paper/LQ_vibench_fix/merge_uxfd/12_23/plot_factory_migration_plan.md`
 
 范围说明：
 - 这里只列 **UXFD merge 相关** 的 TODO（WP0–WP5），不把主仓库无关的历史 TODO 一并搬进来。

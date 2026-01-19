@@ -4,6 +4,11 @@
 
 目标：把 `plot/` 的“脚本集合”收敛为 **离线可复用工具**，并在必要时逐步沉淀为 `src/plot_factory/` 能力区。
 
+当前落地状态（对齐本计划的交付序列）：
+- ✅ WP0：`scripts/uxfd_postrun.py`（post-run 检查 + 离线绘图）
+- ✅ WP3：`src/plot_factory/`（最小骨架：`io.py`/`style.py`）
+- ✅ WP6：`artifacts/predictions.npz`（当 `trainer.extensions.predictions.enable=true`）+ `manifest.json.predictions_path`
+
 核心原则：
 - KISS：先做 1–2 张最有价值的图（学习曲线、混淆矩阵）
 - 强解耦：基于稳定产物（`manifest.json`、`metrics.csv`），尽量不绑定模型内部结构
@@ -53,7 +58,7 @@
 1) `<run_dir>/artifacts/manifest.json`（SSOT；已由 `ManifestWriterCallback` 生成）
 2) `<run_dir>/logs/**/metrics.csv`（CSVLogger 输出；学习曲线/标量图）
 3) `<run_dir>/test_result_*.csv`（流水线落盘）
-4) （可选增量）`<run_dir>/artifacts/predictions.npz`（后续再引入，专供混淆矩阵/样本可视化）
+4) ` <run_dir>/artifacts/predictions.npz`（当 `trainer.extensions.predictions.enable=true`；混淆矩阵/样本可视化）
 
 ### 1.3 Optional import + 可审计降级
 - `matplotlib`：作为基础依赖（若未来要变为 optional，需要再评估）
@@ -105,6 +110,7 @@ src/plot_factory/
   - 检查“必需/可选”产物是否存在（pattern + glob）
   - 结果写入 `<run_dir>/artifacts/plots/plot_eligibility.json`（仅记录；不影响训练）
 - 新增示例配置：`paper/LQ_vibench_fix/merge_uxfd/12_23/uxfd_postrun_config_example.yaml`
+  - 以及严格门禁版：`paper/LQ_vibench_fix/merge_uxfd/12_23/uxfd_postrun_config_strict.yaml`
 
 默认建议检查项（可在 config 覆盖）：
 - 必需：
@@ -116,7 +122,7 @@ src/plot_factory/
   - `figures/`（若开启绘图）
 
 验收：
-- `python scripts/uxfd_postrun.py --config paper/LQ_vibench_fix/merge_uxfd/12_23/uxfd_postrun_config_example.yaml`
+- `python -m scripts.uxfd_postrun --config paper/LQ_vibench_fix/merge_uxfd/12_23/uxfd_postrun_config_example.yaml`
   在没有任何 run 的情况下不会崩溃；有 run 时输出汇总并写 eligibility。
 
 ---
@@ -191,11 +197,11 @@ src/plot_factory/
 ---
 
 ### WP6：补齐“可画图所需的最小产物”（按需再做，避免过早）
-当且仅当你确认“混淆矩阵/样本可视化必须在主流程自动产出”时，再做此步：
+状态：已落地（best-effort）：
 
-- 在 task/test_step 或 callback 中增加一个**最小**的预测落盘：
-  - `<run_dir>/artifacts/predictions.npz`（例如：`y_true`、`y_pred`、可选 `logits`）
-- 同步更新 `manifest.json` 增加字段 `predictions_path`
+- 预测落盘：`<run_dir>/artifacts/predictions.npz`（`y_true/y_pred/file_id`）
+  - 开关：`trainer.extensions.predictions.enable=true`
+- manifest 字段：`manifest.json.predictions_path`
 
 验收：
 - `confusion_matrix.py` 在无 seaborn 时也能画（matplotlib fallback），并且 CPU 可跑

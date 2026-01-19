@@ -4,7 +4,7 @@ input:
   # Option A: auto-discover run dirs by scanning for manifests under a root dir.
   mode: manifest_glob
   # `root_dir` can be an absolute path or a repo-relative path.
-  root_dir: save
+  root_dir: results
   # Glob is written in Unix style; on Windows it is still interpreted by Python's Path.glob.
   manifests_glob: "**/artifacts/manifest.json"
 
@@ -15,7 +15,7 @@ checks:
   enable: true
   # If true: a run fails eligibility when any required pattern is missing.
   # If false: missing required patterns are only reported (best-effort).
-  fail_on_missing_required: true
+  fail_on_missing_required: false
   required:
     - "artifacts/manifest.json"
     - "config_snapshot.yaml"

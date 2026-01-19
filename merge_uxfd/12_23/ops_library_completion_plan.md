@@ -25,6 +25,7 @@ SSOT（现状/后续 TODO）：`paper/LQ_vibench_fix/merge_uxfd/1_15/codex/TODO.
 - `fusion`（1D↔2D 融合）
 - `operator_attention`（算子注意力 / routing）
 - `fuzzy`（模糊逻辑推理）
+- `logic`（neuro-symbolic / logic 推理，best-effort logits residual）
 - （可选）`hook_store`（证据/中间量收集，不改变数学范式）
 
 **实现落位（主仓库）**：优先继续使用现有 `src/model_factory/X_model/UXFD/**` 目录作为组件区（不要并行维护
@@ -37,6 +38,40 @@ SSOT（现状/后续 TODO）：`paper/LQ_vibench_fix/merge_uxfd/1_15/codex/TODO.
 python main.py --config paper/UXFD_paper/1D-2D_fusion_explainable/configs/vibench/min.yaml \
   --override trainer.num_epochs=1 \
   --override model.uxfd.enable_sp2d=true
+```
+
+可选：配置融合方式（默认 `concat`）：
+
+```bash
+python main.py --config paper/UXFD_paper/1D-2D_fusion_explainable/configs/vibench/min.yaml \
+  --override trainer.num_epochs=1 \
+  --override model.uxfd.enable_sp2d=true \
+  --override model.uxfd.fusion.type=gated
+```
+
+可选：开启 fuzzy reasoner（输出作为 logits residual，加到基础 classifier 上）：
+
+```bash
+python main.py --config paper/UXFD_paper/1D-2D_fusion_explainable/configs/vibench/min.yaml \
+  --override trainer.num_epochs=1 \
+  --override model.uxfd.fuzzy.enable=true \
+  --override model.uxfd.fuzzy.logit_scale=0.5
+```
+
+可选：开启 operator attention（在进入 1D signal processing layers 之前，对输入信号做算子 attention 融合）：
+
+```bash
+python main.py --config paper/UXFD_paper/TII_operator_attention/configs/vibench/min.yaml \
+  --override trainer.num_epochs=1 \
+  --override model.uxfd.operator_attention.enable=true
+```
+
+可选：开启 neuro-symbolic / logic residual（best-effort；用于 paper `Neuralsymbolic_theory` 的插槽占位）：
+
+```bash
+python main.py --config paper/UXFD_paper/Neuralsymbolic_theory/configs/vibench/min.yaml \
+  --override trainer.num_epochs=1 \
+  --override model.uxfd.logic.enable=true
 ```
 
 ### 0.3 7 篇 paper 的责任边界（Submodule Contract）
@@ -86,8 +121,8 @@ paper 的差异通过 **配置选择装配模块/超参** 实现；如果某 pap
 
 ### WP0：Submodule 入口补齐（阻塞真实验证）
 
-- 每个 paper 至少补齐：`configs/vibench/min.yaml` + `VIBENCH.md`
-- 先完成 P0：`1D-2D_fusion_explainable`（或你指定的 pilot paper）
+- 状态：已完成（7 个 submodule 均已补齐 `configs/vibench/min.yaml` + `VIBENCH.md`）
+- 后续新增 paper/variant 时，仍按同一约定落地入口文件
 
 ### WP1：算子库补齐（Copy + Adapter，先跑通）
 
