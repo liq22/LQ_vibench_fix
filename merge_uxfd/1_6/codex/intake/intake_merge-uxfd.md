@@ -6,7 +6,7 @@
   - T1: 确认 pilot paper（默认建议：`paper/UXFD_paper/1D-2D_fusion_explainable`；pilot submodule 仍位于 `paper/UXFD_paper/<pilot>/`）。
   - T2: 在 pilot submodule 内新增并补全 `configs/vibench/min.yaml` 与 `VIBENCH.md`（必要时补 `configs/vibench/README.md`）。
   - T3: 跑通 pilot 最小验证：`python main.py --config paper/UXFD_paper/<pilot>/configs/vibench/min.yaml --override trainer.num_epochs=1`，并确认 `<run_dir>/artifacts/manifest.json` 存在。
-  - T4: 使用 post-run 检查：`python scripts/uxfd_postrun.py --config paper/LQ_vibench_fix/merge_uxfd/12_23/uxfd_postrun_config_example.yaml`，确保对“无 run/有 run”都不崩溃且会写 eligibility。
+  - T4: 使用 post-run 检查：`python -m scripts.uxfd_postrun --config paper/LQ_vibench_fix/merge_uxfd/12_23/uxfd_postrun_config_example.yaml`，确保对“无 run/有 run”都不崩溃且会写 eligibility。
   - T5: 按 Copy+Adapter（先跑通后优化）补齐 pilot 依赖的通用组件：2D 时频（`Signal_processing_2D.py`）、1D↔2D 融合（`Fusion1D2D*.py`），以及按需的 attention/fuzzy/logic。
   - T6: 增强 `TSPN_UXFD` 的工程壳：HookStore wrapper（不改变 forward 结果）、必要的 layout adapters，并在 `src/model_factory/model_registry.csv` 增加可选 hooked 入口。
   - T7: 接入至少 1 个 explainer 的实际执行，产出 `artifacts/explain/summary.json` 并写回 manifest（best-effort，不阻塞训练）。
