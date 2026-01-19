@@ -22,7 +22,7 @@
 
 验收建议（跑完后检查产物）：
 - 运行：`python main.py --config paper/UXFD_paper/<paper_id>/configs/vibench/min.yaml --override trainer.num_epochs=1`
-- Post-run 检查：`python scripts/uxfd_postrun.py --config paper/LQ_vibench_fix/merge_uxfd/12_23/uxfd_postrun_config_example.yaml`
+- Post-run 检查：`python -m scripts.uxfd_postrun --config paper/LQ_vibench_fix/merge_uxfd/12_23/uxfd_postrun_config_example.yaml`
 
 ---
 
@@ -80,4 +80,3 @@
 - `artifacts/manifest.json` 固定产出：`src/trainer_factory/extensions/manifest.py`
 - manifest → CSV：`scripts/collect_uxfd_runs.py`
 - post-run 检查/离线绘图（独立脚本 + 配置）：`scripts/uxfd_postrun.py` + `paper/LQ_vibench_fix/merge_uxfd/12_23/uxfd_postrun_config_example.yaml`
-

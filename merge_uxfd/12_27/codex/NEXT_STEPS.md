@@ -13,7 +13,7 @@
 - 产物存在：`<run_dir>/artifacts/manifest.json`
 
 建议同时做 post-run 检查（不改训练流程）：
-- `python scripts/uxfd_postrun.py --config paper/LQ_vibench_fix/merge_uxfd/12_23/uxfd_postrun_config_example.yaml`
+- `python -m scripts.uxfd_postrun --config paper/LQ_vibench_fix/merge_uxfd/12_23/uxfd_postrun_config_example.yaml`
 
 ---
 
@@ -48,4 +48,3 @@
 torch-only 优先，重依赖默认不注册（或 optional import）。
 
 参考：@`paper/LQ_vibench_fix/merge_uxfd/12_21/codex/model_collection_integration_plan.md`
-
