@@ -1,0 +1,18 @@
+=== UXFD Components Import Test ===
+
+✓ SP2D (STFTTimeFrequency) imported
+✓ Fusion (FusionConfig, build_fusion) imported
+✓ Fuzzy (FuzzyConfig, FuzzyReasoner) imported
+✓ OperatorAttention (OperatorAttention1D, OperatorAttentionConfig) imported
+✓ Neurosymbolic (LogicConfig, LogicReasoner) imported
+✓ TSPN_UXFD (Model) imported
+
+=== Import Summary ===
+  SP2D: ✅ PASS
+  Fusion: ✅ PASS
+  Fuzzy: ✅ PASS
+  OperatorAttention: ✅ PASS
+  Neurosymbolic: ✅ PASS
+  TSPN_UXFD: ✅ PASS
+
+✅ All imports passed!

@@ -1,0 +1,25 @@
+{
+  "topic": "merge_uxfd",
+  "day_dir": "paper/LQ_vibench_fix/merge_uxfd/1_17",
+  "codex_dir": "paper/LQ_vibench_fix/merge_uxfd/1_17/codex",
+  "inputs": [
+    "paper/LQ_vibench_fix/merge_uxfd/1_17/codex/README.md",
+    "paper/LQ_vibench_fix/merge_uxfd/1_17/codex/TODO.md"
+  ],
+  "outputs": [
+    "paper/LQ_vibench_fix/merge_uxfd/1_17/codex/intake/intake_merge_uxfd.md",
+    "paper/LQ_vibench_fix/merge_uxfd/1_17/codex/plan/plan_merge_uxfd.md",
+    "paper/LQ_vibench_fix/merge_uxfd/1_17/codex/report/report_merge_uxfd.md",
+    "paper/LQ_vibench_fix/merge_uxfd/1_17/codex/artifact/manifest_merge_uxfd.json"
+  ],
+  "validation_commands_suggested": [
+    "python main.py --config configs/demo/00_smoke/dummy_dg.yaml --override trainer.num_epochs=1",
+    "python -m pytest test/ -k uxfd -q",
+    "python -m pytest test/ -k artifacts -q",
+    "python -m scripts.uxfd_postrun --config paper/LQ_vibench_fix/merge_uxfd/1_17/codex/uxfd_postrun_config_strict.yaml"
+  ],
+  "notes": [
+    "This manifest records planning artifacts only; no training runs or pytest executions were performed as part of generating these documents."
+  ]
+}
+

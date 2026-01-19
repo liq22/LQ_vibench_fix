@@ -1,0 +1,35 @@
+# UXFD post-run check + plotting config (STRICT; intended for gating/CI)
+#
+# Note: this file is intentionally duplicated from:
+# - paper/LQ_vibench_fix/merge_uxfd/12_23/uxfd_postrun_config_strict.yaml
+# to keep `1_17/codex/` self-contained for reviews.
+
+input:
+  mode: manifest_glob
+  root_dir: results
+  manifests_glob: "**/artifacts/manifest.json"
+  run_dirs: []
+
+checks:
+  enable: true
+  fail_on_missing_required: true
+  required:
+    - "artifacts/manifest.json"
+    - "config_snapshot.yaml"
+  optional:
+    - "logs/**/metrics.csv"
+    - "test_result_*.csv"
+    - "artifacts/predictions.npz"
+    - "figures"
+
+plots:
+  enable: true
+  out_dir: figures
+  save_formats: ["png", "pdf"]
+  items:
+    - type: learning_curve
+      metrics_glob: "logs/**/metrics.csv"
+      series: []
+    - type: confusion_matrix
+      predictions_glob: "artifacts/predictions.npz"
+      normalize: true

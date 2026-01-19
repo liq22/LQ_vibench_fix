@@ -1,0 +1,37 @@
+{
+  "topic": "uxfd-merge",
+  "date": "1_16",
+  "question": "7个paper目前完整吗？",
+  "status": {
+    "wp0_entry_files_present_in_workspace": true,
+    "merge_ready_requires_submodule_commits": true
+  },
+  "checks": [
+    {
+      "cmd": "find paper/UXFD_paper -path \"*/configs/vibench/min.yaml\" | wc -l",
+      "expect": "7"
+    },
+    {
+      "cmd": "find paper/UXFD_paper -maxdepth 2 -name \"VIBENCH.md\" | wc -l",
+      "expect": "7"
+    },
+    {
+      "cmd": "python -m scripts.validate_configs",
+      "expect": "[OK] ... passed schema validation."
+    },
+    {
+      "cmd": "python -m pytest test/",
+      "expect": "all passed"
+    },
+    {
+      "cmd": "python -m scripts.collect_uxfd_runs --input results --out_dir reports",
+      "expect": "reports/uxfd_runs.csv exists"
+    }
+  ],
+  "evidence_paths": [
+    "paper/LQ_vibench_fix/merge_uxfd/1_16/codex/report/report_uxfd-merge.md",
+    "paper/LQ_vibench_fix/merge_uxfd/1_16/codex/daily/daily.md",
+    "paper/LQ_vibench_fix/merge_uxfd/1_16/codex/todo/todo.md",
+    "paper/LQ_vibench_fix/merge_uxfd/1_16/codex/intake/intake_uxfd-merge.md"
+  ]
+}
