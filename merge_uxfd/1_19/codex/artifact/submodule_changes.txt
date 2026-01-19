@@ -1,0 +1,130 @@
+UXFD merge (1_19) — Submodule changes checklist
+Generated at: 2026-01-19T14:23:26+08:00
+
+Context
+- This repo uses git submodules under `paper/UXFD_paper/*` and `paper/LQ_vibench_fix`.
+- In this agent environment, `.git/` is read-only (cannot create index.lock), so commits cannot be created here.
+- Use this file as a “what to commit where” checklist on your normal machine.
+
+How to commit (recommended order)
+1) Commit inside each paper submodule repo (7 repos)
+2) Commit inside `paper/LQ_vibench_fix` submodule repo
+3) Back in parent repo: stage updated gitlinks and commit
+
+======================================================================
+paper/UXFD_paper/1D-2D_fusion_explainable
+HEAD: b385b07e82d6323a291d90e55a5ef4aff9336c0b
+Untracked (expected WP0 entry):
+- VIBENCH.md
+- configs/vibench/min.yaml
+
+Commands (run inside the submodule):
+  cd paper/UXFD_paper/1D-2D_fusion_explainable
+  git status -sb
+  git diff
+  git add VIBENCH.md configs/vibench/min.yaml
+  git commit -m "Add vibench min config + mapping doc"
+
+======================================================================
+paper/UXFD_paper/Explainable_FD_Toolkit
+HEAD: 379244dc8410eea0580714bc216c71074acba3a9
+Untracked:
+- VIBENCH.md
+- configs/vibench/min.yaml
+
+Commands:
+  cd paper/UXFD_paper/Explainable_FD_Toolkit
+  git add VIBENCH.md configs/vibench/min.yaml
+  git commit -m "Add vibench min config + mapping doc"
+
+======================================================================
+paper/UXFD_paper/LLM_Explainable_FD_Toolkit
+HEAD: 08eb944dd9acdbbd6c69cf39f050854a936e9b78
+Untracked:
+- VIBENCH.md
+- configs/vibench/min.yaml
+
+Commands:
+  cd paper/UXFD_paper/LLM_Explainable_FD_Toolkit
+  git add VIBENCH.md configs/vibench/min.yaml
+  git commit -m "Add vibench min config + mapping doc"
+
+======================================================================
+paper/UXFD_paper/MOE_explainable
+HEAD: 0da06ae366eeb66d852c144013af6925446615cb
+Untracked:
+- VIBENCH.md
+- configs/vibench/min.yaml
+
+Commands:
+  cd paper/UXFD_paper/MOE_explainable
+  git add VIBENCH.md configs/vibench/min.yaml
+  git commit -m "Add vibench min config + mapping doc"
+
+======================================================================
+paper/UXFD_paper/Neuralsymbolic_theory
+HEAD: ad7dc2e2851f59d941e402e68fa3d3409b39c583
+Untracked:
+- VIBENCH.md
+- configs/vibench/min.yaml
+
+Commands:
+  cd paper/UXFD_paper/Neuralsymbolic_theory
+  git add VIBENCH.md configs/vibench/min.yaml
+  git commit -m "Add vibench min config + mapping doc"
+
+======================================================================
+paper/UXFD_paper/Paper_fuzzy_XFD
+HEAD: 1bedd533bd52e7ac2592d3a6f7aeffaf25a1014f
+Untracked:
+- VIBENCH.md
+- configs/vibench/min.yaml
+
+Commands:
+  cd paper/UXFD_paper/Paper_fuzzy_XFD
+  git add VIBENCH.md configs/vibench/min.yaml
+  git commit -m "Add vibench min config + mapping doc"
+
+======================================================================
+paper/UXFD_paper/TII_operator_attention
+HEAD: 20f47bac5c02763e1f6b856c90ce32861025c003
+Untracked:
+- VIBENCH.md
+- configs/vibench/min.yaml
+
+Commands:
+  cd paper/UXFD_paper/TII_operator_attention
+  git add VIBENCH.md configs/vibench/min.yaml
+  git commit -m "Add vibench min config + mapping doc"
+
+======================================================================
+paper/LQ_vibench_fix
+HEAD: 3710a0f68ff629b7b0175908dc58b8d12642fca0
+Untracked:
+- merge_uxfd/1_19/codex/intake/intake_merge-uxfd.md
+- merge_uxfd/1_19/codex/plan/plan_merge-uxfd.md
+- merge_uxfd/1_19/codex/artifact/uxfd_postrun_gate_new_runs.yaml
+- merge_uxfd/1_19/codex/artifact/submodule_changes.txt
+- merge_uxfd/1_19/codex/report/report_merge-uxfd.md
+- merge_uxfd/1_19/codex/artifact/manifest_merge-uxfd.json
+- merge_uxfd/1_19/codex/artifact/llm_tool_contract.json
+- merge_uxfd/1_19/codex/artifact/fallback_orchestrator.py
+- merge_uxfd/1_19/codex/artifact/uxfd_autotune_leaderboard.csv
+
+Commands:
+  cd paper/LQ_vibench_fix
+  git status -sb
+  git add merge_uxfd/1_19
+  git commit -m "Add 1_19 merge plan + artifacts"
+
+======================================================================
+Parent repo (after all submodule commits)
+
+Commands:
+  cd <PHM-Vibench root>
+  git status -sb
+  git add paper/LQ_vibench_fix paper/UXFD_paper/*
+  git commit -m "Update UXFD submodule pointers"
+
+Verification (optional):
+  git diff --submodule=diff

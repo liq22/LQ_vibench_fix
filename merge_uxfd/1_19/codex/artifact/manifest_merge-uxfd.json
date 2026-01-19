@@ -1,0 +1,87 @@
+{
+  "topic": "merge-uxfd",
+  "date": "1_19",
+  "generated_at": "2026-01-19T14:23:26+08:00",
+  "environment": {
+    "python": "3.10.0",
+    "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31",
+    "network_access": "restricted",
+    "notes": [
+      "This agent environment has a read-only .git/; commits cannot be created here."
+    ]
+  },
+  "runs": {
+    "smoke": {
+      "run_dir": "results/demo/dummy_dg_smoke/metadata_dummy.csv/M_M_01_ISFM/T_DGclassification_19_142426/iter_0",
+      "config_snapshot": "results/demo/dummy_dg_smoke/metadata_dummy.csv/M_M_01_ISFM/T_DGclassification_19_142426/iter_0/config_snapshot.yaml",
+      "manifest": "results/demo/dummy_dg_smoke/metadata_dummy.csv/M_M_01_ISFM/T_DGclassification_19_142426/iter_0/artifacts/manifest.json",
+      "test_results": "results/demo/dummy_dg_smoke/metadata_dummy.csv/M_M_01_ISFM/T_DGclassification_19_142426/iter_0/test_result_0.csv",
+      "predictions": ""
+    },
+    "pilot_uxfd_enabled": {
+      "paper_id": "1D-2D_fusion_explainable",
+      "run_dir": "results/uxfd/pilot/1D-2D_fusion_explainable/metadata_dummy.csv/M_TSPN_UXFD/T_DGclassification_19_142428/iter_0",
+      "config_snapshot": "results/uxfd/pilot/1D-2D_fusion_explainable/metadata_dummy.csv/M_TSPN_UXFD/T_DGclassification_19_142428/iter_0/config_snapshot.yaml",
+      "manifest": "results/uxfd/pilot/1D-2D_fusion_explainable/metadata_dummy.csv/M_TSPN_UXFD/T_DGclassification_19_142428/iter_0/artifacts/manifest.json",
+      "test_results": "results/uxfd/pilot/1D-2D_fusion_explainable/metadata_dummy.csv/M_TSPN_UXFD/T_DGclassification_19_142428/iter_0/test_result_0.csv",
+      "predictions": "results/uxfd/pilot/1D-2D_fusion_explainable/metadata_dummy.csv/M_TSPN_UXFD/T_DGclassification_19_142428/iter_0/artifacts/predictions.npz"
+    }
+  },
+  "gates": [
+    {
+      "name": "smoke",
+      "cmd": "python main.py --config configs/demo/00_smoke/dummy_dg.yaml --override trainer.num_epochs=1",
+      "exit_code": 0
+    },
+    {
+      "name": "tests",
+      "cmd": "python -m pytest test/",
+      "exit_code": 0
+    },
+    {
+      "name": "uxfd_enabled_pilot",
+      "cmd": "python main.py --config paper/UXFD_paper/1D-2D_fusion_explainable/configs/vibench/min.yaml --override trainer.num_epochs=1",
+      "exit_code": 0
+    },
+    {
+      "name": "collect_manifests",
+      "cmd": "python -m scripts.collect_uxfd_runs --input results --out_dir reports",
+      "exit_code": 0,
+      "outputs": [
+        "reports/uxfd_runs.csv"
+      ]
+    },
+    {
+      "name": "postrun_strict_global",
+      "cmd": "python -m scripts.uxfd_postrun --config paper/LQ_vibench_fix/merge_uxfd/1_17/codex/uxfd_postrun_config_strict.yaml",
+      "exit_code": 1,
+      "notes": [
+        "Fails on historical runs missing required config_snapshot.yaml."
+      ]
+    },
+    {
+      "name": "postrun_strict_new_runs",
+      "cmd": "python -m scripts.uxfd_postrun --config paper/LQ_vibench_fix/merge_uxfd/1_19/codex/artifact/uxfd_postrun_gate_new_runs.yaml",
+      "exit_code": 0
+    },
+    {
+      "name": "fallback_autotune_budget_1",
+      "cmd": "python paper/LQ_vibench_fix/merge_uxfd/1_19/codex/artifact/fallback_orchestrator.py --paper_id 1D-2D_fusion_explainable --config paper/UXFD_paper/1D-2D_fusion_explainable/configs/vibench/min.yaml --budget 1 --seed 0 --output_root results/uxfd/autotune --leaderboard_csv paper/LQ_vibench_fix/merge_uxfd/1_19/codex/artifact/uxfd_autotune_leaderboard.csv",
+      "exit_code": 0,
+      "outputs": [
+        "paper/LQ_vibench_fix/merge_uxfd/1_19/codex/artifact/uxfd_autotune_leaderboard.csv"
+      ]
+    }
+  ],
+  "deliverables": [
+    "paper/LQ_vibench_fix/merge_uxfd/1_19/codex/intake/intake_merge-uxfd.md",
+    "paper/LQ_vibench_fix/merge_uxfd/1_19/codex/plan/plan_merge-uxfd.md",
+    "paper/LQ_vibench_fix/merge_uxfd/1_19/codex/report/report_merge-uxfd.md",
+    "paper/LQ_vibench_fix/merge_uxfd/1_19/codex/artifact/manifest_merge-uxfd.json",
+    "paper/LQ_vibench_fix/merge_uxfd/1_19/codex/artifact/submodule_changes.txt",
+    "paper/LQ_vibench_fix/merge_uxfd/1_19/codex/artifact/uxfd_postrun_gate_new_runs.yaml",
+    "paper/LQ_vibench_fix/merge_uxfd/1_19/codex/artifact/llm_tool_contract.json",
+    "paper/LQ_vibench_fix/merge_uxfd/1_19/codex/artifact/fallback_orchestrator.py",
+    "paper/LQ_vibench_fix/merge_uxfd/1_19/codex/artifact/uxfd_autotune_leaderboard.csv"
+  ]
+}

@@ -1,0 +1,37 @@
+# UXFD post-run gate config (STRICT) for *new runs only*
+#
+# Rationale:
+# - The global strict config will fail on historical runs that predate `config_snapshot.yaml`.
+# - This gate pins the run set to newly produced runs during the merge validation.
+
+input:
+  mode: run_dirs
+  root_dir: results
+  manifests_glob: "**/artifacts/manifest.json"
+  run_dirs:
+    - "results/demo/dummy_dg_smoke/metadata_dummy.csv/M_M_01_ISFM/T_DGclassification_19_142426/iter_0"
+    - "results/uxfd/pilot/1D-2D_fusion_explainable/metadata_dummy.csv/M_TSPN_UXFD/T_DGclassification_19_142428/iter_0"
+
+checks:
+  enable: true
+  fail_on_missing_required: true
+  required:
+    - "artifacts/manifest.json"
+    - "config_snapshot.yaml"
+  optional:
+    - "logs/**/metrics.csv"
+    - "test_result_*.csv"
+    - "artifacts/predictions.npz"
+    - "figures"
+
+plots:
+  enable: true
+  out_dir: figures
+  save_formats: ["png"]
+  items:
+    - type: learning_curve
+      metrics_glob: "logs/**/metrics.csv"
+      series: []
+    - type: confusion_matrix
+      predictions_glob: "artifacts/predictions.npz"
+      normalize: true

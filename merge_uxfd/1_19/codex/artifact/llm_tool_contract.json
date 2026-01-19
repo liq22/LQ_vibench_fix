@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UXFDConfigTrial",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["paper_id", "config_path", "overrides", "budget"],
+  "properties": {
+    "paper_id": {
+      "type": "string",
+      "description": "Paper submodule id (e.g. 1D-2D_fusion_explainable)."
+    },
+    "config_path": {
+      "type": "string",
+      "description": "Base YAML config path used by `python main.py --config ...`."
+    },
+    "overrides": {
+      "type": "array",
+      "description": "A list of CLI dot overrides in `key=value` form.",
+      "items": { "type": "string" }
+    },
+    "budget": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 50,
+      "description": "Maximum number of trials."
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "allowed_prefixes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["model.uxfd.", "trainer.extensions.", "trainer.seed", "trainer.num_epochs", "environment.output_dir"],
+          "description": "Only overrides matching these prefixes are permitted."
+        },
+        "max_epochs": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "default": 1
+        }
+      }
+    }
+  }
+}
+

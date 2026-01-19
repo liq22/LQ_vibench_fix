@@ -1,0 +1,46 @@
+# Intake: merge-uxfd
+
+- Goal: 形成一份可执行的合并/验证计划，确保 UXFD（`TSPN_UXFD`）可稳定运行且“可解释=可验证产物”；并为后续在 `LLM_Explainable_FD_Toolkit` 中通过（LangGraph 风格）编排进行结构试错优化打通路径。
+- Scope:
+  - In:
+    - UXFD 核心可用与证据链闭环（`manifest.json`/`predictions.npz`/`eligibility.json`/`distilled/summary.json`）。
+    - 可解释的测试门禁（模块装配单测 + 产物契约测试 + post-run 严格门禁）。
+    - LLM 工具化调用 UXFD：受控 overrides 白名单、可回滚、可追溯的 trial loop（若无 langgraph 则先 fallback）。
+    - submodule 合并流程：各 paper submodule 内提交 → 父仓库更新 gitlink。
+  - Out:
+    - 任何必须联网的依赖安装与外部 AutoML 服务（restricted network）。
+    - “论文级 explainability 算法”一次性全实现（先保证接口/产物契约稳定可消费）。
+- Tasks:
+  - T1: 人工 review 父仓库关键改动（核心模型/产物链/工具链/测试/文档）。
+  - T2: 人工 review + 提交 7 个 paper submodules 的 WP0 入口文件（min.yaml + VIBENCH.md），并更新父仓库 gitlink。
+  - T3: 跑验证门禁并记录证据（smoke/pytest/collect/postrun）。
+  - T4: 约定并实现（或先文档化）LLM 试错优化的最小工具契约与 fallback orchestrator（不依赖 langgraph）。
+  - T5: 明确何时引入 langgraph（依赖可用性/联网策略/CI 约束）与迁移路径。
+- Priority: P0
+- Due: TBD
+- Owner: TBD
+- Background:
+  - 入口与 wiring 强约束：`python main.py --config <yaml> [--override key=value ...]`
+  - UXFD 目标：一个核心模型（`TSPN_UXFD`）+ 7 篇 paper 通过 `model.uxfd.*` 与 `trainer.extensions.*` 装配差异。
+  - submodule 事实：父仓库 PR 无法展示 submodule 内文件级 diff，除非先在 submodule 仓库内提交。
+- Details:
+  - “UXFD work”的最小定义应包含一次 UXFD-enabled 的 paper `min.yaml` 跑通，并产出 `<run_dir>/artifacts/manifest.json`。
+  - “可解释”落到可验证契约：工具链只消费稳定产物，而非训练内部状态。
+- Acceptance / DoD:
+  - Gates（全部通过）：
+    - `python main.py --config configs/demo/00_smoke/dummy_dg.yaml --override trainer.num_epochs=1`
+    - `python -m pytest test/`
+    - `python main.py --config paper/UXFD_paper/1D-2D_fusion_explainable/configs/vibench/min.yaml --override trainer.num_epochs=1`
+    - `python -m scripts.collect_uxfd_runs --input results --out_dir reports`
+    - `python -m scripts.uxfd_postrun --config paper/LQ_vibench_fix/merge_uxfd/1_17/codex/uxfd_postrun_config_strict.yaml`
+  - submodule 合并：
+    - 7 个 paper submodules 各自有 commit（包含 `configs/vibench/min.yaml` + `VIBENCH.md`）
+    - 父仓库 gitlink 更新后 `git diff --submodule=diff` 可读
+- Notes:
+  - 当前环境探测显示 `langgraph` 未安装；需要 fallback（纯 python loop）或后续在允许联网的环境安装。
+- Evidence:
+  - `paper/LQ_vibench_fix/merge_uxfd/1_19/codex/plan/plan_merge-uxfd.md`
+  - `paper/LQ_vibench_fix/merge_uxfd/1_19/codex/report/report_merge-uxfd.md` (TBD)
+  - `paper/LQ_vibench_fix/merge_uxfd/1_19/codex/artifact/manifest_merge-uxfd.json` (TBD)
+
+Next: plan-md-writer

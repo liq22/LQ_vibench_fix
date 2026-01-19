@@ -1,0 +1,2 @@
+trial_id,score,run_dir,manifest_path,overrides
+iter_0,0.0,results/uxfd/autotune/1D-2D_fusion_explainable/20260119_143147_00/metadata_dummy.csv/M_TSPN_UXFD/T_DGclassification_19_143151/iter_0,results/uxfd/autotune/1D-2D_fusion_explainable/20260119_143147_00/metadata_dummy.csv/M_TSPN_UXFD/T_DGclassification_19_143151/iter_0/artifacts/manifest.json,trainer.num_epochs=1 trainer.seed=0 model.uxfd.fuzzy.logit_scale=1.0 environment.output_dir=results/uxfd/autotune/1D-2D_fusion_explainable/20260119_143147_00
