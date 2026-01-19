@@ -1,0 +1,21 @@
+==================================================
+UXFD Runtime Behavior Test
+==================================================
+
+### Fusion Test
+  concat: torch.Size([2, 64]) -> torch.Size([2, 64]) ✓
+  sum: torch.Size([2, 64]) -> torch.Size([2, 64]) ✓
+  gated: torch.Size([2, 64]) -> torch.Size([2, 64]) ✓
+
+### Fuzzy Test
+  Input: (2, 64) -> Output: torch.Size([2, 10]) ✓
+
+### OperatorAttention Test
+  Input: torch.Size([2, 100, 1]) -> Output: torch.Size([2, 100, 1]), Weights: torch.Size([2, 3]) ✓
+
+### Logic Test
+  Input: (2, 64) -> Output: torch.Size([2, 10]) ✓
+
+==================================================
+All tests passed!
+==================================================
